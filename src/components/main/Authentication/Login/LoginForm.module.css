@@ -1,5 +1,5 @@
 .formbackground {
-    background-color: rgba(14, 58, 114, 0.64);
+    background-color: rgba(14, 58, 114, 0.70);
     max-width: 620px;
     display: flex;
     flex-direction: column;
@@ -7,6 +7,7 @@
     margin-top: 40px;
     border-radius: 20px;
     height: 600px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 68%);
 }
 
 form {
@@ -26,11 +27,24 @@ form input {
 
 form p, h1 {
     color: #FFFFFF;
+    
 }
+
 
 div form p {
     font-size: 18px;
-    color: rgb(243, 81, 81);
+    justify-content: flex-start;
+    
+}
+
+div form .valid-email, .valid-password {
+    display: none;
+}
+
+div form .invalid-email, .invalid-password {
+    color: rgb(255, 86, 86);
+    padding: 0;
+    z-index: 100;
 }
 
 .rememberpassword {
@@ -38,23 +52,28 @@ div form p {
     font-size: 18px;
     color: #FFFFFF;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 input[type="checkbox"] {
     transform: scale(2);
-    justify-content: flex-end;
+
 }
 
 .rememberpassword label {
-    justify-content: flex-start;
+    cursor: pointer;
 }
 
+.rememberpassword label:hover {
+    color: rgb(255, 107, 107)
+}
 .submit {
     margin: 40px 125px 40px 125px;
     max-width: 230px;
 }
 
 .submit:hover {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 68%);
     background-color: red;
     color: white;
 }

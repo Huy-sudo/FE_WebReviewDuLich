@@ -6,16 +6,19 @@ function emailReducer(state, action) {
     return {
       value: action.value,
       isEmailValid: action.isEmailValid,
+      isEmailInputFocus: action.isEmailInputFocus
     };
   } else if (action.type === "LOGIN_EMAILINPUT_LOSTFOCUS") {
     return {
       value: state.value,
       isEmailValid: state.isEmailValid,
+      isEmailInputFocus: state.isEmailInputFocus
     };
   } else
     return {
       value: "",
-      isEmailValid: false
+      isEmailValid: false,
+      isEmailInputFocus: false
     };
 }
 
@@ -24,16 +27,19 @@ function passwordReducer(state, action) {
     return {
       value: action.value,
       isPasswordValid: action.isPasswordValid,
+      isPasswordInputFocus: action.isPasswordInputFocus
     };
   } else if (action.type === "LOGIN_PASSWORDINPUT_LOSTFOCUS") {
     return {
       value: state.value,
       isPasswordValid: state.isPasswordValid,
+      isPasswordInputFocus: state.isPasswordInputFocus
     };
   } else
     return {
       value: "",
       isPasswordValid: false,
+      isPasswordInputFocus: false
     };
 }
 
@@ -42,12 +48,14 @@ function LoginForm(props) {
   // const [userPassword, setUserPassword] = useState('');
   const [userEmail, dispatchUserEmail] = useReducer(emailReducer, {
     value: "",
-    isEmailValid: true
+    isEmailValid: false,
+    isEmailInputFocus: false
   });
 
   const [userPassword, dispatchUserPassword] = useReducer(passwordReducer, {
     value: "",
-    isPasswordValid: true
+    isPasswordValid: false,
+    isPasswordInputFocus: false
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -64,11 +72,12 @@ function LoginForm(props) {
       type: "LOGIN_EMAILINPUT",
       value: enteredEmail,
       isEmailValid: validateEmail(enteredEmail),
+      isEmailInputFocus: true
     });
   }
 
   function emailValidation() {
-    dispatchUserEmail({ type: "LOGIN_EMAILINPUT_LOSTFOCUS" });
+    dispatchUserEmail({ type: "LOGIN_EMAILINPUT_LOSTFOCUS", isEmailInputFocus: false });
   }
 
   function passwordChangeHandler(event) {
@@ -84,12 +93,13 @@ function LoginForm(props) {
       type: "LOGIN_PASSWORDINPUT",
       value: enteredPassword,
       isPasswordValid: validatePassword(enteredPassword),
+      isPasswordInputFocus: true
     });
     //setUserPassword(event.target.value);
   }
 
   function passwordValidation(event) {
-    dispatchUserPassword({ type: "LOGIN_PASSWORDINPUT_LOSTFOCUS" });
+    dispatchUserPassword({ type: "LOGIN_PASSWORDINPUT_LOSTFOCUS", isPasswordInputFocus: false });
   }
 
   function formValidation(emailValid, passwordValid) {
@@ -115,8 +125,14 @@ function LoginForm(props) {
       console.log("CLEANUP");
       clearTimeout(timeout);
     };
-  }, [userEmail.isEmailValid, userPassword.isPasswordValid]);
+  }, [userEmail, userPassword]);
 
+  const errorEmail = !userEmail.isEmailValid && userEmail.isEmailInputFocus;
+  const errorClassNameForEmail = errorEmail ? 'invalid-email' : 'valid-email';
+
+  const errorPassword = !userPassword.isPasswordValid && userPassword.isPasswordInputFocus;
+  const errorClassnameForPassword = errorPassword ? 'invalid-password' : 'valid-password';
+  
   return (
     <div className={classes.formbackground}>
       <h1>Đăng nhập</h1>
@@ -128,7 +144,7 @@ function LoginForm(props) {
           onChange={emailChangeHandler}
           onBlur={emailValidation}
         />
-        {!userEmail.isEmailValid && <p>Email is invalid. Please try again!</p>}
+        <p className={classes[`${errorClassNameForEmail}`]}>Email is invalid. Please try again!</p>
         <input
           placeholder="Nhập mật khẩu"
           type="password"
@@ -136,15 +152,15 @@ function LoginForm(props) {
           onChange={passwordChangeHandler}
           onBlur={passwordValidation}
         />
-        {!userPassword.isPasswordValid && <p>Password must at least have 8 characters and 1 number.</p>}
+        <p className={classes[`${errorClassnameForPassword}`]}>Password must at least have 8 characters and 1 number.</p>
         <div className={classes.rememberpassword}>
           <input type="checkbox" id="remember_password"/>
           <label htmlFor="remember_password">Remeber password?</label>
         </div>
         {isFormValid ? (
-          <input className = {classes.submit} type="submit" value="Đăng nhập" />
+          <input className={classes.submit} type="submit" value="Đăng nhập" />
         ) : (
-          <input type="submit" value="Đăng nhập" disabled={true} />
+          <input className={classes.submit_disabled} type="submit" value="Đăng nhập" disabled={true} />
         )}
       </form>
     </div>
