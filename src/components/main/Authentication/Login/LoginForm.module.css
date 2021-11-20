@@ -10,6 +10,7 @@
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 68%);
 }
 
+
 form {
     display: flex;
     flex-direction: column;  
@@ -18,14 +19,15 @@ form {
 
 form input {
     font-family: "Open Sans";
-    font-size: 24px;
-    padding: 10px;
+    font-size: 1.2rem;
+    padding: 17px;
     border-radius: 15px;
     max-width: 460px;
     margin: 10px 80px;
 }
 
-form p, h1 {
+h1 {
+    margin-top: 53px;
     color: #FFFFFF;
     
 }
@@ -33,16 +35,7 @@ form p, h1 {
 
 div form p {
     font-size: 18px;
-    justify-content: flex-start;
-    
-}
-
-div form .valid-email, .valid-password {
-    display: none;
-}
-
-div form .invalid-email, .invalid-password {
-    color: rgb(255, 86, 86);
+    color: rgb(0, 255, 76);
     padding: 0;
     z-index: 100;
 }
@@ -68,8 +61,8 @@ input[type="checkbox"] {
     color: rgb(255, 107, 107)
 }
 .submit {
-    margin: 40px 125px 40px 125px;
-    max-width: 230px;
+    margin: 27px auto;
+    width: 282px;
 }
 
 .submit:hover {
