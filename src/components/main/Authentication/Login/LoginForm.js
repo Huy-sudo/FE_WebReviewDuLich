@@ -152,7 +152,7 @@ function LoginForm(props) {
           onChange={passwordChangeHandler}
           onBlur={passwordValidation}
         />
-        <p className={classes[`${errorClassnameForPassword}`]}>Password must at least have 8 characters and 1 number.</p>
+        <p1 className={classes[`${errorClassnameForPassword}`]}>Password must at least have 8 characters and 1 number.</p1>
         <div className={classes.rememberpassword}>
           <input type="checkbox" id="remember_password"/>
           <label htmlFor="remember_password">Remeber password?</label>
