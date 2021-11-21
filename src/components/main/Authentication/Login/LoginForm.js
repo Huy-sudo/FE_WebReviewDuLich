@@ -108,15 +108,14 @@ function LoginForm(props) {
 
   function submitHandler(event) {
     //sending Request
-    event.preventDefault();
-    props.onGetData(userEmail.value, userPassword.value);
-    //After submitting, empty the value of inputs
-    //setUserEmail('');
-    //setUserPassword("");
+    event.preventDefault(); //just for temporarily
+    dispatchUserEmail();
+    dispatchUserPassword();
+    
   }
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    let timeout = setTimeout(() => {
       formValidation(userEmail.isEmailValid, userPassword.isPasswordValid);
       console.log("Validating form");
     }, 500);
@@ -127,11 +126,11 @@ function LoginForm(props) {
     };
   }, [userEmail, userPassword]);
 
-  const errorEmail = !userEmail.isEmailValid && userEmail.isEmailInputFocus;
-  const errorClassNameForEmail = errorEmail ? 'invalid-email' : 'valid-email';
+  let errorEmail = !userEmail.isEmailValid && userEmail.isEmailInputFocus;
+  let errorClassNameForEmail = errorEmail ? 'invalid-email' : 'valid-email';
 
-  const errorPassword = !userPassword.isPasswordValid && userPassword.isPasswordInputFocus;
-  const errorClassnameForPassword = errorPassword ? 'invalid-password' : 'valid-password';
+  let errorPassword = !userPassword.isPasswordValid && userPassword.isPasswordInputFocus;
+  let errorClassnameForPassword = errorPassword ? 'invalid-password' : 'valid-password';
   
   return (
     <div className={classes.formbackground}>
@@ -156,6 +155,7 @@ function LoginForm(props) {
         <div className={classes.rememberpassword}>
           <input type="checkbox" id="remember_password"/>
           <label htmlFor="remember_password">Remeber password?</label>
+          <a href="/">Quên mật khẩu</a>
         </div>
         {isFormValid ? (
           <input className={classes.submit} type="submit" value="Đăng nhập" />
@@ -163,6 +163,7 @@ function LoginForm(props) {
           <input className={classes.submit_disabled} type="submit" value="Đăng nhập" disabled={true} />
         )}
       </form>
+
     </div>
   );
 }

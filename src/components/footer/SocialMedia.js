@@ -11,11 +11,11 @@ import classes from "./SocialMedia.module.css";
 
 function SocialMedia() {
   return (
-    <div className={classes.socialmedia}>
+    <div className={classes['socialmedia-wrapper']}>
       <p>Theo dõi mới nhất tại</p>
-      <div>
-        <a href="/">
-          <FontAwesomeIcon icon={faFacebookSquare} />
+      <div className={classes["socialmedia-icon"]}>
+        <a href="/" className={classes.facebook}>
+          <FontAwesomeIcon  icon={faFacebookSquare} />
         </a>
         <a href="/">
           <FontAwesomeIcon icon={faTwitter} />

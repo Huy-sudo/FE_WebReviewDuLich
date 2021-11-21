@@ -1,11 +1,12 @@
-.socialmedia {
-    color: #FFFFFF;
-    padding: 10px;
-    margin: 10px;
+.socialmedia-wrapper {
     font-size: 24px;
 }
 
-p {
-    
-    font-family: "Open Sans";
+.socialmedia-icon {
+    transform: scale(1.5);
+}
+
+.socialmedia-icon a {
+    color: black;
+    margin: 0px 5px 30px 5px;
 }

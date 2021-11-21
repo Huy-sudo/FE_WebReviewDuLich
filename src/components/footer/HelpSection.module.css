@@ -1,0 +1,11 @@
+.helpsection-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.helpsection-wrapper a {
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    font-family: "Open sans";
+}
