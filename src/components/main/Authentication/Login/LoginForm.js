@@ -7,19 +7,19 @@ function emailReducer(state, action) {
     return {
       value: action.value,
       isEmailValid: action.isEmailValid,
-      isEmailInputFocus: action.isEmailInputFocus
+      isEmailInputFocus: action.isEmailInputFocus,
     };
   } else if (action.type === "LOGIN_EMAILINPUT_LOSTFOCUS") {
     return {
       value: state.value,
       isEmailValid: state.isEmailValid,
-      isEmailInputFocus: true
+      isEmailInputFocus: true,
     };
   } else
     return {
       value: "",
       isEmailValid: false,
-      isEmailInputFocus: false
+      isEmailInputFocus: false,
     };
 }
 
@@ -28,43 +28,38 @@ function passwordReducer(state, action) {
     return {
       value: action.value,
       isPasswordValid: action.isPasswordValid,
-      isPasswordInputFocus: action.isPasswordInputFocus
+      isPasswordInputFocus: action.isPasswordInputFocus,
     };
   } else if (action.type === "LOGIN_PASSWORDINPUT_LOSTFOCUS") {
     return {
       value: state.value,
       isPasswordValid: state.isPasswordValid,
-      isPasswordInputFocus: true
+      isPasswordInputFocus: true,
     };
   } else
     return {
       value: "",
       isPasswordValid: false,
-      isPasswordInputFocus: false
+      isPasswordInputFocus: false,
     };
 }
 
 function LoginForm(props) {
-  // const [userEmail, setUserEmail] = useState('');
-  // const [userPassword, setUserPassword] = useState('');
   const [userEmail, dispatchUserEmail] = useReducer(emailReducer, {
     value: "",
     isEmailValid: false,
-    isEmailInputFocus: false
+    isEmailInputFocus: false,
   });
-
   const [userPassword, dispatchUserPassword] = useReducer(passwordReducer, {
     value: "",
     isPasswordValid: false,
-    isPasswordInputFocus: false
+    isPasswordInputFocus: false,
   });
-
   const [isFormValid, setIsFormValid] = useState(false);
 
   function emailChangeHandler(event) {
     let enteredEmail = event.target.value.trim();
     function validateEmail(email) {
-      //validate email. source: stackoverflow =)). try: not yet
       const result =
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //regular expression
       return result.test(email);
@@ -73,10 +68,9 @@ function LoginForm(props) {
       type: "LOGIN_EMAILINPUT",
       value: enteredEmail,
       isEmailValid: validateEmail(enteredEmail),
-      isEmailInputFocus: true
+      isEmailInputFocus: true,
     });
   }
-
   function emailValidation() {
     dispatchUserEmail({ type: "LOGIN_EMAILINPUT_LOSTFOCUS" });
   }
@@ -84,9 +78,9 @@ function LoginForm(props) {
   function passwordChangeHandler(event) {
     let enteredPassword = event.target.value;
     function validatePassword(password) {
-      if (enteredPassword.length > 8) {
-        //minimun length >= 8
-        return true; //password contains at least a number
+      if (enteredPassword.length >= 8) {
+        const result = /[1-9]/;
+        return result.test(enteredPassword); //password contains at least a number
       }
       return false;
     }
@@ -94,9 +88,8 @@ function LoginForm(props) {
       type: "LOGIN_PASSWORDINPUT",
       value: enteredPassword,
       isPasswordValid: validatePassword(enteredPassword),
-      isPasswordInputFocus: true
+      isPasswordInputFocus: true,
     });
-    //setUserPassword(event.target.value);
   }
 
   function passwordValidation(event) {
@@ -127,43 +120,59 @@ function LoginForm(props) {
   }, [userEmail, userPassword]);
 
   let errorEmail = !userEmail.isEmailValid && userEmail.isEmailInputFocus;
-  let errorClassNameForEmail = errorEmail ? 'invalid-email' : 'valid-email';
+  let errorClassNameForEmail = errorEmail ? "invalid-email" : "valid-email";
 
-  let errorPassword = !userPassword.isPasswordValid && userPassword.isPasswordInputFocus;
-  let errorClassnameForPassword = errorPassword ? 'invalid-password' : 'valid-password';
-  
+  let errorPassword =
+    !userPassword.isPasswordValid && userPassword.isPasswordInputFocus;
+  let errorClassnameForPassword = errorPassword
+    ? "invalid-password"
+    : "valid-password";
+
   return (
     <div className={classes.formbackground}>
       <h1>ĐĂNG NHẬP</h1>
-      <form onSubmit={submitHandler}>
+      <form className={classes.formlogin} onSubmit={submitHandler}>
         <Input
+          className={classes.logininput}
           placeholder="Nhập email"
           type="email"
           value={userEmail.value}
           onChange={emailChangeHandler}
           onBlur={emailValidation}
         />
-        <p className={classes[`${errorClassNameForEmail}`]}>Email is invalid. Please try again!</p>
+        <p className={classes[`${errorClassNameForEmail}`]}>
+          Email is invalid. Please try again!
+        </p>
         <Input
+          className={classes.logininput}
           placeholder="Nhập mật khẩu"
           type="password"
           value={userPassword.value}
           onChange={passwordChangeHandler}
           onBlur={passwordValidation}
         />
-        <p1 className={classes[`${errorClassnameForPassword}`]}>Password must at least have 8 characters and 1 number.</p1>
+        <p className={classes[`${errorClassnameForPassword}`]}>
+          Password must at least have 8 characters and 1 number.
+        </p>
         <div className={classes.rememberpassword}>
-          <Input type="checkbox" id="remember_password"/>
+          <Input type="checkbox" id="remember_password" />
           <label htmlFor="remember_password">Remeber password?</label>
-          <a href="/">Quên mật khẩu</a>
+          <a className={classes['forget-password']} href="/">Quên mật khẩu?</a>
         </div>
+
         {isFormValid ? (
           <Input className={classes.submit} type="submit" value="Đăng nhập" />
         ) : (
-          <Input className={classes.submit_disabled} type="submit" value="Đăng nhập" disabled={true} />
+          <Input
+            className={classes.submitdisabled}
+            type="submit"
+            value="Đăng nhập"
+            disabled={true}
+          />
         )}
-      </form>
 
+        <p>Chưa có tài khoản? <a className={classes['signup-now']} href="/">Đăng ký ngay!</a></p>
+      </form>
     </div>
   );
 }
