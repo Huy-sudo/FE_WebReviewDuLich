@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect, useState } from "react"; //side effect
 import classes from "./LoginForm.module.css";
+import Input from "../../../helpers/Input";
 
 function emailReducer(state, action) {
   if (action.type === "LOGIN_EMAILINPUT") {
@@ -12,7 +13,7 @@ function emailReducer(state, action) {
     return {
       value: state.value,
       isEmailValid: state.isEmailValid,
-      isEmailInputFocus: state.isEmailInputFocus
+      isEmailInputFocus: true
     };
   } else
     return {
@@ -33,7 +34,7 @@ function passwordReducer(state, action) {
     return {
       value: state.value,
       isPasswordValid: state.isPasswordValid,
-      isPasswordInputFocus: state.isPasswordInputFocus
+      isPasswordInputFocus: true
     };
   } else
     return {
@@ -77,7 +78,7 @@ function LoginForm(props) {
   }
 
   function emailValidation() {
-    dispatchUserEmail({ type: "LOGIN_EMAILINPUT_LOSTFOCUS", isEmailInputFocus: false });
+    dispatchUserEmail({ type: "LOGIN_EMAILINPUT_LOSTFOCUS" });
   }
 
   function passwordChangeHandler(event) {
@@ -99,7 +100,7 @@ function LoginForm(props) {
   }
 
   function passwordValidation(event) {
-    dispatchUserPassword({ type: "LOGIN_PASSWORDINPUT_LOSTFOCUS", isPasswordInputFocus: false });
+    dispatchUserPassword({ type: "LOGIN_PASSWORDINPUT_LOSTFOCUS" });
   }
 
   function formValidation(emailValid, passwordValid) {
@@ -111,7 +112,6 @@ function LoginForm(props) {
     event.preventDefault(); //just for temporarily
     dispatchUserEmail();
     dispatchUserPassword();
-    
   }
 
   useEffect(() => {
@@ -136,7 +136,7 @@ function LoginForm(props) {
     <div className={classes.formbackground}>
       <h1>ĐĂNG NHẬP</h1>
       <form onSubmit={submitHandler}>
-        <input
+        <Input
           placeholder="Nhập email"
           type="email"
           value={userEmail.value}
@@ -144,7 +144,7 @@ function LoginForm(props) {
           onBlur={emailValidation}
         />
         <p className={classes[`${errorClassNameForEmail}`]}>Email is invalid. Please try again!</p>
-        <input
+        <Input
           placeholder="Nhập mật khẩu"
           type="password"
           value={userPassword.value}
@@ -153,14 +153,14 @@ function LoginForm(props) {
         />
         <p className={classes[`${errorClassnameForPassword}`]}>Password must at least have 8 characters and 1 number.</p>
         <div className={classes.rememberpassword}>
-          <input type="checkbox" id="remember_password"/>
+          <Input type="checkbox" id="remember_password"/>
           <label htmlFor="remember_password">Remeber password?</label>
           <a href="/">Quên mật khẩu</a>
         </div>
         {isFormValid ? (
-          <input className={classes.submit} type="submit" value="Đăng nhập" />
+          <Input className={classes.submit} type="submit" value="Đăng nhập" />
         ) : (
-          <input className={classes.submit_disabled} type="submit" value="Đăng nhập" disabled={true} />
+          <Input className={classes.submit_disabled} type="submit" value="Đăng nhập" disabled={true} />
         )}
       </form>
 
