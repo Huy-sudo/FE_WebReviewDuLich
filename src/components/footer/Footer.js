@@ -6,7 +6,10 @@ import HelpSection from "./HelpSection";
 
 function Footer() {
     return <footer>
-        <img src="" alt="Revigo Logo"/>
+        <div className={classes.logo} >
+            <img className={classes.imglogo}  alt=""/>
+            Revigo Logo
+        </div>
         <SocialMedia className={classes["social-media"]}/>
         <ContactUs />
         <HelpSection />
