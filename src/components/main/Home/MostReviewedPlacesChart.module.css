@@ -1,0 +1,74 @@
+.mostreviewed-wrapper {
+    background-color: #60a5b1;
+    width: 1000px;
+    height: 800px;
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.place-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 6fr 1fr;
+    grid-template-rows: 1fr;
+    height: 100px;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.place-content p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.rank {
+    background-color: rgb(0, 180, 235);
+    font-size: 30px;
+    font-weight: bolder;
+    height: 100%;
+}
+
+.image {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.name-wrapper {
+    text-align: left;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+   
+}
+
+.name {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    top: 10px;
+}
+
+.totalreview {
+    text-transform: none;
+    font-weight: normal;
+}
+
+.more {
+    grid-column: 4;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    border: none;
+    color:sandybrown;
+}
