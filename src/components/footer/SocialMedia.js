@@ -12,19 +12,19 @@ import classes from "./SocialMedia.module.css";
 function SocialMedia() {
   return (
     <div className={classes['socialmedia-wrapper']}>
-      <p>Theo dõi mới nhất tại</p>
+      <p className={classes.title}>Theo dõi mới nhất tại</p>
       <div className={classes["socialmedia-icon"]}>
         <a href="/" className={classes.facebook}>
-          <FontAwesomeIcon  icon={faFacebookSquare} />
+          <FontAwesomeIcon className={classes.icon}  icon={faFacebookSquare} />
         </a>
         <a href="/">
-          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon className={classes.icon} icon={faTwitter} />
         </a>
         <a href="/">
-          <FontAwesomeIcon icon={faInstagram} />
+          <FontAwesomeIcon className={classes.icon} icon={faInstagram} />
         </a>
         <a href="/">
-          <FontAwesomeIcon icon={faLinkedin} />
+          <FontAwesomeIcon className={classes.icon} icon={faLinkedin} />
         </a>
       </div>
     </div>
