@@ -1,6 +1,8 @@
 .helpsection-wrapper {
+    margin-top: 23px;
     display: flex;
     flex-direction: column;
+    font-weight: 600;
 }
 
 .helpsection-wrapper a {
@@ -8,4 +10,5 @@
     text-decoration: none;
     color: black;
     font-family: "Open sans";
+    margin: 17px 0px;
 }
