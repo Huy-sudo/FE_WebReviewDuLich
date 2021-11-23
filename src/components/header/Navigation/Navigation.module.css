@@ -21,9 +21,10 @@
 
 nav a, p {
     text-decoration: none;
-    padding: 10px 20px 10px 20px;
+    padding: 0px 20px 0px 20px;
     color: #0E0E0E;
     font-family: "Open Sans";
+    font-weight: 500;
 }
 
 nav a:hover {
