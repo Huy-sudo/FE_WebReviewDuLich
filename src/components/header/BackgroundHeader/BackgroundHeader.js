@@ -1,11 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 function BackgroundHeader(props) {
-  return (
-    <Fragment>
-
-    </Fragment>
-  );
+  return;
+  
 }
 
 export default BackgroundHeader;

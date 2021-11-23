@@ -1,0 +1,108 @@
+/* body {
+    background-image: url('../../../../photo/background_signup.jpg');
+    background-repeat: no-repeat;
+    height: 500px;
+} */
+
+.signup-wrapper {
+    background-color: rgba(185, 151, 0, 0.794);
+    margin: 10px 100px;
+    border-radius: 20px;
+    height: 1000px;
+}
+
+div h1 {
+    padding-top: 30px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 70px;
+    justify-items: center;
+}
+
+.login {
+    margin: 0px;
+    position: relative;
+    left: 60px;
+    color:#ffffff;
+    font-weight: 500;
+    font-size: 24px;
+
+}
+
+.login a {
+    text-decoration: none;
+    color:rgb(251, 255, 0);
+    font-weight: 500;
+}
+
+.login a:hover {
+    text-decoration: underline;
+
+}
+
+.signup-form label {
+    margin-left: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: #FFFFFF;
+
+}
+
+input[type="checkbox"] {
+    transform: scale(1.6);
+}
+
+.invalid-name {
+    color: red;
+    position: relative;
+    margin: 0px;
+    left: -10px;
+
+}
+
+.valid-name {
+    display: none;
+}
+
+.submit {
+    max-width: 300px;
+    cursor: pointer;
+    position: relative;
+    left: 90px;
+}
+
+.policies-wrapper {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 230px;
+    right: 170px;
+    width: 1000px;
+    height: 750px;
+    font-size: 20px;
+    text-align: left;
+    border-radius: 20px;
+    padding-left: 30px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.policies-content {
+    width: 1000px;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.policies-wrapper p {
+    font-weight: 500;
+}

@@ -91,7 +91,6 @@ function LoginForm(props) {
       isPasswordInputFocus: true,
     });
   }
-
   function passwordValidation(event) {
     dispatchUserPassword({ type: "LOGIN_PASSWORDINPUT_LOSTFOCUS" });
   }
@@ -117,7 +116,7 @@ function LoginForm(props) {
       console.log("CLEANUP");
       clearTimeout(timeout);
     };
-  }, [userEmail, userPassword]);
+  }, [userEmail.isEmailValid, userPassword.isPasswordValid]);
 
   let errorEmail = !userEmail.isEmailValid && userEmail.isEmailInputFocus;
   let errorClassNameForEmail = errorEmail ? "invalid-email" : "valid-email";
