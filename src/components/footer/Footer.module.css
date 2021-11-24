@@ -1,5 +1,5 @@
 footer {
-    position: relative;
+    position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     bottom: 0;
@@ -8,7 +8,7 @@ footer {
     height: 320px;
 }
 
-.logo{
+.logo {
     margin-top: 33px;
     font-size: 25px;
     font-weight: 500;

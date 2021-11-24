@@ -63,7 +63,7 @@
     font-weight: normal;
 }
 
-.more {
+.arrow {
     grid-column: 4;
     grid-row: 1;
     width: 100%;
@@ -71,4 +71,8 @@
     border-radius: 0px;
     border: none;
     color:sandybrown;
+}
+
+.more {
+    
 }

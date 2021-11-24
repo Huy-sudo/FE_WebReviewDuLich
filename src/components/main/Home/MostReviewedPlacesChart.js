@@ -4,7 +4,7 @@ import Button from "../../helpers/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-function PlacesChart(props) {
+function MostReviewedPlacesChart(props) {
   //re-render
   // const [isLoading, setIsLoading] = useState(false);
   // const [isError, setIsError] = useState(null);
@@ -53,7 +53,7 @@ function PlacesChart(props) {
     },
     {
       rank: 2,
-      placeImageSource: "/photo/nhatrang.jpg",
+      placeImageSource: "https://media-cdn.tripadvisor.com/media/photo-s/1a/26/c0/ec/getlstd-property-photo.jpg",
       placeName: "Nha Trang",
       totalReview: "650",
     },
@@ -65,13 +65,13 @@ function PlacesChart(props) {
     },
     {
       rank: 4,
-      placeImageSource: "/photo/dalat.jpg",
+      placeImageSource: "https://staticproxy.mytourcdn.com/480x360,q90/resources/pictures/locations/fur1616991815.png",
       placeName: "Đà Lạt",
       totalReview: "450",
     },
     {
       rank: 5,
-      placeImageSource: "/photo/gialai.jpg",
+      placeImageSource: "https://img.peapix.com/95a51ce3d4974e89be356cbce0965430_480.jpg",
       placeName: "Gia Lai",
       totalReview: "350",
     },
@@ -91,12 +91,13 @@ function PlacesChart(props) {
             <div className={classes['name-wrapper']}>
             <p className={classes.name}>{place.placeName} <br/><span className={classes.totalreview}>Số bài review: {place.totalReview}</span></p>
             </div>
-            <Button className={classes.more}><FontAwesomeIcon icon={faArrowRight}/></Button>
+            <Button className={classes.arrow}><FontAwesomeIcon icon={faArrowRight}/></Button>
           </div>
         );
       })}
+      <Button className={classes.more}>Xem thêm</Button>
     </div>
   );
 }
 
-export default PlacesChart;
+export default MostReviewedPlacesChart;
