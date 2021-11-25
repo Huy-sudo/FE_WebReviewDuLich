@@ -91,13 +91,14 @@ function MostReviewedPlacesChart(props) {
             <div className={classes['name-wrapper']}>
             <p className={classes.name}>{place.placeName} <br/><span className={classes.totalreview}>Số bài review: {place.totalReview}</span></p>
             </div>
-            <Button className={classes.arrow}><FontAwesomeIcon icon={faArrowRight}/></Button>
+            <Button className={classes.arrow}><FontAwesomeIcon className={classes.rightbutton}  icon={faArrowRight}/></Button>
           </div>
         );
       })}
-      <Button className={classes.more}>Xem thêm</Button>
+      <Button className={classes.more}><div className={classes.morebutton}>Xem thêm</div></Button>
     </div>
   );
 }
 
 export default MostReviewedPlacesChart;
+
