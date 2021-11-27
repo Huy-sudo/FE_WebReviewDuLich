@@ -44,7 +44,7 @@ function passwordReducer(state, action) {
     };
 }
 
-function LoginForm(props) {
+function LoginForm() {
   const [userEmail, dispatchUserEmail] = useReducer(emailReducer, {
     value: "",
     isEmailValid: false,
