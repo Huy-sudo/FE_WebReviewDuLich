@@ -5,45 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function MostReviewedPlacesChart(props) {
-  //re-render
+
   // const [isLoading, setIsLoading] = useState(false);
   // const [isError, setIsError] = useState(null);
 
   //const [mostReviewedPlaces, setMostReviewedPlaces] = useState([]);
   // const getMostReviewedPlaces = useCallback(async function () {
-  //useCallBack makes sure the function actually changes not because of Javascript
-  //   setIsLoading(true);
-  //   setIsError(null);
-  //   try {
-  //     const response = await fetch(""); //url for GET Method, it returns a promise axios
-  //     if (!response.ok) {
-  //       throw new Error(
-  //         "Something went wrong on our end! Please refresh or try again later."
-  //       );
-  //     }
-  //     const obtainedData = await response.json(); //use json() to resolve json to Javascript object
-
-  //     const processedData = obtainedData.results.map((data) => {
-  //change "results" if the json content is different
-  //       return {
-  //         placeID: data.id, //assune json returned has many fields including id, name, review, imagesrc, totalreview,... but we extract placeID, placeName, totalReviews
-  //         placeName: data.name,
-  //         totalReview: data.totalreview,
-  //         placeImageSource: data.imagesrc,
-  //       }; //processing json file
-  //     });
-  //     setMostReviewedPlaces(processedData);
-  //   } catch (isError) {
-  //     setIsError(isError.message);
-  //   }
-
-  //   setIsLoading(false); //done loading
-  // }, []);
 
   // useEffect(() => {
   //   getMostReviewedPlaces();
   // }, [getMostReviewedPlaces]); //makes sure it runs whenever functions changes
 
+  //
   const movies = [
     {
       rank: 1,
