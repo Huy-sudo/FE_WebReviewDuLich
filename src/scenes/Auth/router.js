@@ -1,7 +1,7 @@
 import React from 'react'
 import Loadable from 'react-loadable'
-import Login from "./login";
-import Signup from "./signup";
+import Login from "./Login";
+import Signup from "./Signup";
 import Error from "./Error404";
 export default [
     {
