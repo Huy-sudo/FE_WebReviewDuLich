@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects'
-// import loginSaga from "./scenes/Auth/login/saga";
-// import signupSaga from "./scenes/Auth/signup/saga";
+import loginSaga from "./scenes/Auth/Login/saga";
+import signupSaga from "./scenes/Auth/Signup/saga";
 // import prescriptionsSaga from "./scenes/Prescription/saga"
 // import CustomersSaga from "./scenes/Customers/saga"
 // import prescriptionDetailSaga from "./scenes/PrescriptionDetail/saga"
@@ -11,8 +11,8 @@ import { all } from 'redux-saga/effects'
 // import HomeSaga from "./scenes/Home/saga"
 const Saga = function* (){
     yield all([
-      // loginSaga(),
-      // signupSaga(),
+      loginSaga(),
+      signupSaga(),
       // prescriptionsSaga(),
       // CustomersSaga(),
       // prescriptionDetailSaga(),
