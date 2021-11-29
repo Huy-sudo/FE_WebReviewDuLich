@@ -42,9 +42,9 @@ class App extends Component {
 }
 
 export default connect(
-  (state) => ({
-    user: state.login.user
-  }),
+  // (state) => ({
+  //   user: state.login.user
+  // }),
   dispatch => ({
     verify: ()=>{
       dispatch(verify())

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { reducer as formReducer } from 'redux-form'
-// import login from "./scenes/Auth/login/reducer";
+import login from "./scenes/Auth/Login/reducer";
 // import signup from "./scenes/Auth/signup/reducer";
 // import prescriptions from "./scenes/Prescription/reducer"
 // import Customers from "./scenes/Customers/reducer"
@@ -14,7 +14,7 @@ import { reducer as formReducer } from 'redux-form'
 const Reducer = (history) => combineReducers({    
     form: formReducer,
     router: connectRouter(history),
-    // login,
+    login,
     // signup,
     // prescriptions,
     // Customers,
