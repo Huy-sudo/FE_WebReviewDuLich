@@ -2,8 +2,7 @@ import React, { useReducer } from "react";
 import Input from "../../../helpers/Input";
 import classes from "./SignupForm.module.css";
 
-function nameReducer(state, action)
-{
+function nameReducer(state, action) {
   if (action.type === "SIGNUP_NAMEINPUT") {
     return {
       value: action.value,
@@ -18,11 +17,11 @@ function nameReducer(state, action)
       isInputFocus: true
     }
   }
-  return {value: '', isNameValid: false, isInputFocus: false}
+  return { value: '', isNameValid: false, isInputFocus: false }
 }
 
 function SignupForm() {
-  const [username, dispatchUsername] = useReducer(nameReducer, {value: '', isNameValid: false, isInputFocus: false});
+  const [username, dispatchUsername] = useReducer(nameReducer, { value: '', isNameValid: false, isInputFocus: false });
 
   function nameChangeHandler(event) {
     dispatchUsername({
@@ -33,11 +32,13 @@ function SignupForm() {
     })
   }
   function nameValidation(event) {
-    dispatchUsername({type: "SIGNUP_NAMEINPUT_LOSTFOCUS"});
+    dispatchUsername({ type: "SIGNUP_NAMEINPUT_LOSTFOCUS" });
   }
 
 
-  function signupSubmitHandler() {}
+  function signupSubmitHandler() { 
+    
+  }
 
   let errorName = !username.isNameValid && username.isInputFocus;
   let errorClassNameForEmail = errorName ? 'invalid-name' : 'valid-name';
@@ -52,7 +53,7 @@ function SignupForm() {
         <label htmlFor="name">
           Họ và tên <span style={{ color: "red" }}>*</span>
         </label>
-        <Input id="name" type="text" value={username.value} onChange={nameChangeHandler} onBlur={nameValidation}/>
+        <Input id="name" type="text" value={username.value} onChange={nameChangeHandler} onBlur={nameValidation} />
         <p className={classes[`${errorClassNameForEmail}`]}>Họ tên không được trống</p>
         <label htmlFor="date_of_birth">Ngày tháng năm sinh</label>
         <Input id="date_of_birth" type="date" />
@@ -75,7 +76,7 @@ function SignupForm() {
           <span style={{ color: "red" }}>*</span>
         </label>
         <Input id="agreement" type="checkbox" />
-        <Input className={classes.submit}type="submit" value="Đăng ký" />
+        <Input className={classes.submit} type="submit" value="Đăng ký" />
       </form>
       <div className={classes["policies-wrapper"]}>
         <h2>Điều khoản sử dụng và dịch vụ</h2>

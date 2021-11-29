@@ -25,6 +25,15 @@ export const verify =(params)=> {
         url: `user`
     })
 }
+export const getDetailByCode =(booking_code)=> {
+    return axios({
+        method: 'GET',
+        params: {
+            booking_code
+        },
+        url: `${prefix}/detail`
+    })
+}
 
 export const update =(id, data)=> {
     return axios({
@@ -48,5 +57,15 @@ export const getWeb =(id)=> {
             id
         },
         url: `${prefix}/get-web`
+    })
+}
+
+export const pushWeb =(booking_id)=> {
+    return axios({
+        method: 'POST',
+        data: {
+            booking_id
+        },
+        url: `${prefix}/push-web`
     })
 }

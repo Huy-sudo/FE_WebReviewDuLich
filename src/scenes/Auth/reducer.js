@@ -4,10 +4,6 @@ const initialState = {
 }
 const login = (state = initialState, action) => {
     switch (action.type) {
-        case "655115":
-            
-            break;
-    
         default: 
             return state;
     }

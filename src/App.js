@@ -10,9 +10,13 @@ import router from './routes'
 
 class App extends Component {
   componentDidMount=()=>{
+    const url = window.location.pathname;
     const token = Cookies.get('web_token')
-    if(!token) this.props.history.push('/login')
-    else this.props.verify()
+    if (url != "/signup") {
+      if(!token) this.props.history.push('/login')
+      else this.props.verify()
+    }
+    
   }
   render() {
     let key = 1
@@ -42,9 +46,9 @@ class App extends Component {
 }
 
 export default connect(
-  // (state) => ({
-  //   user: state.login.user
-  // }),
+  (state) => ({
+    user: state.login.user
+  }),
   dispatch => ({
     verify: ()=>{
       dispatch(verify())
