@@ -1,16 +1,10 @@
 .App {
   text-align: center;
-  overflow: auto;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@font-face {
-  font-family: "Open-sans";
-  src: url(./font/open-sans/OpenSans-VariableFont_wdth\,wght.ttf);
 }
 
 @media (prefers-reduced-motion: no-preference) {
