@@ -1,4 +1,4 @@
-// import Prescription from "./Prescription";
+import Admin from "../scenes/Admin";
 // import Customer from "./Customers";
 // import PrescriptionDetail from "./PrescriptionDetail"
 // import CustomerDetail from "./CustomerDetail"
@@ -6,6 +6,10 @@
 // import Medical from "./Medical";
 // import Home from "./Home"
 export default [
+    {
+        path:   '/admin',
+        component: Admin
+    }
     // {
     //     path: '/prescription',
     //     component: Prescription
