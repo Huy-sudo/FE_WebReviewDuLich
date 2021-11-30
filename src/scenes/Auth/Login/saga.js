@@ -23,8 +23,8 @@ function* getListSaga(action) {
                       put({type: TYPE.LOGIN.SUCCESS, ...response}),
                   ])
                   Cookies.set('web_token',response.access_token)
-                  yield put(push('/home'));
-                  yield put({type: TYPE.VERIFY.REQUEST,})
+                  yield put(push('/admin'));
+                //   yield put({type: TYPE.VERIFY.REQUEST,})
 
           }else{
             yield put({type: TYPE.LOGIN.ERROR, error: response})

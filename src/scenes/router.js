@@ -5,11 +5,12 @@ import Admin from "../scenes/Admin";
 // import Dashboard from "./Dashboard";
 // import Medical from "./Medical";
 // import Home from "./Home"
+import Review from "./Review"
 export default [
     {
         path:   '/admin',
         component: Admin
-    }
+    },
     // {
     //     path: '/prescription',
     //     component: Prescription
@@ -42,4 +43,8 @@ export default [
     //     path: '/home',
     //     component: Home
     // },
+    {
+    path: "/review",
+    component: Review
+    }
 ]

@@ -44,7 +44,7 @@ function passwordReducer(state, action) {
     };
 }
 
-function LoginForm() {
+function LoginForm(props) {
   const [userEmail, dispatchUserEmail] = useReducer(emailReducer, {
     value: "",
     isEmailValid: false,
@@ -91,6 +91,7 @@ function LoginForm() {
       isPasswordInputFocus: true,
     });
   }
+
   function passwordValidation(event) {
     dispatchUserPassword({ type: "LOGIN_PASSWORDINPUT_LOSTFOCUS" });
   }
@@ -102,8 +103,7 @@ function LoginForm() {
   function submitHandler(event) {
     //sending Request
     event.preventDefault(); //just for temporarily
-    dispatchUserEmail();
-    dispatchUserPassword();
+    props.onLogin(userEmail.value, userPassword.value);
   }
 
   useEffect(() => {

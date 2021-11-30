@@ -12,7 +12,7 @@ class App extends Component {
   componentDidMount=()=>{
     const url = window.location.pathname;
     const token = Cookies.get('web_token')
-    if (url != "/admin" && url != "/signup") {
+    if (url != "/admin" && url != "/review") {
       if(!token) this.props.history.push('/login')
       else this.props.verify()
     }
