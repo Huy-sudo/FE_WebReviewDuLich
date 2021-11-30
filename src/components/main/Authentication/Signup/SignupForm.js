@@ -20,7 +20,7 @@ function nameReducer(state, action) {
   return { value: '', isNameValid: false, isInputFocus: false }
 }
 
-function SignupForm() {
+function SignupForm(props) {
   const [username, dispatchUsername] = useReducer(nameReducer, { value: '', isNameValid: false, isInputFocus: false });
 
   function nameChangeHandler(event) {
@@ -37,7 +37,7 @@ function SignupForm() {
 
 
   function signupSubmitHandler() { 
-    
+
   }
 
   let errorName = !username.isNameValid && username.isInputFocus;

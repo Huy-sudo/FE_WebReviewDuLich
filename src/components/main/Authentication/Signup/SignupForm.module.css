@@ -4,13 +4,15 @@ body {
     height: 100px; 
     background-size: cover;
     background-position: center;
+    overflow: auto;
 } 
 
 .signup-wrapper {
-    background-color: rgba(185, 151, 0, 0.794);
+    display: block;
+    background-color: rgba(28, 77, 168, 0.794);
     margin: 10px 100px;
     border-radius: 20px;
-    height: 1000px;
+    max-height: 1000px;
 }
 
 div h1 {

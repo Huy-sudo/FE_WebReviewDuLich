@@ -5,6 +5,7 @@
 // import Dashboard from "./Dashboard";
 // import Medical from "./Medical";
 // import Home from "./Home"
+import Review from "./Review"
 export default [
     // {
     //     path: '/prescription',
@@ -38,4 +39,8 @@ export default [
     //     path: '/home',
     //     component: Home
     // },
+    {
+    path: "/review",
+    component: Review
+    }
 ]
