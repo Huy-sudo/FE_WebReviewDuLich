@@ -2,7 +2,7 @@ import React from "react";
 import MostReviewedPlacesChart from "../../components/main/Home/MostReviewedPlacesChart";
 import FeaturedPlaces from "../../components/main/Home/FeaturedPlaces";
 import Layout from "../../components/helpers/Layout"
-
+import CarouselHeader from "../../components/header/Carousel/CarouselHeader";
 function Home() {
   const dummyMovies = [
     {
@@ -73,8 +73,9 @@ function Home() {
   return (
     <>
       <Layout>
-      <MostReviewedPlacesChart data={dummyMovies}/>
+      <CarouselHeader />
       <FeaturedPlaces data={dummyMovies}/>
+      <MostReviewedPlacesChart data={dummyMovies}/>
       </Layout>
     </>
   );

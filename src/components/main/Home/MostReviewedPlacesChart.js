@@ -1,33 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./MostReviewedPlacesChart.module.css";
 import Button from "../../helpers/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function MostReviewedPlacesChart(props) {
-  const [mostReviewedPlaces, setMostReviewedPlaces] = useState([]);
-
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [isError, setIsError] = useState(null);
-  let places = props.data.slice(0, 5);
-
-  // props.data.map(place => {
-  //   let { id, name, imgsrc, totalReview } = place;
-  //   setMostReviewedPlaces(previousState => {
-  //     return [
-  //       ...previousState,
-  //       place
-  //     ];
-  //   })
-  // })
-
-  // setMostReviewedPlaces()
-  // useEffect(() => {
-  //   getMostReviewedPlaces();
-  // }, [getMostReviewedPlaces]); //makes sure it runs whenever functions changes
+  let places = props.data.slice(0, 5); //will this re-render without state?
 
   return (
-    <div className={classes["mostreviewed-wrapper"]}>
+    <section className={classes["content-background"]}>
+    <div className={classes["content-wrapper"]}>
       <h1>Top 5 địa điểm được review nhiều nhất</h1>
       {places.map((place) => {
         return (
@@ -58,7 +40,8 @@ function MostReviewedPlacesChart(props) {
       <Button className={classes.more}>
         <div className={classes.morebutton}>Xem thêm</div>
       </Button>
-    </div>
+      </div>
+    </section>
   );
 }
 

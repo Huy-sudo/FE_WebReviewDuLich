@@ -1,16 +1,22 @@
-.mostreviewed-wrapper {
-    background-color: #60a5b1;
+.content-background {
+    background-image: url("../../../photo/7.jpg");
+    background-repeat: no;
+    background-size: cover;
+    padding: 30px 0px;
+}
+
+.content-wrapper {
+    background-color: #ffffffa1;
     width: 1000px;
     height: 980px;
     border-radius: 20px;
     display: block;
     text-align: center;
     margin: 0px auto;
-    margin-top: 45px;
     padding-top: 30px;
 }
 
-.mostreviewed-wrapper h1 {
+.content-wrapper h1 {
     padding-bottom: 20px;
 }
 
