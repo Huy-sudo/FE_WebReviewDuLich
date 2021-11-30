@@ -1,13 +1,17 @@
 .mostreviewed-wrapper {
     background-color: #60a5b1;
     width: 1000px;
-    height: 844px;
+    height: 980px;
     border-radius: 20px;
     display: block;
     text-align: center;
     margin: 0px auto;
     margin-top: 45px;
-    padding-top: 75px;
+    padding-top: 30px;
+}
+
+.mostreviewed-wrapper h1 {
+    padding-bottom: 20px;
 }
 
 .place-content {
@@ -29,7 +33,7 @@
     background-color: rgb(0, 180, 235);
     font-size: 32px;
     font-weight: bolder;
-    height: 76%;
+    height: 100%;
     opacity: 80%;
 }
 

@@ -1,7 +1,6 @@
 body {
     background-image: url('../../../../photo/background_signup.jpg');
     background-repeat: no-repeat;
-    height: 100px; 
     background-size: cover;
     background-position: center;
     overflow: auto;
@@ -15,7 +14,7 @@ body {
     max-height: 1000px;
 }
 
-div h1 {
+.signup-wrapper h1 {
     padding-top: 30px;
     color: #FFFFFF;
     margin-bottom: 10px;

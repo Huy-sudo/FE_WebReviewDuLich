@@ -4,7 +4,7 @@ import Admin from "../scenes/Admin";
 // import CustomerDetail from "./CustomerDetail"
 // import Dashboard from "./Dashboard";
 // import Medical from "./Medical";
-// import Home from "./Home"
+import Home from "./Home"
 import Review from "./Review"
 export default [
     {
@@ -39,10 +39,10 @@ export default [
     //     path: '/medical',
     //     component: Medical
     // },
-    // {
-    //     path: '/home',
-    //     component: Home
-    // },
+    {
+        path: '/home',
+        component: Home
+    },
     {
     path: "/review",
     component: Review
