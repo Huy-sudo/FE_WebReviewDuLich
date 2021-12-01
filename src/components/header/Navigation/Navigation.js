@@ -1,13 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import ReactDOM from "react-dom";
 import classes from "./Navigation.module.css";
 import Button from "../../helpers/Button";
+import AuthenContext from "../../context/AuthenContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
 function NavigationContent(props) {
   const [userInput, setUserInput] = useState('');
+  let context = useContext(AuthenContext);
 
   function searchChangeHandler(event) {
       setUserInput(event.target.value);
@@ -16,7 +18,7 @@ function NavigationContent(props) {
   function searchHandler() {
     props.onGetUserInput(userInput);
   }
-
+  document.querySelector("header").className = classes.header;
   return (
     <div className={classes["navbar-wrapper"]}>
       <nav className={classes.navbar}>
@@ -42,13 +44,13 @@ function NavigationContent(props) {
             <Link to="/results"><FontAwesomeIcon icon={faSearch}>search</FontAwesomeIcon></Link>
           </Button>
         </div>
-        
       </nav>
-      <div className={classes["login-signup"]}>
+      {!context.isLoggedIn && <div className={classes["login-signup"]}>
         <a href="/">Đăng nhập</a>
         <p>|</p>
         <a href="/">Đăng ký</a>
-      </div>
+      </div>}
+      {context.isLoggedIn }
     </div>
   );
 }
