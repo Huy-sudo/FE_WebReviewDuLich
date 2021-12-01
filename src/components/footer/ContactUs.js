@@ -13,7 +13,7 @@ function ContactUs() {
       <p className={classes.title}>Liên hệ với chúng tôi</p>
       <div className={classes["address"]}>
         <FontAwesomeIcon className={classes.icon} icon={faMapMarkedAlt} />
-        <p>Võ Văn Ngân, thành phố Thủ Đức, thành phố Hồ Chí Minh</p>
+        <p className={classes["address-detail"]}>Võ Văn Ngân, thành phố Thủ Đức, thành phố Hồ Chí Minh</p>
       </div>
       <div className={classes["phone-number"]}>
         <FontAwesomeIcon  className={classes.icon} icon={faPhoneAlt} />
