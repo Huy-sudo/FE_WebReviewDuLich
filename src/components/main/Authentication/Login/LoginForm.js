@@ -1,5 +1,6 @@
-import React, { useReducer, useEffect, useState } from "react"; //side effect
+import React, { useReducer, useEffect, useState, useContext } from "react"; //side effect
 import classes from "./LoginForm.module.css";
+import AuthenContext from "../../../context/AuthenContext";
 import Input from "../../../helpers/Input";
 
 function emailReducer(state, action) {
@@ -45,6 +46,9 @@ function passwordReducer(state, action) {
 }
 
 function LoginForm(props) {
+  let context = useContext(AuthenContext);
+  context.isLoggedIn = false;
+
   const [userEmail, dispatchUserEmail] = useReducer(emailReducer, {
     value: "",
     isEmailValid: false,

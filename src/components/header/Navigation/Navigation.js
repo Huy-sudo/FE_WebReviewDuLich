@@ -5,7 +5,7 @@ import { Menu, Dropdown, Space, Avatar } from 'antd';
 import Button from "../../helpers/Button";
 import AuthenContext from "../../context/AuthenContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faUser, faSignOutAlt, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
 function NavigationContent(props) {
@@ -19,7 +19,7 @@ function NavigationContent(props) {
   function searchHandler() {
     props.onGetUserInput(userInput);
   }
-  document.querySelector("header").className = classes.header;
+
   return (
     <div className={classes["navbar-wrapper"]}>
       <nav className={classes.navbar}>
@@ -46,12 +46,12 @@ function NavigationContent(props) {
           </Button>
         </div>
       </nav>
-      {/* <div className={classes["login-signup"]}>
+      {!context.isLoggedIn && <div className={classes["login-signup"]}>
         <a href="/">Đăng nhập</a>
         <p>|</p>
         <a href="/">Đăng ký</a>
-      </div> */}
-      <div className={classes["profile"]}>
+      </div> }
+      {context.isLoggedIn &&<div className={classes["profile"]}>
         <Dropdown
           trigger={['click']}
           overlay={(
@@ -70,7 +70,7 @@ function NavigationContent(props) {
             <FontAwesomeIcon style={{ fontSize: 20 }} icon={faSortDown} />
           </Space>
         </Dropdown>
-      </div>
+      </div>}
     </div>
   );
 }
