@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./Navigation.module.css";
 import Button from "../../helpers/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
-function Navigation() {
-  function search() {} //go to search page
+function Navigation(props) {
+  const [userInput, setUserInput] = useState('');
+
+  function searchChangeHandler(event) {
+      setUserInput(event.target.value);
+  }
+
+  function searchHandler() {
+    props.onGetUserInput(userInput);
+  }
 
   return (
     <div className={classes["navbar-wrapper"]}>
@@ -20,14 +29,16 @@ function Navigation() {
             placeholder="Tìm kiếm"
             className={classes["input-search"]}
             type="search"
+            onChange={searchChangeHandler}
+            value={userInput}
           />
           <Button
             className={classes.buttonsearch}
             id="search_button"
-            onClick={search}
+            onClick={searchHandler}
             type="submit"
           >
-            <FontAwesomeIcon icon={faSearch}>search</FontAwesomeIcon>
+            <Link to="/results"><FontAwesomeIcon icon={faSearch}>search</FontAwesomeIcon></Link>
           </Button>
         </div>
         

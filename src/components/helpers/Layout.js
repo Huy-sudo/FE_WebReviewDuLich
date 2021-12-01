@@ -1,10 +1,15 @@
-import Navigation from "../header/Navigation/Navigation";
+import Navigation, { useState } from "../header/Navigation/Navigation";
 import Footer from "../footer/Footer";
 
 function Layout(props) {
+  
+  function getUserInput(value) {
+      props.getUserInputHandler(value);
+  }
+
   return (
     <>
-      <Navigation />
+      <Navigation onGetUserInput={getUserInput}/>
       <main>{props.children}</main>
       <Footer />
     </>
