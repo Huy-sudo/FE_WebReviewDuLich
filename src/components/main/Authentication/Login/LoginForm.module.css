@@ -50,7 +50,7 @@ input[type="checkbox"] {
 .rememberpassword {
     display: flex;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 25px;
     color: #FFFFFF;
     flex-wrap: wrap;
     align-items: center;
