@@ -1,16 +1,15 @@
 import React from 'react';
 import { Table, Spin, Space, Tooltip } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faInfo, faExclamation } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
-const DataTable = ({ dataSource, loading, createPrescription, deleteCustomer }) => {
+import { faEdit, faExclamation } from '@fortawesome/free-solid-svg-icons'
+const DataTable = ({ dataSource, loading, updatePlace, deletePlace }) => {
 
   const onSubmit = (values) => {
-    createPrescription(values)
+    updatePlace(values)
   }
 
   const onDelete = (values) => {
-    deleteCustomer(values)
+    deletePlace(values)
   }
 
   const columns = [
@@ -20,13 +19,7 @@ const DataTable = ({ dataSource, loading, createPrescription, deleteCustomer }) 
       render: (value, record, i) => <a>{i + 1}</a>,
     },
     {
-      title: 'Code',
-      dataIndex: 'code',
-      key: 'code',
-      render: (value, record) => <a>{value || ''}</a>,
-    },
-    {
-      title: 'Name',
+      title: 'Địa điểm',
       dataIndex: 'name',
       key: 'name',
       className: 'text-left',
@@ -36,39 +29,37 @@ const DataTable = ({ dataSource, loading, createPrescription, deleteCustomer }) 
         </div>
     },
     {
-      title: 'Phone',
-      dataIndex: 'phone',
-      key: 'phone',
+      title: 'Hình',
+      dataIndex: 'picture',
+      key: 'picture',
+      className: 'text-left',
+      render: (value, record) =>
+        <img src={value}></img>
+    },
+    {
+      title: 'Thành phố',
+      dataIndex: 'city',
+      key: 'city',
       className: 'text-left',
       render: (value, record) =>
         <div>
-          <span> {value || ''} </span>
+          <span> {record.city?.name || ''} </span>
         </div>
     },
     {
-      title: 'Gender',
-      dataIndex: 'sex',
-      key: 'sex',
-      className: 'text-left',
-      render: (value, record) =>
-        <div>
-          <span> {value || ''} </span>
-        </div>
-    },
-    {
-      title: 'Birth',
-      dataIndex: 'birth',
-      key: 'birth',
-      className: 'text-left',
-      render: (value, record) =>
-        <div>
-          <span> {value || ''} </span>
-        </div>
-    },
-    {
-      title: 'Address',
+      title: 'Địa chỉ',
       dataIndex: 'address',
       key: 'address',
+      className: 'text-left',
+      render: (value, record) =>
+        <div>
+          <span> {value || ''} </span>
+        </div>
+    },
+    {
+      title: 'Trạng thái',
+      dataIndex: 'isReal',
+      key: 'isReal',
       className: 'text-left',
       render: (value, record) =>
         <div>
@@ -81,24 +72,19 @@ const DataTable = ({ dataSource, loading, createPrescription, deleteCustomer }) 
       render: (text, record) => (
         <Space >
           <button onClick={() => onSubmit(record?.id)} className="btn btn-sm btn-primary">
-            <Tooltip placement="top" title="Add prescription">
+            <Tooltip placement="top" title="Cập nhật">
               <span className="px-2">
-                <FontAwesomeIcon icon={faPlus} />
+                <FontAwesomeIcon icon={faEdit} />
               </span>
             </Tooltip>
           </button>
-          <button onClick={() => onDelete(record?.id)} className="btn btn-sm btn-danger">
-            <Tooltip placement="top" title="Delete customer">
+          <button onClick={() => onDelete(record?.id)} className="btn btn-sm btn-primary">
+            <Tooltip placement="top" title="Xóa">
               <span className="px-2">
                 <FontAwesomeIcon icon={faExclamation} />
               </span>
             </Tooltip>
           </button>
-          <Tooltip placement="top" title="Info">
-            <Link className="px-3 btn btn-primary btn-sm" to={`/customer/${record.id}/detail`}>
-              <FontAwesomeIcon icon={faInfo} />
-            </Link>
-          </Tooltip>
         </Space>
       ),
     },]

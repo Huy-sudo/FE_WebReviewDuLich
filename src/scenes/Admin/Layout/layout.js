@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom'
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCity, faMapMarkedAlt, faFile} from '@fortawesome/free-solid-svg-icons';
@@ -25,17 +26,17 @@ class SiderDemo extends React.Component {
   };
 
   render() {
-    const { collapsed } = this.state;
+    const { collapsed, navigateReview, navigateUser, navigateCity, navigatePlace } = this.state;
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<TeamOutlined />}>
-              User
+          <Menu theme="dark"  mode="inline">
+            <Menu.Item key="1" icon={<TeamOutlined />} onClick = {navigateUser}>
+            <Link to={`/user`} > User </Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<FontAwesomeIcon icon={faFile} />}>
-              Review
+            <Menu.Item key="2" icon={<FontAwesomeIcon icon={faFile}/>}  onClick = {navigateReview} >
+            <Link to={`/review`} > Review </Link>
             </Menu.Item>
             {/* <SubMenu key="sub1" icon={<UserOutlined />} title="User">
               <Menu.Item key="3">Tom</Menu.Item>
@@ -46,18 +47,17 @@ class SiderDemo extends React.Component {
               <Menu.Item key="6">Team 1</Menu.Item>
               <Menu.Item key="8">Team 2</Menu.Item>
             </SubMenu> */}
-            <Menu.Item key="3" icon={<FontAwesomeIcon icon={faMapMarkedAlt} />}>
-              Place
+            <Menu.Item key="3" icon={<FontAwesomeIcon icon={faMapMarkedAlt} />} onClick = {navigatePlace}>
+            <Link to={`/place`} > Place </Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<FontAwesomeIcon icon={faCity} />}>
-              City
+            <Menu.Item key="4" icon={<FontAwesomeIcon icon={faCity} />} onClick = {navigateCity}>
+            <Link to={`/city`} > City </Link>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            
+          <Content style={{ margin: '0 16px' }}>    
           </Content>
         </Layout>
       </Layout>

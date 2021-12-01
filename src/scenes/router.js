@@ -1,50 +1,29 @@
 import Admin from "../scenes/Admin";
-// import Customer from "./Customers";
-// import PrescriptionDetail from "./PrescriptionDetail"
-// import CustomerDetail from "./CustomerDetail"
-// import Dashboard from "./Dashboard";
-// import Medical from "./Medical";
-// import Home from "./Home"
-import Review from "./Review"
+import City from "../scenes/Admin/City"
+import Review from "../scenes/Admin/Review"
+import Place from "../scenes/Admin/Place"
+import User from "../scenes/Admin/User"
+
 export default [
     {
-        path:   '/admin',
+        path: '/admin',
         component: Admin
     },
-    // {
-    //     path: '/prescription',
-    //     component: Prescription
-    // },
-
-    // {
-    //     path: '/customer',
-    //     component: Customer
-    // },
-
-    // {
-    //     path: '/prescription/:id/detail',
-    //     component: PrescriptionDetail
-    // },
-
-    // {
-    //     path: '/customer/:id/detail',
-    //     component: CustomerDetail
-    // },
-
-    // {
-    //     path: '/',
-    //     component: Dashboard
-    // },
-    // {
-    //     path: '/medical',
-    //     component: Medical
-    // },
-    // {
-    //     path: '/home',
-    //     component: Home
-    // },
     {
-    path: "/review",
-    component: Review
-    }
+        path: "/review",
+        component: Review
+    },
+    {
+        path: "/city",
+        component: City
+    },
+    {
+        path: "/user",
+        component: User
+    },
+    {
+        path: "/place",
+        component: Place
+    },
+
 ]

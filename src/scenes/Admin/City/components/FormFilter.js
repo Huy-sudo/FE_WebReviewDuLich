@@ -1,7 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import RenderDateTimePicker from '../../../share/components/RenderDateTimePicker'
-import RenderInputText from '../../../share/components/RenderInputText'
+import RenderInputText from '../../../../share/components/RenderInputText'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 let ContactForm = props => {
@@ -11,9 +10,9 @@ let ContactForm = props => {
             <div className='row bg-white m-3 pt-3' >
                     <div className='col-3 mb-3 text-left' >
                         <Field
-                            name="phone"
+                            name="name"
                             component={RenderInputText}
-                            placeholder='Phone'
+                            placeholder='Tên thành phố'
                         />
                     </div>
                     <div className='col-2'>

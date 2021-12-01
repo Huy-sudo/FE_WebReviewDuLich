@@ -70,6 +70,22 @@ function reducer(state = initialState, action) {
                 ...state,
                 loading: false,
             }
+        case type.CITY.REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+        case type.CITY.SUCCESS:
+            return {
+                ...state,
+                data: action.data,
+                loading: false,
+            }
+        case type.CITY.ERROR:
+            return {
+                ...state,
+                loading: false,
+            }
         default:
             return state
     }

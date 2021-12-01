@@ -1,26 +1,18 @@
 import { all } from 'redux-saga/effects'
 import loginSaga from "./scenes/Auth/Login/saga";
 import signupSaga from "./scenes/Auth/Signup/saga";
-// import prescriptionsSaga from "./scenes/Prescription/saga"
-// import CustomersSaga from "./scenes/Customers/saga"
-// import prescriptionDetailSaga from "./scenes/PrescriptionDetail/saga"
-// import customerDetailSaga from "./scenes/CustomerDetail/saga"
-// import medicalSaga from "./scenes/Medical/saga"
-// import ListenSaga from "./scenes/Auth/saga";
-// import DashboardSaga from "./scenes/Dashboard/saga";
-// import HomeSaga from "./scenes/Home/saga"
+import citySaga from "./scenes/Admin/City/saga";
+import reviewSaga from "./scenes/Admin/Review/saga";
+import userSaga from "./scenes/Admin/User/saga";
+import placeSaga from "./scenes/Admin/Place/saga";
 const Saga = function* (){
     yield all([
       loginSaga(),
       signupSaga(),
-      // prescriptionsSaga(),
-      // CustomersSaga(),
-      // prescriptionDetailSaga(),
-      // customerDetailSaga(),
-      // medicalSaga(),
-      // ListenSaga(),
-      // DashboardSaga(),
-      // HomeSaga()
+      citySaga(),
+      reviewSaga(),
+      userSaga(),
+      placeSaga()
     ])
   }
   

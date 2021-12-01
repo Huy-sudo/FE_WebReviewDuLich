@@ -2,7 +2,7 @@ import React from 'react'
 import { Input } from 'antd';
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import money from 'utils/money';
+import money from '../functions/money';
 const RenderTextareAnt = ({
   input,
   className,

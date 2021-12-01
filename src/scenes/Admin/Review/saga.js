@@ -52,8 +52,8 @@ function* getListSaga(action) {
 
 function* UpdateSaga(action) {
     try {
-        const { id, data } = action
-        const response = yield call(api.update, id, data)
+        const { id} = action
+        const response = yield call(api.update, id)
         if(response.status){
                 yield all([
                     put({type: TYPE.UPDATE.SUCCESS, ...response}),

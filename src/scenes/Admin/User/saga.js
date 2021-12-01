@@ -10,9 +10,7 @@ import {
   } from './action'  
   import { push } from 'react-router-redux';   
    
-import * as api from '../../apis/Customers'
-import * as apiPrescription from '../../apis/Prescriptions'
-
+import * as api from '../../../apis/User'
   
 function* getListSaga(action) {
       try {
@@ -20,14 +18,14 @@ function* getListSaga(action) {
           const response = yield call(api.getList, params)
           if(response.status){
                   yield all([
-                      put({type: TYPE.CUSTOMER.SUCCESS, ...response}),
+                      put({type: TYPE.USER.SUCCESS, ...response}),
                   ])
           }else{
-            yield put({type: TYPE.CUSTOMER.ERROR, error: response})
+            yield put({type: TYPE.USER.ERROR, error: response})
           }
       } catch (error) {
           yield all([
-              put({type: TYPE.CUSTOMER.ERROR, error})
+              put({type: TYPE.USER.ERROR, error})
           ])
       }
   }
@@ -40,7 +38,7 @@ function* getListSaga(action) {
         if(response.status){
                 yield all([
                     put({type: TYPE.CREATE.SUCCESS, ...response}),
-                    put({type: TYPE.CUSTOMER.REQUEST, params:{status:1}})
+                    put({type: TYPE.USER.REQUEST, params:{status:1}})
                 ])
         }else{
           yield put({type: TYPE.CREATE.ERROR, error: response})
@@ -52,40 +50,40 @@ function* getListSaga(action) {
     }
 }
 
-function* CreatePrescriptionSaga(action) {
+function* UpdateSaga(action) {
     try {
-        const { data } = action
-        const response = yield call(apiPrescription.create, data)
+        const { id, params} = action
+        const response = yield call(api.update, id, params)
         if(response.status){
                 yield all([
-                    put({type: TYPE.PRESCRIPTION.SUCCESS, ...response}),
-                    yield put(push('/prescription'))
+                    put({type: TYPE.UPDATE.SUCCESS, ...response}),
+                    put({type: TYPE.USER.REQUEST, params:{status:1}})
                 ])
         }else{
-          yield put({type: TYPE.PRESCRIPTION.ERROR, error: response})
+          yield put({type: TYPE.UPDATE.ERROR, error: response})
         }
     } catch (error) {
         yield all([
-            put({type: TYPE.PRESCRIPTION.ERROR, error})
+            put({type: TYPE.UPDATE.ERROR, error})
         ])
     }
 }
 
-function* deleteCustomerSaga(action) {
+function* DeleteSaga(action) {
     try {
         const { id } = action
         const response = yield call(api.destroy, id)
         if(response.status){
                 yield all([
-                    put({type: TYPE.DELETECUSTOMER.SUCCESS, ...response}),
-                    put({type: TYPE.CUSTOMER.REQUEST, params:{status:1}}),
+                    put({type: TYPE.DELETE.SUCCESS, ...response}),
+                    put({type: TYPE.USER.REQUEST, params:{status:1}}),
                 ])
         }else{
-          yield put({type: TYPE.DELETECUSTOMER.ERROR, error: response})
+          yield put({type: TYPE.DELETE.ERROR, error: response})
         }
     } catch (error) {
         yield all([
-            put({type: TYPE.DELETECUSTOMER.ERROR, error})
+            put({type: TYPE.DELETE.ERROR, error})
         ])
     }
 }
@@ -93,10 +91,10 @@ function* deleteCustomerSaga(action) {
 
   function* watcher() {
       yield all([
-          takeLatest(TYPE.CUSTOMER.REQUEST, getListSaga),
+          takeLatest(TYPE.USER.REQUEST, getListSaga),
           takeLatest(TYPE.CREATE.REQUEST, CreateSaga),
-          takeLatest(TYPE.PRESCRIPTION.REQUEST, CreatePrescriptionSaga),
-          takeLatest(TYPE.DELETECUSTOMER.REQUEST, deleteCustomerSaga),
+          takeLatest(TYPE.UPDATE.REQUEST, UpdateSaga),
+          takeLatest(TYPE.DELETE.REQUEST, DeleteSaga),
       ])
   }
   

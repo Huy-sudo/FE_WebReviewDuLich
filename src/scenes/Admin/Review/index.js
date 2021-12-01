@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Spin, Alert, Modal } from 'antd';
 import { connect } from 'react-redux'
-import FormFilter from '../Customers/components/FormFilter'
-import Layout from '../../layouts'
+import Layout from '../../../scenes/Admin/Layout/layout'
 import DataTable from './components/DataTable'
-import FormAddCustomer from './components/FormAddCustomer'
-import Profile from './components/Profile'
-import { getList, addCustomer, addPrescription, deleteCustomer } from './action'
+import { getList, updateReview, deleteReview } from './action'
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -16,8 +13,6 @@ class index extends Component {
         super(props);
         const query_params = queryString.parse(window.location.search);
         this.state = {
-            phone: '',
-            showForm: false,
             initial_filter_values: query_params
         }
 
@@ -27,82 +22,44 @@ class index extends Component {
         this.handleSubmitFilter(this.state.initial_filter_values)
     }
 
-    handleSubmitFilter = ({  ...values }) => {
+    // handleSubmitFilter = ({  ...values }) => {
+    //     let params = {
+    //         ...values,
+    //         status:1
+    //     }
+    //     this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
+    //     this.props.getList(params)
+    // }
+  
+    updateReview = (values) => {
         let params = {
             ...values,
             status:1
         }
-        this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
-        this.props.getList(params)
-        this.setState({ phone: params?.phone || '' })
+        this.props.updateReview(params)
     }
 
-    handleShowForm = (value) => {
-        this.setState({ showForm: value || false })
-    }
-    
-    handleCloseModal = (value) => {
-        this.setState({ showForm: false })
-    }
-
-    handleAddCustomer = (value) => {
-        this.props.addCustomer(value)
-        this.setState({ showForm: false })
-    }
-  
-    addPrescription = (value) => {
-        let data = {
-            customer_id: value
-        }
-        this.props.addPrescription(data)
-    }
-
-    deleteCustomer = (value) => {
-        this.props.deleteCustomer(value)
+    deleteReview = (value) => {
+        this.props.deleteReview(value)
     }
 
     render() {
-        const { customers } = this.props
-        const { initialValue, phone, showForm } = this.state
-        const initialValueFormAddCustomer = {
-            phone: phone
-        }
+        const { reviews } = this.props
         return (
             <div>
                 <Layout>
                     <div className='container-fluid mb-3 text-left py-2'>
-                        <span className='h5 font-weight-bold '>Customers</span>
+                        <span className='h5 font-weight-bold '>Reviews</span>
                     </div>
-                        <FormFilter
-                            initialValues={initialValueFormAddCustomer}
+                        {/* <FormFilter
                             onSubmit={this.handleSubmitFilter}
-                        />
-                        <button onClick={() => this.handleShowForm(true)} className="btn-primary btn px-2 mb-3 ml-10"> Create Customer</button>
-                    {/* <Spin spinning={customers.loading} style={{ backgroundColor: '#fafafa' }}> */}
+                        /> */}
                         <DataTable
-                            dataSource={customers.data || []}
-                            loading={customers.loading}
-                            createPrescription={this.addPrescription}
-                            deleteCustomer={this.deleteCustomer}
+                            dataSource={reviews.data || []}
+                            loading={reviews.loading}
+                            updateReview={this.updateReview}
+                            deleteReview={this.deleteReview}
                         />
-                        <Modal
-                            title="Add Customer"
-                            visible={showForm}
-                            closable={false}
-                            onCancel={this.props.handleCloseModal}
-                            footer={null}
-                        >
-                            <FormAddCustomer
-                                destroyOnClose={true}
-                                keyboard={true}
-                                maskClosable={true}
-                                onCancel={() => this.handleShowForm(false)}
-                                initialValues={{ amount: 1 }}
-                                onSubmit={this.handleAddCustomer}
-                                handleShowForm={this.handleShowForm}
-                            />
-                        </Modal>
-                    {/* </Spin> */}
                 </Layout>
             </div>
         );
@@ -110,21 +67,18 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    customers: state.Customers
+    reviews: state.Reviews
 })
 
 const mapDispatchToProps = dispatch => ({
     getList: (params) => {
         dispatch(getList(params))
     },
-    addCustomer: (params) => {
-        dispatch(addCustomer(params))
+    updateReview: (id) => {
+        dispatch(updateReview(id))
     },
-    addPrescription: (data) => {
-        dispatch(addPrescription(data))
-    },
-    deleteCustomer: (id) => {
-        dispatch(deleteCustomer(id))
+    deleteReview: (id) => {
+        dispatch(deleteReview(id))
     }
 })
 

@@ -29,11 +29,10 @@ export function getList (params)
     }
 }
 
-export function updateReview (id, params)
+export function updateReview (id)
 {
     return {
         type: action_type.UPDATE.REQUEST,
-        params,
         id
     }
 }

@@ -38,7 +38,7 @@ function Navigation() {
         <p>|</p>
         <a href="/">Đăng ký</a>
       </div> */}
-      <div>
+      <div className={classes["profile"]}>
         <Dropdown
           trigger={['click']}
           overlay={(

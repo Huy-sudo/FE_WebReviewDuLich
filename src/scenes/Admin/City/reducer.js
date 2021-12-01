@@ -7,18 +7,18 @@ const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case type.CUSTOMER.REQUEST:
+        case type.CITY.REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case type.CUSTOMER.SUCCESS:
+        case type.CITY.SUCCESS:
             return {
                 ...state,
                 data: action.data,
                 loading: false,
             }
-        case type.CUSTOMER.ERROR:
+        case type.CITY.ERROR:
             return {
                 ...state,
                 loading: false,

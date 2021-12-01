@@ -11,6 +11,25 @@ import {
   import { push } from 'react-router-redux';   
    
 import * as api from '../../../apis/Place'
+import * as apiCity from '../../../apis/City'
+
+function* getListCitySaga(action) {
+    try {
+        const { params } = action
+        const response = yield call(apiCity.getList, params)
+        if(response.status){
+                yield all([
+                    put({type: TYPE.CITY.SUCCESS, ...response}),
+                ])
+        }else{
+          yield put({type: TYPE.CITY.ERROR, error: response})
+        }
+    } catch (error) {
+        yield all([
+            put({type: TYPE.CITY.ERROR, error})
+        ])
+    }
+}
 
 function* getListSaga(action) {
       try {
@@ -95,6 +114,7 @@ function* DeleteSaga(action) {
           takeLatest(TYPE.CREATE.REQUEST, CreateSaga),
           takeLatest(TYPE.UPDATE.REQUEST, UpdateSaga),
           takeLatest(TYPE.DELETE.REQUEST, DeleteSaga),
+          takeLatest(TYPE.CITY.REQUEST, getListCitySaga)
       ])
   }
   
