@@ -1,8 +1,8 @@
 body {
-    /* background-image: url('../../../../photo/background_signup.jpg');
+    background-image: url('../../../../photo/background_signup.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; */
+    background-position: center;
     overflow: auto;
 } 
 
@@ -61,7 +61,7 @@ body {
 
 input[type="checkbox"] {
     transform: scale(1.6);
-    left: -57px;
+    left: -43px;
 }
 
 .invalid-name {

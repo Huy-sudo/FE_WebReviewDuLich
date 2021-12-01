@@ -6,6 +6,7 @@
     flex-direction: column;
     margin: auto;
     margin-top: 40px;
+    margin-bottom: 55px;
     border-radius: 20px;
     height: 600px;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 68%);
@@ -43,13 +44,13 @@ div form p {
 input[type="checkbox"] {
     transform: scale(1.6);
     position: relative;
-    left: -70px;
+    left: -46px;
 }
 
 .rememberpassword {
     display: flex;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 25px;
     color: #FFFFFF;
     flex-wrap: wrap;
     align-items: center;
@@ -57,7 +58,7 @@ input[type="checkbox"] {
 
 .rememberpassword label {
     position: relative;
-    left: -60px;
+    left: -36px;
     cursor: pointer;
     color: #000;
 }
@@ -69,7 +70,7 @@ input[type="checkbox"] {
 .forget-password {
     color: blue;
     position: relative;
-    right: -60px;
+    right: -50px;
     text-decoration: none;
 }
 
@@ -84,18 +85,13 @@ input[type="checkbox"] {
 
 .invalid-email, .invalid-password  {
     position: relative;
-    left: -110px;
+    left: -89px;
     color: red;
     margin-top: 5px;
 }
 
 .invalid-password {
-    left: -10px;
-}
-
-input[type="checkbox"] {
-    transform: scale(2);
-
+    left: 10px;
 }
 
 .submit, .submitdisabled {
