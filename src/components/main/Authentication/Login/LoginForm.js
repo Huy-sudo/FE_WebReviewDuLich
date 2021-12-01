@@ -155,7 +155,7 @@ function LoginForm(props) {
         </p>
         <div className={classes.rememberpassword}>
           <Input type="checkbox" id="remember_password" />
-          <label htmlFor="remember_password">Remeber password?</label>
+          <label htmlFor="remember_password">Remember password?</label>
           <a className={classes['forget-password']} href="/">Quên mật khẩu?</a>
         </div>
 
@@ -177,3 +177,4 @@ function LoginForm(props) {
 }
 
 export default LoginForm;
+
