@@ -127,6 +127,8 @@ function LoginForm(props) {
     ? "invalid-password"
     : "valid-password";
 
+  document.querySelector("body").className = classes.loginbackground;
+
   return (
     <div className={classes.formbackground}>
       <h1>ĐĂNG NHẬP</h1>
@@ -155,7 +157,7 @@ function LoginForm(props) {
         </p>
         <div className={classes.rememberpassword}>
           <Input type="checkbox" id="remember_password" />
-          <label htmlFor="remember_password">Remeber password?</label>
+          <label htmlFor="remember_password">Remember password?</label>
           <a className={classes['forget-password']} href="/">Quên mật khẩu?</a>
         </div>
 
@@ -177,3 +179,4 @@ function LoginForm(props) {
 }
 
 export default LoginForm;
+
