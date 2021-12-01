@@ -1,11 +1,12 @@
 import React, {useState} from "react";
+import ReactDOM from "react-dom";
 import classes from "./Navigation.module.css";
 import Button from "../../helpers/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
-function Navigation(props) {
+function NavigationContent(props) {
   const [userInput, setUserInput] = useState('');
 
   function searchChangeHandler(event) {
@@ -50,6 +51,12 @@ function Navigation(props) {
       </div>
     </div>
   );
+}
+
+function Navigation(props) {
+  return <>
+    {ReactDOM.createPortal(<NavigationContent onGetUserInput={props.onGetUserInput}/>, document.querySelector("header"))}
+  </>
 }
 
 export default Navigation;

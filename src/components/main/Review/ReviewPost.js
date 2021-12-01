@@ -6,7 +6,6 @@ function Review(props) {
     document.querySelector("body").className = classes.background;
   return (
     <section>
-        <div className={classes.background}></div>
       {props.data.map((post) => {
         return (
           <div key={post.id} className={classes["content-wrapper"]}>

@@ -1,5 +1,6 @@
 import Layout from "../../components/helpers/Layout";
 import React from "react";
+import { connect } from "react-redux";
 import { getList } from "./action";
 import FilterCity from "../../components/main/Review/FilterCity";
 import ReviewPost from "../../components/main/Review/ReviewPost";
@@ -90,14 +91,14 @@ class index extends Component {
 
     return (
       <Layout>
-        <FilterCity onGetCity={this.getCity} />
+        {/* <FilterCity onGetCity={this.getCity} /> */}
         <ReviewPost data={dummy_posts} />
       </Layout>
     );
   }
 }
 
-const mapStatetoProps = (state) => ({
+const mapStateToProps = (state) => ({
   reviews: state.Reviews,
 });
 
@@ -106,4 +107,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getList(params));
   },
 });
-export default index;
+
+export default connect(mapStateToProps, mapDispatchToProps)(index)
