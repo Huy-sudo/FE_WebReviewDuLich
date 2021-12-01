@@ -1,3 +1,12 @@
+body.loginbackground {
+    background-image: url('../../../../photo/background_signup.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+} 
+
+
 .formbackground {
     background-color: rgb(199, 207, 216);
     opacity: 95%;
@@ -11,7 +20,6 @@
     height: 600px;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 68%);
 }
-
 
 .formlogin {
     display: flex;

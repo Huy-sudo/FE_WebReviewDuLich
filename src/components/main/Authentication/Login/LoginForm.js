@@ -127,6 +127,8 @@ function LoginForm(props) {
     ? "invalid-password"
     : "valid-password";
 
+  document.querySelector("body").className = classes.loginbackground;
+
   return (
     <div className={classes.formbackground}>
       <h1>ĐĂNG NHẬP</h1>
