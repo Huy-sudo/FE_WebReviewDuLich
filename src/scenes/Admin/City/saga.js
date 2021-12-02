@@ -8,7 +8,6 @@ import {
 import {
       action_type as TYPE
   } from './action'  
-  import { push } from 'react-router-redux';   
    
 import * as api from '../../../apis/City'
 

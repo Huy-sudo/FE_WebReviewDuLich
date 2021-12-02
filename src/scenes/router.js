@@ -14,19 +14,19 @@ export default [
         component: Home
     },
     {
-        path: "/review",
+        path: "/admin/review",
         component: Review
     },
     {
-        path: "/city",
+        path: "/admin/city",
         component: City
     },
     {
-        path: "/user",
+        path: "/admin/user",
         component: User
     },
     {
-        path: "/place",
+        path: "/admin/place",
         component: Place
     },
 

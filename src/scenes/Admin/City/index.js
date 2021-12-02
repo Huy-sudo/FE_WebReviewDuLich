@@ -18,7 +18,7 @@ class index extends Component {
             showForm: false,
             initial_filter_values: query_params,
         }
-
+        console.log(this.state);
     }
 
     componentDidMount = () => {
@@ -26,6 +26,7 @@ class index extends Component {
     }
 
     handleSubmitFilter = ({ ...values }) => {
+        console.log(123);
         let params = {
             ...values,
             status: 1
@@ -34,26 +35,29 @@ class index extends Component {
         this.props.getList(params)
     }
 
-    // handleShowForm = (value) => {
-    //     this.setState({ showForm: value || false })
-    // }
+    handleShowForm = (value) => {
+        this.setState({ showForm: value || false })
+    }
 
-    // handleCloseModal = (value) => {
-    //     this.setState({ showForm: false })
-    // }
+    handleCloseModal = (value) => {
+        this.setState({ showForm: false })
+    }
 
-    // handleUpdateCity = (value) => {
-    //     this.props.updateCity(value)
-    //     this.setState({ showForm: false })
-    // }
+    handleUpdateCity = (value) => {
+        this.props.updateCity(value)
+        this.setState({ showForm: false })
+    }
 
-    // openModal = (value) => {
-    //     this.handleShowForm(true);
-    //     this.state.idCity = value.id;
-    // }
+    openModal = (values) => {
+        this.handleShowForm(true);
+        this.idCity = values.id;
+    }
 
     render() {
         const { cities } = this.props
+        const { initialValue, showForm, values, idCity } = this.state
+        console.log(cities);
+
         return (
             <div>
                 <Layout>
@@ -66,9 +70,9 @@ class index extends Component {
                     <DataTable
                         dataSource={cities.data || []}
                         loading={cities.loading}
-                        // onSubmit={this.openModal(value)}
+                        onSubmit={this.openModal(values)}
                     />
-                    {/* <Modal
+                    <Modal
                         title="Cập nhật thành phố"
                         visible={showForm}
                         closable={false}
@@ -80,11 +84,11 @@ class index extends Component {
                             keyboard={true}
                             maskClosable={true}
                             onCancel={() => this.handleShowForm(false)}
-                            city={city.data}
-                            onSubmit={this.handleUpdateCity(idCity)}
+                            city={cities.data}
+                            onSubmit={this.handleUpdateCity(this.idCity)}
                             handleShowForm={this.handleShowForm}
                         />
-                    </Modal> */}
+                    </Modal>
                 </Layout>
             </div>
         );

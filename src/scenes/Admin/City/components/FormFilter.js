@@ -27,7 +27,7 @@ let ContactForm = props => {
 
 ContactForm = reduxForm({
     enableReinitialize: true,
-    form: 'FilterCustomer'
+    form: 'FilterCity'
 })(ContactForm)
 
 export default ContactForm

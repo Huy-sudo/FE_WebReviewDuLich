@@ -30,7 +30,7 @@ const DataTable = ({ dataSource, loading, updateCity }) => {
       key: 'picture',
       className: 'text-left',
       render: (value, record) =>
-        <img src={value}></img>
+        <img src={value} height={50} width={50}></img>
     },
     {
       title: 'Dân số (nghìn người)',
