@@ -11,6 +11,7 @@ import { routerMiddleware, ConnectedRouter  } from 'connected-react-router'
 import reducer from "./reducer";
 import { createBrowserHistory } from 'history'
 import saga from "./saga";
+import AuthenContext from './components/context/AuthenContext';
 
 const history = createBrowserHistory({ basename: '/' })
 const sagaMiddleware = createSagaMiddleware();
@@ -25,11 +26,13 @@ const store = createStore(
 sagaMiddleware.run(saga)
 
 ReactDOM.render(
+  <AuthenContext.Provider value={{isLoggedIn: false}}>
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <App history={history} />
     </ConnectedRouter>
-  </Provider>,
+  </Provider>
+  </AuthenContext.Provider>,
   document.getElementById('root')
 );
 

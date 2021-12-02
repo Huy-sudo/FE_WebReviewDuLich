@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./FeaturedPlaces.module.css";
+import AuthenContext from "../../context/AuthenContext";
 
 function FeaturedPlaces(props) {
+  let context = useContext(AuthenContext);
+  
+  context.isLoggedIn = true;
   let places = props.data.slice(0, 4);
 
   return (

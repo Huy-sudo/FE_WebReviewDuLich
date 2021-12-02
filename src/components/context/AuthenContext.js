@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const AuthenContext = React.createContext({
     isLoggedIn: false

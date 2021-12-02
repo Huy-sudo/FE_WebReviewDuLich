@@ -1,3 +1,9 @@
 .filter-city {
-    
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.option {
+    font-size: 18px;
 }

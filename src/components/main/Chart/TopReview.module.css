@@ -1,0 +1,55 @@
+section.container {
+    background-color: lightblue;
+    padding-top: 130px;
+    padding-bottom: 40px;
+}
+
+.post-chart-wrapper {
+    display: flex;
+    flex-direction: row;
+    background-color:rgb(83, 175, 218);
+    margin: 20px auto;
+    margin-bottom: 0px;
+    max-width: 1000px;
+    border-radius: 15px;
+    font-family: "Open Sans";
+    font-size: 22px;
+    justify-content: space-between;
+}
+
+.rank-wrapper {
+    min-width: 100px;
+    margin: auto;
+}
+
+.rank {
+    font-size: 30px;
+    font-weight: bold;
+    padding: auto;
+    margin: 0px;
+}
+
+.image {
+    height: 150px;
+    width: 150px;
+}
+
+
+.name-wrapper  {
+    padding: 10px 10px 0px 10px;
+    min-width: 500px;
+    margin: 0px auto;
+}
+
+.name {
+    margin: 0px;
+    text-align: left;
+}
+
+.arrow {
+    min-width: 100px;
+    border: none;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}

@@ -91,7 +91,7 @@ class index extends Component {
 
     return (
       <Layout>
-        {/* <FilterCity onGetCity={this.getCity} /> */}
+        <FilterCity onGetCity={this.getCity} />
         <ReviewPost data={dummy_posts} />
       </Layout>
     );
