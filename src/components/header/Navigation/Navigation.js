@@ -1,19 +1,24 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import classes from "./Navigation.module.css";
-import { Menu, Dropdown, Space, Avatar } from 'antd';
+import { Menu, Dropdown, Avatar } from "antd";
 import Button from "../../helpers/Button";
 import AuthenContext from "../../context/AuthenContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faUser, faSignOutAlt, faSortDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import {
+  faSearch,
+  faUser,
+  faSignOutAlt,
+  faSortDown,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link, NavLink } from "react-router-dom";
 
 function NavigationContent(props) {
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState("");
   let context = useContext(AuthenContext);
 
   function searchChangeHandler(event) {
-      setUserInput(event.target.value);
+    setUserInput(event.target.value);
   }
 
   function searchHandler() {
@@ -25,10 +30,18 @@ function NavigationContent(props) {
       <nav className={classes.navbar}>
         {/*<img source="" alt="Logo Revigo" /> {/*ảnh logo*/}
         <div className={classes["middle-bar"]}>
-          <a href="/">Trang chủ</a>
-          <a href="/">Địa điểm</a>
-          <a href="/">Bảng xếp hạng</a>
-          <a href="/">Liên hệ</a>
+          <NavLink activeClassName={classes.selected} to="/home">
+            Trang chủ
+          </NavLink>
+          <NavLink activeClassName={classes.active} to="/reviewpage">
+            Địa điểm
+          </NavLink>
+          <NavLink activeClassName={classes.active} to="/chart">
+            Bảng xếp hạng
+          </NavLink>
+          <NavLink activeClassName={classes.active} to="/">
+            Liên hệ
+          </NavLink>
           <input
             placeholder="Tìm kiếm"
             className={classes["input-search"]}
@@ -42,43 +55,64 @@ function NavigationContent(props) {
             onClick={searchHandler}
             type="submit"
           >
-            <Link to="/results"><FontAwesomeIcon icon={faSearch}>search</FontAwesomeIcon></Link>
+            <Link to="/results">
+              <FontAwesomeIcon icon={faSearch}>search</FontAwesomeIcon>
+            </Link>
           </Button>
         </div>
       </nav>
-      {!context.isLoggedIn && <div className={classes["login-signup"]}>
-        <a href="/">Đăng nhập</a>
-        <p>|</p>
-        <a href="/">Đăng ký</a>
-      </div> }
-      {context.isLoggedIn &&<div className={classes["profile"]}>
-        <Dropdown
-          trigger={['click']}
-          overlay={(
-            <Menu>
-              <Menu.Item key="0">
-                <Link to={'/admin'}><FontAwesomeIcon style={{ width: 20 }} icon={faUser} /> {('Quản lý')}</Link>
-              </Menu.Item>
-              <Menu.Item key="1">
-                <a href={'/auth/logout'}><FontAwesomeIcon style={{ width: 20 }} icon={faSignOutAlt} /> {('Sign Out')}</a>
-              </Menu.Item>
-            </Menu>
-          )}
-        >
-          <Space className="cursor-pointer">
-            <Avatar >USER</Avatar>
-            <FontAwesomeIcon style={{ fontSize: 20 }} icon={faSortDown} />
-          </Space>
-        </Dropdown>
-      </div>}
+      {!context.isLoggedIn && (
+        <div className={classes["login-signup"]}>
+          <a href="/">Đăng nhập</a>
+          <p>|</p>
+          <a href="/">Đăng ký</a>
+        </div>
+      )}
+      {context.isLoggedIn && (
+        <div className={classes["profile"]}>
+          <Dropdown
+            className={classes.dropdown}
+            trigger="click"
+            overlay={
+              <Menu className={classes["menu-wrapper"]}>
+                <Menu.Item key="0">
+                  <Link to={"/admin"} className={classes.menu}>
+                    <FontAwesomeIcon style={{ width: 20 }} icon={faUser} /> Quản
+                    lý
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="1">
+                  <a href={"/auth/logout"} className={classes.menu}>
+                    <FontAwesomeIcon
+                      style={{ width: 20 }}
+                      icon={faSignOutAlt}
+                    />{" "}
+                    Sign Out
+                  </a>
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <div>
+              <Avatar className={classes.dropdown} style={{backgroundColor: "#FFFFFFBE"}}>USER</Avatar>
+              <FontAwesomeIcon style={{ fontSize: 25, marginLeft: "5px" }} icon={faSortDown} />
+            </div>
+          </Dropdown>
+        </div>
+      )}
     </div>
   );
 }
 
 function Navigation(props) {
-  return <>
-    {ReactDOM.createPortal(<NavigationContent onGetUserInput={props.onGetUserInput}/>, document.querySelector("header"))}
-  </>
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <NavigationContent onGetUserInput={props.onGetUserInput} />,
+        document.querySelector("header")
+      )}
+    </>
+  );
 }
 
 export default Navigation;

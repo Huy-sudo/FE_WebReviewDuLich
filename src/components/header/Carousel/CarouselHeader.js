@@ -5,23 +5,55 @@ import NhaTrang from "../../../photo/8.jpg";
 import HoChiMinh from "../../../photo/5.jpg";
 import DaLat from "../../../photo/7_1.jpg";
 import GiaLai from "../../../photo/9.jpg";
+import Button from "@restart/ui/esm/Button";
 
 function CarouselHeader() {
   return (
-    <Carousel>
-      <div>
-        <img className={classes["carousel-img"]} src={GiaLai} alt="Gia Lai"></img>
+    <>
+      <div className={classes["welcome-wrapper"]}>
+        <h1 className={classes.title}> Chào mừng đến với Revigo</h1>
+        <p>
+          Revigo là một tổ chức phi lợi nhuận, nhằm kết nối khách du lịch ở khắp
+          mọi miền tổ quốc với mục tiêu xây dựng một cộng đồng lành mạnh, lan
+          toả sắc đẹp văn hoá tới mọi người, nâng cao tình yêu và nhận thức về
+          tầm quan trọng, vẻ đẹp của thiên nhiên
+        </p>
+        <br />
+        <p>
+          Với đội ngũ nhân viên chất lượng, , Revigo cam kết đem đến cho người
+          dùng một trải nghiệm chân thực, mới mẻ, thoải mái tận hưởng những giây
+          phút du lịch Việt Nam ở bất kỳ đâu, tại bất kỳ lúc nào mà không phải
+          trả một khoản phí nào.
+        </p>
+        <Button className={classes["welcome-more"]}>Khám phá ngay</Button>
       </div>
-      <div>
-        <img className={classes["carousel-img"]} src={HoChiMinh} alt="Hồ Chí Minh"></img>
-      </div>
-      <div>
-        <img className={classes["carousel-img"]} src={NhaTrang} alt="Nha Trang"></img>
-      </div>
-      <div>
-        <img className={classes["carousel-img"]} src={DaLat} alt="Đà Lạt"></img>
-      </div>
-    </Carousel>
+      <Carousel>
+        <div>
+          <img className={classes["carousel-img"]} src={GiaLai} alt="Gia Lai" />
+        </div>
+        <div>
+          <img
+            className={classes["carousel-img"]}
+            src={HoChiMinh}
+            alt="Hồ Chí Minh"
+          ></img>
+        </div>
+        <div>
+          <img
+            className={classes["carousel-img"]}
+            src={NhaTrang}
+            alt="Nha Trang"
+          ></img>
+        </div>
+        <div>
+          <img
+            className={classes["carousel-img"]}
+            src={DaLat}
+            alt="Đà Lạt"
+          ></img>
+        </div>
+      </Carousel>
+    </>
   );
 }
 
