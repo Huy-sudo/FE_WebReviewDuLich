@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./ReviewPost.module.css";
 import Button from "../../helpers/Button";
 
-function Review(props) {
-    document.querySelector("body").className = classes.background;
+function ReviewPost(props) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
+
+  document.querySelector("body").className = classes.background;
   return (
-    <section>
+    <section className={classes.container}>
       {props.data.map((post) => {
         return (
           <div key={post.id} className={classes["content-wrapper"]}>
@@ -33,4 +36,4 @@ function Review(props) {
   );
 }
 
-export default Review;
+export default ReviewPost;

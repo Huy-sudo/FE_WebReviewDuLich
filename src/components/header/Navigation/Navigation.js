@@ -34,7 +34,7 @@ function NavigationContent(props) {
             Trang chủ
           </NavLink>
           <NavLink activeClassName={classes.active} to="/reviewpage">
-            Địa điểm
+            Review
           </NavLink>
           <NavLink activeClassName={classes.active} to="/chart">
             Bảng xếp hạng

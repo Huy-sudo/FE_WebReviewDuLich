@@ -1,19 +1,22 @@
 .carousel-img {
   width: 100%;
   margin: 0px;
-  height: 1000px;
+  height: 1080px;
 }
 
 .welcome-wrapper {
   position: absolute;
   top: 150px;
-  left: 50px;
-  background-color: #ffffffcc;
+  left: 0px;
+  right: 0px;
+  margin: 0px auto;
+  background-color: #ffffff8e;
   padding: 30px;
   z-index: 1;
   border-radius: 20px;
-  max-width: 900px;
+  max-width: 1800px;
   max-height: 800px;
+
 }
 
 .welcome-wrapper p {

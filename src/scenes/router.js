@@ -5,6 +5,7 @@ import Place from "../scenes/Admin/Place"
 import User from "../scenes/Admin/User"
 import Home from "./Home"
 import ReviewPage from "../scenes/Review/index"
+import Chart from "../scenes/Chart/index"
 export default [
     {
         path: '/admin',
@@ -33,6 +34,10 @@ export default [
     {
         path: "/reviewpage",
         component: ReviewPage
+    },
+    {
+        path: "/chart",
+        component: Chart
     }
 
 ]

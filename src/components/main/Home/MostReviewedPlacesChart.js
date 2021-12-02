@@ -6,6 +6,12 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function MostReviewedPlacesChart(props) {
   let places = props.data.slice(0, 5); //will this re-render without state?
+  let rank = 1;
+
+  function moreHandler(event) {
+    //console.log(event);
+    window.location.href = "./chart";
+  }
 
   return (
     <section className={classes["content-background"]}>
@@ -14,7 +20,7 @@ function MostReviewedPlacesChart(props) {
       {places.map((place) => {
         return (
           <div key={place.id} className={classes["place-content"]}>
-            <p className={classes.rank}>{place.id}</p>
+            <p className={classes.rank}>{rank++}</p>
             <img
               className={classes.image}
               src={place.imgsrc}
@@ -37,7 +43,7 @@ function MostReviewedPlacesChart(props) {
           </div>
         );
       })}
-      <Button className={classes.more}>
+      <Button className={classes.more} onClick={moreHandler}>
         <div className={classes.morebutton}>Xem thêm</div>
       </Button>
       </div>

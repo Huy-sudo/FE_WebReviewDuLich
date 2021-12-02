@@ -3,7 +3,7 @@ import { Layout } from "../../components/helpers/Layout";
 
 class index extends Component {
     
-    getUserInput = (value) => {
+    getUserInputHandler = (value) => {
         
     }
 
@@ -17,3 +17,4 @@ class index extends Component {
     }
 }
 
+export default index;

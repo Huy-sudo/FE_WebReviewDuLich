@@ -7,13 +7,14 @@
 
 .content-wrapper {
     background-color: #ffffffa1;
-    width: 1000px;
-    height: 980px;
+    max-width: 1200px;
+    min-height: 980px;
     border-radius: 20px;
     display: block;
     text-align: center;
     margin: 0px auto;
     padding-top: 30px;
+    border-radius: 20px;
 }
 
 .content-wrapper h1 {
@@ -22,12 +23,12 @@
 
 .place-content {
     display: grid;
-    grid-template-columns: 1fr 2fr 6fr 1fr;
+    grid-template-columns: 1.5fr 2fr 6fr 1.5fr;
     grid-template-rows: 1fr;
     height: 124px;
-    width: 800px;
+    max-width: 900px;
     margin: auto;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .place-content p {
@@ -39,8 +40,8 @@
     background-color: rgb(0, 180, 235);
     font-size: 32px;
     font-weight: bolder;
-    height: 100%;
-    opacity: 80%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .image {
