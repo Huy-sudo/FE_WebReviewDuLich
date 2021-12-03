@@ -1,9 +1,9 @@
 .signup-wrapper {
     display: block;
-    background-color: rgba(28, 77, 168, 0.794);
-    margin: 10px 100px;
+    background-color: rgba(7, 13, 42, 0.794);
+    margin: 120px 100px 30px 100px;
     border-radius: 20px;
-    max-height: 1000px;
+    min-height: 1000px;
 }
 
 .signup-wrapper h1 {
@@ -39,7 +39,6 @@
 
 .login a:hover {
     text-decoration: underline;
-
 }
 
 .signup-form label {
@@ -60,8 +59,8 @@ input[type="checkbox"] {
     color: red;
     position: relative;
     margin: 0px;
-    left: -10px;
-
+    left: 15px;
+    top: 5px;
 }
 
 .valid-name {

@@ -6,7 +6,7 @@ import Button from "../../helpers/Button";
 import AuthenContext from "../../context/AuthenContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faUser, faSignOutAlt, faSortDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function NavigationContent(props) {
   const [userInput, setUserInput] = useState("");
@@ -60,7 +60,7 @@ function NavigationContent(props) {
         <div className={classes["login-signup"]}>
           <a href="/">Đăng nhập</a>
           <p>|</p>
-          <a href="/">Đăng ký</a>
+          <NavLink to="/signup">Đăng ký</NavLink>
         </div>
       )}
       {context.isLoggedIn && (
