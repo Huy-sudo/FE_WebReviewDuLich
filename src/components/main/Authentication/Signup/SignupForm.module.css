@@ -52,7 +52,9 @@
 
 input[type="checkbox"] {
     transform: scale(1.6);
-    left: -43px;
+    position: relative;
+    left: -5px;
+    bottom: 28px;
 }
 
 .invalid-name {

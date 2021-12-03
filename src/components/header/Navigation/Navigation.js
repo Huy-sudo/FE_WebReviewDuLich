@@ -28,13 +28,13 @@ function NavigationContent(props) {
           <NavLink activeClassName={classes.selected} to="/home">
             Trang chủ
           </NavLink>
-          <NavLink activeClassName={classes.active} to="/reviewpage">
+          <NavLink activeClassName={classes.selected} to="/reviewpage">
             Review
           </NavLink>
-          <NavLink activeClassName={classes.active} to="/chart">
+          <NavLink activeClassName={classes.selected} to="/chart">
             Bảng xếp hạng
           </NavLink>
-          <NavLink activeClassName={classes.active} to="/">
+          <NavLink activeClassName={classes.selected} to="/">
             Liên hệ
           </NavLink>
           <input
