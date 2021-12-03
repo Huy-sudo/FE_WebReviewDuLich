@@ -4,9 +4,18 @@ import FeaturedPlaces from "../../components/main/Home/FeaturedPlaces";
 import Layout from "../../components/helpers/Layout";
 import CarouselHeader from "../../components/header/Carousel/CarouselHeader";
 import AuthenContext from "../../components/context/AuthenContext";
-
+import { getList } from "./action";
+import { connect } from "react-redux";
 class index extends Component {
+  
+  componentDidMount() {
+    let params = {};
+    this.props.getList(params);
+    console.log(this.props.cities)
+  }
   render() {
+    const cities = this.props;
+
     const dummyMovies = [
       {
         id: 1,
@@ -103,4 +112,14 @@ class index extends Component {
   }
 }
 
-export default index;
+const mapStateToProps = (state) => ({
+  cities: state.Cities,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getList: (params) => {
+    dispatch(getList(params));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
