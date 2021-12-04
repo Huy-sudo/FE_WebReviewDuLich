@@ -312,7 +312,7 @@ function SignupForm(props) {
           Tôi đồng ý với điều khoản sử dụng và dịch vụ{" "}
           <span style={{ color: "red" }}>*</span>
         </label>
-        <Input id="agreement" type="checkbox" />
+        <Input className={classes.agreebox}  id="agreement" type="checkbox" />
         <Input className={classes.submit} type="submit" value="Đăng ký" />
       </form>
       <div className={classes["policies-wrapper"]}>
@@ -392,3 +392,4 @@ function SignupForm(props) {
 }
 
 export default SignupForm;
+
