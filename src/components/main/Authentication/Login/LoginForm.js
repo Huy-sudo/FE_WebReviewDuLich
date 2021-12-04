@@ -160,7 +160,7 @@ function LoginForm(props) {
           Password must at least have 8 characters and 1 number.
         </p>
         <div className={classes.rememberpassword}>
-          <Input type="checkbox" id="remember_password" />
+          <Input className={classes['remember-box']} type="checkbox" id="remember_password" />
           <label htmlFor="remember_password">Remember password?</label>
           <a className={classes['forget-password']} href="/">Quên mật khẩu?</a>
         </div>
@@ -183,4 +183,5 @@ function LoginForm(props) {
 }
 
 export default LoginForm;
+
 
