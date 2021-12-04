@@ -40,6 +40,7 @@ function* verifySaga(action) {
 
 function* getListUserSaga(action) {
     try {
+      
       const { params } = action;
       console.log(params);
       const response = yield call(apiuser.getList, params);
