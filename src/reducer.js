@@ -7,7 +7,7 @@ import city from "./scenes/Admin/City/reducer";
 import review from "./scenes/Admin/Review/reducer";
 import place from "./scenes/Admin/Place/reducer";
 import user from "./scenes/Admin/User/reducer";
-
+import reviewPage from "./scenes/Review/reducer"
 const Reducer = (history) => combineReducers({    
     form: formReducer,
     router: connectRouter(history),
@@ -16,7 +16,8 @@ const Reducer = (history) => combineReducers({
     city,
     review,
     place,
-    user
+    user,
+    reviewPage
   })
   
 export default Reducer

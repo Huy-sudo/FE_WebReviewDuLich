@@ -6,6 +6,9 @@ import FilterCity from "../../components/main/Review/FilterCity";
 import ReviewPost from "../../components/main/Review/ReviewPost";
 import { Component } from "react";
 import queryString from "query-string";
+import { Pagination } from 'antd';
+
+
 class index extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +19,7 @@ class index extends Component {
   }
 
   getCity = (selectedCity) => {
+
     this.props.getList(selectedCity);
     this.props.history.replace(
       window.location.pathname +
@@ -92,7 +96,7 @@ class index extends Component {
     return (
       <Layout>
         <FilterCity onGetCity={this.getCity} />
-        <ReviewPost data={dummy_posts} />
+        <ReviewPost data={dummy_posts}/>
       </Layout>
     );
   }

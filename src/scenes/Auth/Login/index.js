@@ -13,7 +13,6 @@ class index extends Component {
   };
 
   render() {
-    const { data } = this.props;
     return (
       <Layout>
         <LoginForm onLogin={this.getLoginData} />

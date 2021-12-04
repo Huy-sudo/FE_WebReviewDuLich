@@ -5,6 +5,7 @@ import citySaga from "./scenes/Admin/City/saga";
 import reviewSaga from "./scenes/Admin/Review/saga";
 import userSaga from "./scenes/Admin/User/saga";
 import placeSaga from "./scenes/Admin/Place/saga";
+import reviewPageSaga from "./scenes/Review/saga"
 const Saga = function* (){
     yield all([
       loginSaga(),
@@ -12,7 +13,8 @@ const Saga = function* (){
       citySaga(),
       reviewSaga(),
       userSaga(),
-      placeSaga()
+      placeSaga(),
+      reviewPageSaga(),
     ])
   }
   

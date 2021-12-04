@@ -19,19 +19,20 @@ function* getListCitySaga(action) {
         const response = yield call(apiCity.getList, params)
         if(response.status){
                 yield all([
-                    put({type: TYPE.CITY.SUCCESS, ...response}),
+                    put({type: TYPE.GETCITY.SUCCESS, ...response}),
                 ])
         }else{
-          yield put({type: TYPE.CITY.ERROR, error: response})
+          yield put({type: TYPE.GETCITY.ERROR, error: response})
         }
     } catch (error) {
         yield all([
-            put({type: TYPE.CITY.ERROR, error})
+            put({type: TYPE.GETCITY.ERROR, error})
         ])
     }
 }
 
 function* getListSaga(action) {
+    console.log(123);
       try {
           const { params } = action
           const response = yield call(api.getList, params)
@@ -57,7 +58,7 @@ function* getListSaga(action) {
         if(response.status){
                 yield all([
                     put({type: TYPE.CREATE.SUCCESS, ...response}),
-                    put({type: TYPE.PLACE.REQUEST, params:{status:1}})
+                    put({type: TYPE.PLACE.REQUEST, params:{isReal:0}})
                 ])
         }else{
           yield put({type: TYPE.CREATE.ERROR, error: response})
@@ -76,7 +77,7 @@ function* UpdateSaga(action) {
         if(response.status){
                 yield all([
                     put({type: TYPE.UPDATE.SUCCESS, ...response}),
-                    put({type: TYPE.PLACE.REQUEST, params:{status:1}})
+                    put({type: TYPE.PLACE.REQUEST, params:{isReal:1}})
                 ])
         }else{
           yield put({type: TYPE.UPDATE.ERROR, error: response})
@@ -95,7 +96,7 @@ function* DeleteSaga(action) {
         if(response.status){
                 yield all([
                     put({type: TYPE.DELETE.SUCCESS, ...response}),
-                    put({type: TYPE.PLACE.REQUEST, params:{status:1}}),
+                    put({type: TYPE.PLACE.REQUEST, params:{isReal:1}}),
                 ])
         }else{
           yield put({type: TYPE.DELETE.ERROR, error: response})
@@ -114,7 +115,7 @@ function* DeleteSaga(action) {
           takeLatest(TYPE.CREATE.REQUEST, CreateSaga),
           takeLatest(TYPE.UPDATE.REQUEST, UpdateSaga),
           takeLatest(TYPE.DELETE.REQUEST, DeleteSaga),
-          takeLatest(TYPE.CITY.REQUEST, getListCitySaga)
+          takeLatest(TYPE.GETCITY.REQUEST, getListCitySaga)
       ])
   }
   

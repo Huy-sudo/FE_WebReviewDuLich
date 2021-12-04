@@ -23,9 +23,8 @@ function* getListSaga(action) {
                       put({type: TYPE.LOGIN.SUCCESS, ...response}),
                   ])
                   Cookies.set('web_token',response.access_token)
-                  yield put(push('/admin'));
-                //   yield put({type: TYPE.VERIFY.REQUEST,})
-
+                  yield put(push('/home'));
+                  yield put({type: TYPE.VERIFY.REQUEST,})
           }else{
             yield put({type: TYPE.LOGIN.ERROR, error: response})
           }
@@ -39,7 +38,7 @@ function* getListSaga(action) {
     try {
         const params = {};
         const response = yield call(api.verify, params)
-        if(response.status && response.data?.id > 0){
+        if(response.status){
                 yield all([
                     put({type: TYPE.VERIFY.SUCCESS, ...response}),
                 ])

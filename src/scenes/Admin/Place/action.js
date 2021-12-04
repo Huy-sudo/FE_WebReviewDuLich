@@ -19,17 +19,17 @@ export const action_type = {
         SUCCESS: "PLACE.DELETE.SUCCESS",
         ERROR: "PLACE.DELETE.ERROR"
     },
-    CITY: {
-        REQUEST: "CITY.REQUEST",
-        SUCCESS: "CITY.SUCCESS",
-        ERROR: "CITY.ERROR"
+    GETCITY: {
+        REQUEST: "GETCITY.REQUEST",
+        SUCCESS: "GETCITY.SUCCESS",
+        ERROR: "GETCITY.ERROR"
     },
 }
 
 export function getListCity (params)
 {
     return {
-        type: action_type.CITY.REQUEST,
+        type: action_type.GETCITY.REQUEST,
         params,
     }
 }

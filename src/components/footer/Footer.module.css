@@ -1,4 +1,4 @@
-footer {
+footer .container{
     position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -17,4 +17,5 @@ footer {
 .imglogo{
     background-image: src="logo111.png";
 }
+
 

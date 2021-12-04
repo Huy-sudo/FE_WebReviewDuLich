@@ -17,9 +17,7 @@ let ContactForm = props => {
                     </div>
                     <div className='col-2'>
                     <button className='btn btn-primary' type="submit"> <FontAwesomeIcon icon={faSearch} /> Search</button>
-
                     </div>
-
             </div>
         </form>
     )
