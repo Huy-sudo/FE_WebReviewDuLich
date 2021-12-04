@@ -6,9 +6,8 @@ import FilterCity from "../../components/main/Review/FilterCity";
 import ReviewPost from "../../components/main/Review/ReviewPost";
 import { Component } from "react";
 import queryString from "query-string";
-import { Pagination } from 'antd';
-
-
+import classes from "./Review.module.css";
+import FilterTime from "../../components/main/Review/FilterTime";
 class index extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +26,10 @@ class index extends Component {
         this.state.initial_filter.stringify(selectedCity)
     );
   };
+
+  getTime = (selectedTime) => {
+
+  }
 
   render() {
     const { reviews } = this.props;
@@ -95,8 +98,12 @@ class index extends Component {
 
     return (
       <Layout>
+        <div className={classes["filter-wrapper"]}>
+        
         <FilterCity onGetCity={this.getCity} />
-        <ReviewPost data={dummy_posts}/>
+        <FilterTime onGetTime={this.getTime}/>
+        </div>
+        <ReviewPost data={dummy_posts} />
       </Layout>
     );
   }

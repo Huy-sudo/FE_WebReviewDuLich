@@ -6,6 +6,8 @@ import User from "../scenes/Admin/User"
 import Home from "./Home"
 import ReviewPage from "../scenes/Review/index"
 import Chart from "../scenes/Chart/index"
+import PostDetail from "../scenes/PostDetail/index"
+
 export default [
     {
         path: '/admin',
@@ -38,6 +40,10 @@ export default [
     {
         path: "/chart",
         component: Chart
+    },
+    {
+        path: "/postdetail",
+        component: PostDetail
     }
 
 ]

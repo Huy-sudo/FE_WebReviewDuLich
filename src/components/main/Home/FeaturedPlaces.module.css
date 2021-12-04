@@ -1,11 +1,8 @@
-body {
-  min-height: 100%;
-}
 
 .feature-wrapper {
   width: 100%;
   min-height: 900px;
-  background-color: rgb(0, 255, 111, 10%);
+  background-color: rgba(174, 231, 198, 0.781);
   padding-top: 30px;
   font-family: "Open Sans";
 }

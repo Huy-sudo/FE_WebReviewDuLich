@@ -1,9 +1,16 @@
+.signupbackground {
+    background-image: url("../../../../photo/background_signup1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: center;
+}
+
 .signup-wrapper {
     display: block;
-    background-color: rgba(28, 77, 168, 0.794);
-    margin: 10px 100px;
+    background-color: rgba(7, 13, 42, 0.794);
+    margin: 120px 100px 30px 100px;
     border-radius: 20px;
-    max-height: 1000px;
+    min-height: 1000px;
 }
 
 .signup-wrapper h1 {
@@ -39,7 +46,6 @@
 
 .login a:hover {
     text-decoration: underline;
-
 }
 
 .signup-form label {
@@ -53,6 +59,7 @@
 
 input[type="checkbox"] {
     transform: scale(1.6);
+    position: relative;
     left: -43px;
 }
 
@@ -60,8 +67,8 @@ input[type="checkbox"] {
     color: red;
     position: relative;
     margin: 0px;
-    left: -10px;
-
+    left: 15px;
+    top: 5px;
 }
 
 .valid-name {
@@ -85,7 +92,7 @@ input[type="checkbox"] {
     font-size: 20px;
     text-align: left;
     border-radius: 20px;
-    padding-left: 30px;
+    padding: 0px 30px;
 }
 
 h2 {
@@ -94,11 +101,31 @@ h2 {
 }
 
 .policies-content {
-    width: 1000px;
+    max-width: 1000px;
     height: 600px;
     overflow-y: scroll;
+    border-radius: 10px;
+    border: 1px #d47979 solid;  
+    padding: 10px;
 }
 
 .policies-wrapper p {
     font-weight: 500;
+}
+
+.spinner {
+    position: relative;
+    transform: scale(3.0);
+    top: 300px;
+    z-index: 999;
+}
+
+.spinner span {
+    z-index: 999;
+}
+.agreebox{
+    transform: scale(1.6);
+    position: relative;
+    margin-left: 41px;
+    bottom: 26px;
 }

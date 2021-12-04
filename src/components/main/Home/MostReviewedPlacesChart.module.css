@@ -31,6 +31,12 @@
     margin-bottom: 20px;
 }
 
+.place-content:hover {
+    transform: scale(1.2);
+    transition: transform .4s;
+    transition-timing-function: ease-in-out;
+}
+
 .place-content p {
     margin: 0px;
     padding: 16px;

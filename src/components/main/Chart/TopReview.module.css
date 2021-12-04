@@ -7,8 +7,8 @@ section.container {
 .post-chart-wrapper {
     display: flex;
     flex-direction: row;
-    background-color:rgb(83, 175, 218);
-    margin: 20px auto;
+    background-color: #A05EFF;
+    margin: 22px auto;
     margin-bottom: 0px;
     max-width: 1000px;
     border-radius: 15px;
@@ -27,6 +27,7 @@ section.container {
     font-weight: bold;
     padding: auto;
     margin: 0px;
+    color: #fff;
 }
 
 .image {
@@ -36,9 +37,10 @@ section.container {
 
 
 .name-wrapper  {
-    padding: 10px 10px 0px 10px;
-    min-width: 500px;
+    padding: 11px 5px 0px 6px;
+    width: 654px;
     margin: 0px auto;
+    background-color: #fff;
 }
 
 .name {
@@ -52,4 +54,16 @@ section.container {
     border-radius: 10px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+}
+
+.name-post{
+    margin: 9px auto;
+    font-size: 45px;
+    font-weight: 700;
+    color: darkorchid;
+}
+
+.name-place{
+    font-size: 28px;
+    font-weight: 700;
 }

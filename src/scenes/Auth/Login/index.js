@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Layout from "../../../components/helpers/Layout";
 import { connect } from "react-redux";
 import LoginForm from "../../../components/main/Authentication/Login/LoginForm";
-import { login } from "./action";
+import { login, getListUser } from "./action";
 
 class index extends Component {
   componentDidMount = () => {};
@@ -10,6 +10,10 @@ class index extends Component {
   getLoginData = (email, password) => {
     let userlogin = { email: email, password: password };
     this.props.login(userlogin);
+    let params = {
+      email: email.toString()
+    }
+    this.props.getListUser(params);
   };
 
   render() {
@@ -23,12 +27,16 @@ class index extends Component {
 
 const mapStateToProps = (state) => ({
   data: state.login,
+  user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login: (params) => {
     dispatch(login(params));
   },
+  getListUser: (params) => {
+    dispatch(getListUser(params));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

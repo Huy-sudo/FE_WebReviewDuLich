@@ -70,7 +70,7 @@ function TopReview() {
   return (
     <section className={classes.container}>
       <div>
-        <h2>Bảng xếp hạng bài viết tuần</h2>
+        <h2 className={classes["name-post"]}>Bảng xếp hạng bài viết tuần</h2>
         {dummy_posts.map((post) => {
           return (
             <div key={post.id} className={classes["post-chart-wrapper"]}>
@@ -83,7 +83,7 @@ function TopReview() {
                 alt={post.placename}
               />
               <div className={classes["name-wrapper"]}>
-                <h3>{post.postname} </h3>
+                <h3 className={classes["name-place"]}>{post.postname} </h3>
                 <p className={classes.name}>
                   Tác giả: {post.author} <br />
                   Ngày đăng: {post.date} <br />
@@ -104,3 +104,4 @@ function TopReview() {
 }
 
 export default TopReview;
+
