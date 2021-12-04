@@ -49,10 +49,10 @@ div form p {
     margin-top: 20px;
 }
 
-input[type="checkbox"] {
+.remember-box {
     transform: scale(1.6);
     position: relative;
-    left: -46px;
+    left: -43px;
 }
 
 .rememberpassword {
