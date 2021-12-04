@@ -113,7 +113,7 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cities: state.Cities,
+  cities: state.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({

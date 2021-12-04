@@ -1,39 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
-import { Provider } from 'react-redux'
-import { createStore, compose, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import reportWebVitals from './reportWebVitals';
-import { routerMiddleware, ConnectedRouter  } from 'connected-react-router'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import { createStore, compose, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import reportWebVitals from "./reportWebVitals";
+import { routerMiddleware, ConnectedRouter } from "connected-react-router";
 import reducer from "./reducer";
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from "history";
 import saga from "./saga";
-import AuthenContext from './components/context/AuthenContext';
+import AuthenContext from "./components/context/AuthenContext";
+import UserDetail from "./components/context/UserDetail";
 
-const history = createBrowserHistory({ basename: '/' })
+const history = createBrowserHistory({ basename: "/" });
 const sagaMiddleware = createSagaMiddleware();
-const composeSetup = process.env.NODE_ENV !== 'production' && typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+const composeSetup =
+  process.env.NODE_ENV !== "production" &&
+  typeof window === "object" &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose;
 
 const store = createStore(
   reducer(history),
   composeSetup(applyMiddleware(routerMiddleware(history), sagaMiddleware))
-)
-sagaMiddleware.run(saga)
+);
+sagaMiddleware.run(saga);
 
 ReactDOM.render(
-  <AuthenContext.Provider value={{isLoggedIn: false}}>
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App history={history} />
-    </ConnectedRouter>
-  </Provider>
+  <AuthenContext.Provider value={{ isLoggedIn: false }}>
+    <UserDetail.Provider value={{ id: "", email: "", name: "" }}>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <App history={history} />
+        </ConnectedRouter>
+      </Provider>
+    </UserDetail.Provider>
   </AuthenContext.Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -36,9 +36,41 @@ function AsideBar() {
       rating: "5.0",
       date: "30/11/2021",
     },
+    {
+      id: 5,
+      postname: "Đồng Nai quê tôi",
+      author: "Nguyễn Hoàng Đức",
+      placename: "Đồng Nai",
+      rating: "5.0",
+      date: "30/11/2021",
+    },
+    {
+      id: 6,
+      postname: "Đồng Nai quê tôi",
+      author: "Nguyễn Hoàng Đức",
+      placename: "Đồng Nai",
+      rating: "5.0",
+      date: "30/11/2021",
+    },
+    {
+      id: 7,
+      postname: "Đồng Nai quê tôi",
+      author: "Nguyễn Hoàng Đức",
+      placename: "Đồng Nai",
+      rating: "5.0",
+      date: "30/11/2021",
+    },
+    {
+      id: 8,
+      postname: "Đồng Nai quê tôi",
+      author: "Nguyễn Hoàng Đức",
+      placename: "Đồng Nai",
+      rating: "5.0",
+      date: "30/11/2021",
+    },
   ];
   return (
-    <aside className={classes["container"]}>
+    <aside className={classes["asidebar-container"]}>
       <h2>Xem thêm</h2>
         {dummy_data.map((post) => {
           return (
