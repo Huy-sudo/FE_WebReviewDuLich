@@ -1,3 +1,10 @@
+.signupbackground {
+    background-image: url("../../../../photo/background_signup1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: center;
+}
+
 .signup-wrapper {
     display: block;
     background-color: rgba(7, 13, 42, 0.794);
@@ -86,7 +93,7 @@ input[type="checkbox"] {
     font-size: 20px;
     text-align: left;
     border-radius: 20px;
-    padding-left: 30px;
+    padding: 0px 30px;
 }
 
 h2 {
@@ -95,9 +102,12 @@ h2 {
 }
 
 .policies-content {
-    width: 1000px;
+    max-width: 1000px;
     height: 600px;
     overflow-y: scroll;
+    border-radius: 10px;
+    border: 1px #d47979 solid;  
+    padding: 10px;
 }
 
 .policies-wrapper p {

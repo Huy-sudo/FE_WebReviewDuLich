@@ -12,7 +12,7 @@ const IconText = ({ icon, text }) => (
 );
 
 function Review(props) {
-  document.querySelector("body").className = classes.background;
+  document.getElementById("root").className = classes.background;
   return (
     <List
       className={classes.container}

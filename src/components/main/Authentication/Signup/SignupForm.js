@@ -231,6 +231,7 @@ function SignupForm(props) {
     ? "invalid-name"
     : "valid-name";
 
+  document.getElementById("root").className = classes.signupbackground;
   return (
     <div className={classes["signup-wrapper"]}>
       <h1>ĐĂNG KÝ</h1>

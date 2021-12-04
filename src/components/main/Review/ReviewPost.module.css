@@ -3,13 +3,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 100% !important;
-    height: initial;
-    margin: 0px;
 }
 
 .container {
-    background: linear-gradient(0deg, rgba(235,228,240,1) 0%, rgba(230,209,238,1) 9%, rgba(218,198,231,1) 22%, rgba(200,200,235,1) 40%, rgba(211,212,228,1) 75%, rgba(192,211,231,1) 89%, rgba(174,233,229,1) 100%);
     margin-top: 150px;
     padding: 30px;
     display: block;
