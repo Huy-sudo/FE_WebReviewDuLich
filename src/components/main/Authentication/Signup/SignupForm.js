@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import { Spin } from "antd";
+import React, { useReducer, useState, useEffect } from "react";
 import Input from "../../../helpers/Input";
 import classes from "./SignupForm.module.css";
 
@@ -190,8 +191,11 @@ function SignupForm(props) {
     dispatchPasswordConfirm({ type: "RE_ENTERED_PASSWORDINPUT_LOSTFOCUS" });
   }
 
+  const [isLoading, setIsLoading] = useState(false);
+
   function signupSubmitHandler(event) {
     event.preventDefault();
+    setIsLoading(true);
     props.onGetSignUpData(
       username.value,
       dateOfBirth,
@@ -199,13 +203,6 @@ function SignupForm(props) {
       userEmail.value,
       userPassword.value
     );
-    // console.log(
-    //   username.value,
-    //   dateOfBirth,
-    //   phoneNumber,
-    //   userEmail.value,
-    //   userPassword.value
-    // );
     dispatchUsername({ type: "" });
     dispatchUserEmail({ type: "" });
     dispatchUserPassword({ type: "" });
@@ -213,6 +210,10 @@ function SignupForm(props) {
     setPhoneNumber("");
     dispatchPasswordConfirm({ type: "" });
   }
+
+  useEffect(() => {
+    setIsLoading(props.loading)
+  }, [props.loading])
 
   let errorName = !username.isNameValid && username.isInputFocus;
   let errorClassNameForName = errorName ? "invalid-name" : "valid-name";
@@ -232,7 +233,10 @@ function SignupForm(props) {
     : "valid-name";
 
   document.getElementById("root").className = classes.signupbackground;
+  
   return (
+    <>
+    {isLoading ? <Spin spinning={isLoading} className={classes.spinner}></Spin> :
     <div className={classes["signup-wrapper"]}>
       <h1>ĐĂNG KÝ</h1>
       <form className={classes["signup-form"]} onSubmit={signupSubmitHandler}>
@@ -382,6 +386,8 @@ function SignupForm(props) {
         </div>
       </div>
     </div>
+    }
+    </>
   );
 }
 

@@ -22,7 +22,7 @@ function* getListSaga(action) {
                   yield all([
                       put({type: TYPE.SIGNUP.SUCCESS, ...response}),
                   ])
-                  yield delay(1000)
+                  yield delay(10000)
                   yield put(push('/login'));
           }else{
             yield put({type: TYPE.SIGNUP.ERROR, error: response})

@@ -113,3 +113,14 @@ h2 {
 .policies-wrapper p {
     font-weight: 500;
 }
+
+.spinner {
+    position: relative;
+    transform: scale(3.0);
+    top: 300px;
+    z-index: 999;
+}
+
+.spinner span {
+    z-index: 999;
+}
