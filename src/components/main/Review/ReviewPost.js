@@ -1,32 +1,27 @@
 import React from "react";
 import classes from "./ReviewPost.module.css";
-import { List, Space } from "antd";
-import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
+import { List } from "antd";
 import { Link } from "react-router-dom";
 import Button from "../../helpers/Button";
-const IconText = ({ icon, text }) => (
-  <Space>
-    {React.createElement(icon)}
-    {text}
-  </Space>
-);
+
 
 
 function Review(props) {
   document.getElementById("root").className = classes.background;
-  function timeConverter(UNIX_timestamp){
-    var a = new Date(UNIX_timestamp * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-    return time;
+  function timestampConverter(timestamp) {
+    let t = timestamp.slice(0, 16);
+    let result = new Date(t);
+    return result;
   }
 
+  let data = props.data.map(x => {
+    return {
+      ...x,
+      created_at: timestampConverter(x.created_at)
+    }
+  })
+    
+  console.log(data);
   return (
     <List
       className={classes.container}
@@ -38,7 +33,7 @@ function Review(props) {
         },
         pageSize: 5,
       }}
-      dataSource={props.data}
+      dataSource={data}
       renderItem={(item) => (
         <List.Item
           className={classes["content-wrapper"]}
@@ -87,7 +82,7 @@ function Review(props) {
               Tác giả: <span style={{fontStyle: "italic"}}>{item?.user?.name}</span>{" "}
             </p>
             <p className={classes["post-info"]}>
-              Ngày đăng: <span>{timeConverter(item?.created_at)}</span>{" "}
+              Ngày đăng: <span>{item?.created_at.toLocaleDateString() + " " + item?.created_at.toLocaleTimeString()}</span>{" "}
             </p>
             <p className={classes["post-info"]}>
               {" "}

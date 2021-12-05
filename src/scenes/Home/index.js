@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 class index extends Component {
   
   componentDidMount() {
-    let params = {};
+    let params = { };
     this.props.getList(params);
     console.log(this.props)
   }
