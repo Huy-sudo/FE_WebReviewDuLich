@@ -2,9 +2,6 @@ import React from "react";
 import classes from "./ReviewPost.module.css";
 import { List } from "antd";
 import { Link } from "react-router-dom";
-import Button from "../../helpers/Button";
-
-
 
 function Review(props) {
   document.getElementById("root").className = classes.background;
@@ -20,7 +17,9 @@ function Review(props) {
       created_at: timestampConverter(x.created_at)
     }
   })
-    
+  
+
+
   console.log(data);
   return (
     <List
@@ -46,7 +45,7 @@ function Review(props) {
                 alt={`${item?.place?.name}`}
                 src={`${item?.picture}`}
               />{" "}
-              <Button>Xem thêm</Button>
+              <Link to={`/postdetail/${item.ID}`}>Xem thêm</Link> 
             </div>
           }
         >

@@ -10,10 +10,6 @@ class index extends Component {
   getLoginData = (email, password) => {
     let userlogin = { email: email, password: password };
     this.props.login(userlogin);
-    let params = {
-      email: email.toString()
-    }
-    setTimeout(() => { this.props.getListUser(params) }, 5000);
   };
   render() {
     return (

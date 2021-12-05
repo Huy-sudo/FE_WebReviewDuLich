@@ -17,8 +17,8 @@ function FeaturedPlaces(props) {
       <div className={classes['feature-content']}>
       {places.map((place) => {
         return (
-          <div key={place.id} className={classes['place-content']}>
-            <img src={place.imgsrc} alt={place.name}></img>
+          <div key={place.ID} className={classes['place-content']}>
+            <img src={place.picture} alt={place.name}></img>
             <p className={classes['city-name']}>{place.name}</p><br/>
             <p><span>Địa chỉ: </span>{place.address}</p><br/>
             <p><span>Tỉnh/Thành phố:</span> {place.province}</p><br/>

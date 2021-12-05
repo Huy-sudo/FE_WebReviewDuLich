@@ -23,7 +23,7 @@ function MostReviewedPlacesChart(props) {
             <p className={classes.rank}>{rank++}</p>
             <img
               className={classes.image}
-              src={place.imgsrc}
+              src={place.picture}
               alt={`${place.name} example`}
             />
             <div className={classes["name-wrapper"]}>
