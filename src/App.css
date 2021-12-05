@@ -4,6 +4,11 @@
   padding-bottom: 275px;
 }
 
+.admin-footer {
+  text-align: center;
+  overflow: auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

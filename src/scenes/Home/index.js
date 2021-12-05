@@ -14,10 +14,9 @@ class index extends Component {
   }
   render() {
     const data = this.props.places.data;
-    console.log(data);
     const dummyMovies = [
       {
-        id: 1,
+        ID: 1,
         name: "Phú Quốc",
         address: "Phú Quốc cách thành phố 30km",
         province: "Phú Quốc",
@@ -28,7 +27,7 @@ class index extends Component {
           "Phú Quốc là một địa điểm thu hút rất nhiều khách du lịch, nổi tiếng với bãi biển xinh đẹp, làn nước trong vắt. Xen kẽ sự hiện đại của thành phố chính là những sự yên bình, mát mẻ của biển cả, đồng thời cũng là nơi được đánh giá có vẻ đẹp cuốn hút khách du lịch nhất Việt Nam.",
       },
       {
-        id: 2,
+        ID: 2,
         name: "Nha Trang",
         address: "Nha Trang cách thành phố 30km",
         province: "khánh Hoà",
@@ -39,7 +38,7 @@ class index extends Component {
           "Nha Trang là một địa điểm thu hút rất nhiều khách du lịch, nổi tiếng với bãi biển xinh đẹp, làn nước trong vắt. Xen kẽ sự hiện đại của thành phố chính là những sự yên bình, mát mẻ của biển cả, đồng thời cũng là nơi được đánh giá có vẻ đẹp cuốn hút khách du lịch nhất Việt Nam.",
       },
       {
-        id: 3,
+        ID: 3,
         name: "Hồ Chí Minh",
         address: "Hồ Chí Minh nằm ở 30km cách thành phố",
         province: "Hồ Chí Minh",
@@ -50,7 +49,7 @@ class index extends Component {
           "Nha Trang là một địa điểm thu hút rất nhiều khách du lịch, nổi tiếng với bãi biển xinh đẹp, làn nước trong vắt. Xen kẽ sự hiện đại của thành phố chính là những sự yên bình, mát mẻ của biển cả, đồng thời cũng là nơi được đánh giá có vẻ đẹp cuốn hút khách du lịch nhất Việt Nam.",
       },
       {
-        id: 4,
+        ID: 4,
         name: "Đà Lạt",
         address: "Đà Lạt nằm ở 30km cách thành phố",
         province: "Đà Lạt",
@@ -61,7 +60,7 @@ class index extends Component {
           "Đà Lạt là một địa điểm thu hút rất nhiều khách du lịch, nổi tiếng với bãi biển xinh đẹp, làn nước trong vắt. Xen kẽ sự hiện đại của thành phố chính là những sự yên bình, mát mẻ của biển cả, đồng thời cũng là nơi được đánh giá có vẻ đẹp cuốn hút khách du lịch nhất Việt Nam.",
       },
       {
-        id: 5,
+        ID: 5,
         name: "Gia Lai",
         address: "Gia Lai nằm ở 30km cách thành phố",
         province: "Gia Lai",
@@ -72,7 +71,7 @@ class index extends Component {
           "Gia Lai là một địa điểm thu hút rất nhiều khách du lịch, nổi tiếng với bãi biển xinh đẹp, làn nước trong vắt. Xen kẽ sự hiện đại của thành phố chính là những sự yên bình, mát mẻ của biển cả, đồng thời cũng là nơi được đánh giá có vẻ đẹp cuốn hút khách du lịch nhất Việt Nam.",
       },
       {
-        id: 6,
+        ID: 6,
         name: "Đồng Nai",
         address: "Đồng nai nằm ở 30km cách thành phố",
         province: "Đồng nai",
@@ -83,7 +82,7 @@ class index extends Component {
           "Đồng Nai là một địa điểm thu hút rất nhiều khách du lịch, nổi tiếng với bãi biển xinh đẹp, làn nước trong vắt. Xen kẽ sự hiện đại của thành phố chính là những sự yên bình, mát mẻ của biển cả, đồng thời cũng là nơi được đánh giá có vẻ đẹp cuốn hút khách du lịch nhất Việt Nam.",
       },
       {
-        id: 7,
+        ID: 7,
         name: "Đà Nẵng",
         address: "Đà Nẵng nằm ở 30km cách thành phố",
         province: "Đà Nẵng",

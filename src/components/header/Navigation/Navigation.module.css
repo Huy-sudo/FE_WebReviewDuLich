@@ -48,7 +48,7 @@ nav a:hover, .login-signup a:hover {
   transition-timing-function: ease-out;
 }
 
-.selected:active {
+.selected {
   color: red;
 }
 

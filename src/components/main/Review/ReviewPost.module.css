@@ -51,13 +51,19 @@
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.image-wrapper button {
-    padding: 20px;
+.image-wrapper a {
+    padding: 10px;
     font-size: 20px;
     margin: auto;
     border: 1px solid #BDCEFC;
-    background-color: aqua;
-    font-weight: bold;
+    background-color: rgb(27, 106, 253);
+    color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 1, 1, 0.2, 0.5 rgb(0, 18, 77);
+}
+
+.image-wrapper a:hover {
+    background-color: rgb(0, 0, 148);
 }
 
 .placename, .rating {

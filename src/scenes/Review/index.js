@@ -8,6 +8,7 @@ import { Component } from "react";
 import queryString from "query-string";
 import classes from "./Review.module.css";
 import FilterTime from "../../components/main/Review/FilterTime";
+import { Link } from "react-router-dom";
 class index extends Component {
   constructor(props) {
     super(props);
@@ -44,8 +45,8 @@ class index extends Component {
     return (
       <Layout>
         <div className={classes["filter-wrapper"]}>
-        
         <FilterCity onGetCity={this.getCity} />
+        <Link to="/newpost" className={classes.newpost}>Đăng bài</Link>
         <FilterTime onGetTime={this.getTime}/>
         </div>
         <ReviewPost data={data} />

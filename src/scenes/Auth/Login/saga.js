@@ -14,6 +14,8 @@ function* getListSaga(action) {
     if (response.status) {
       yield all([put({ type: TYPE.LOGIN.SUCCESS, ...response })]);
       Cookies.set("web_token", response.access_token);
+      let param = {email: params.email};
+      yield put({type: TYPE.VERIFY.REQUEST, param})
       yield put(push("/home"));
     } else {
       yield put({ type: TYPE.LOGIN.ERROR, error: response });
@@ -24,9 +26,9 @@ function* getListSaga(action) {
 }
 function* verifySaga(action) {
   try {
-    const params = {};
-    const response = yield call(api.verify, params);
-    if (response.status && response.data?.id > 0) {
+    const { param } = action;
+    const response = yield call(api.verify, param);
+    if (response.status && response.data[0]?.id > 0) {
       yield all([put({ type: TYPE.VERIFY.SUCCESS, ...response })]);
     } else {
       Cookies.set("web_token", "");

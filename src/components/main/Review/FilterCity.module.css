@@ -1,8 +1,12 @@
 .filter-city {
     width: 250px;
-    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .option {
     font-size: 20px;
+    cursor: pointer;
 }

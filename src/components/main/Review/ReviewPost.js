@@ -17,8 +17,6 @@ function Review(props) {
       created_at: timestampConverter(x.created_at)
     }
   })
-  
-
 
   console.log(data);
   return (
