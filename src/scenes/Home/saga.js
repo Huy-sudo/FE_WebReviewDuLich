@@ -7,17 +7,17 @@ function* getListSaga(action) {
     const { params } = action;
     const response = yield call(api.getList, params);
     if (response.status) {
-      yield all([put({ type: TYPE.CITY.SUCCESS, ...response })]);
+      yield all([put({ type: TYPE.GETCITYHOME.SUCCESS, ...response })]);
     } else {
-      yield put({ type: TYPE.CITY.ERROR, error: response });
+      yield put({ type: TYPE.GETCITYHOME.ERROR, error: response });
     }
   } catch (error) {
-    yield all([put({ type: TYPE.CITY.ERROR, error })]);
+    yield all([put({ type: TYPE.GETCITYHOME.ERROR, error })]);
   }
 }
 
 function* watcher() {
-  yield all([takeLatest(TYPE.CITY.REQUEST, getListSaga)]);
+  yield all([takeLatest(TYPE.GETCITYHOME.REQUEST, getListSaga)]);
 }
 
 export default watcher;

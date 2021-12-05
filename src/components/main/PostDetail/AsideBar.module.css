@@ -2,7 +2,7 @@
 .asidebar-container {
     float: right;
     background-color: #ffffffdc;
-    min-width: 500px;
+    min-width: 450px;
     position: relative;
     top: 120px;
     border: 1px solid #a5a5a5;
@@ -16,4 +16,23 @@
     padding: 16px;
     margin-bottom: 10px;
     border-radius: 10px;
+    border: 1px solid #a5a5a5;
+}
+
+.item-wrapper a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.author {
+    text-align: left;
+    font-size: 18px;
+    margin: 0px 0px 0px 20px;
 }

@@ -1,8 +1,8 @@
 export const action_type = {
-    CITY: {
-        REQUEST: "CITY.REQUEST",
-        SUCCESS: "CITY.SUCCESS",
-        ERROR: "CITY.ERROR"
+    GETCITYHOME: {
+        REQUEST: "GETCITYHOME.REQUEST",
+        SUCCESS: "GETCITYHOME.SUCCESS",
+        ERROR: "GETCITYHOME.ERROR"
     },
 
 }
@@ -10,7 +10,7 @@ export const action_type = {
 export function getList (params)
 {
     return {
-        type: action_type.CITY.REQUEST,
+        type: action_type.GETCITYHOME.REQUEST,
         params
     }
 }

@@ -13,7 +13,7 @@ class index extends Component {
     let params = {
       email: email.toString()
     }
-    this.props.getListUser(params);
+    //this.props.getListUser(params);
   };
 
   render() {

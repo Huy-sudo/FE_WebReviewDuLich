@@ -1,13 +1,13 @@
 import Admin from "../scenes/Admin";
-import City from "../scenes/Admin/City"
-import Review from "../scenes/Admin/Review"
-import Place from "../scenes/Admin/Place"
-import User from "../scenes/Admin/User"
-import Home from "./Home"
-import ReviewPage from "../scenes/Review/index"
-import Chart from "../scenes/Chart/index"
-import PostDetail from "../scenes/PostDetail/index"
-
+import City from "../scenes/Admin/City";
+import Review from "../scenes/Admin/Review";
+import Place from "../scenes/Admin/Place";
+import User from "../scenes/Admin/User";
+import Home from "./Home";
+import ReviewPage from "../scenes/Review/index";
+import Chart from "../scenes/Chart/index";
+import PostDetail from "../scenes/PostDetail/index";
+import NewPost from "../scenes/NewPost/index";
 export default [
     {
         path: '/admin',
@@ -44,6 +44,10 @@ export default [
     {
         path: "/postdetail",
         component: PostDetail
+    },
+    {
+        path: "/newpost",
+        component: NewPost
     }
 
 ]
