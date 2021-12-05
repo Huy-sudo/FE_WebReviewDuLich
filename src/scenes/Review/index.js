@@ -26,6 +26,8 @@ class index extends Component {
     let params = {}
     this.props.getList(params);
     console.log(this.props)
+
+    this.props.getList(selectedCity);
     this.props.history.replace(
       window.location.pathname +
         "?" +

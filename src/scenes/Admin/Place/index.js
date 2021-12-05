@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import FormFilter from './components/FormFilter'
 import Layout from '../Layout/layout'
 import DataTable from './components/DataTable'
-// import FormCreatePlace from './components/FormCreatePlace'
+import FormCreatePlace from './components/FormCreatePlace'
 import { getList, createPlace, updatePlace, deletePlace, getListCity } from './action'
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,10 +27,11 @@ class index extends Component {
     handleSubmitFilter = ({  ...values }) => {
         let params = {
             ...values,
-            status:1
+            isReal: 0
         }
         this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
         this.props.getList(params)
+        console.log(this.props.places.data);
     }
 
     handleShowForm = (value) => {
@@ -57,8 +58,16 @@ class index extends Component {
         this.props.deletePlace(value)
     }
 
+    updatePlace = (value) => {
+        value = {
+            ...value,
+            isReal: 1
+        }
+        this.props.updatePlace(value)
+    }
+
     render() {
-        const { places } = this.props
+        const { places, cities } = this.props
         const { initialValue, showForm } = this.state
         return (
             <div>
@@ -76,7 +85,7 @@ class index extends Component {
                             onSubmit={this.updatePlace}
                             onDelete={this.deletePlace}
                         />
-                        {/* <Modal
+                        <Modal
                             title="Tạo địa điểm"
                             visible={showForm}
                             closable={false}
@@ -88,11 +97,10 @@ class index extends Component {
                                 keyboard={true}
                                 maskClosable={true}
                                 onCancel={() => this.handleShowForm(false)}
-                                city={city.data}
                                 onSubmit={this.handleCreatePlace}
                                 handleShowForm={this.handleShowForm}
                             />
-                        </Modal> */}
+                        </Modal>
                     {/* </Spin> */}
                 </Layout>
             </div>
@@ -101,8 +109,8 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    places: state.Places,
-    city: state.City
+    places: state.place,
+    cities: state.city
 })
 
 const mapDispatchToProps = dispatch => ({

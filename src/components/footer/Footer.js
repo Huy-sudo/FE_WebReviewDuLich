@@ -6,7 +6,7 @@ import ContactUs from "./ContactUs";
 import HelpSection from "./HelpSection";
 
 function FooterContent() {
-    return <>
+    return <div className={classes.container}>
         <div className={classes.logo} >
             <img className={classes.imglogo}  alt=""/>
             Revigo Logo
@@ -14,7 +14,7 @@ function FooterContent() {
         <SocialMedia className={classes["social-media"]}/>
         <ContactUs />
         <HelpSection />
-    </>
+    </div>
 }
 
 function Footer() {

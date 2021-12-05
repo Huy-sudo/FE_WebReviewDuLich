@@ -13,11 +13,8 @@ class index extends Component {
     let params = {
       email: email.toString()
     }
-    //this.props.getListUser(params);
-  };
-
+    setTimeout(() => {  this.props.getListUser(params) }, 5000);  };
   render() {
-    const { data } = this.props;
     return (
       <Layout>
         <LoginForm onLogin={this.getLoginData} />
