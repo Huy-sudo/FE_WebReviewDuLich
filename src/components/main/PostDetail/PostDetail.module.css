@@ -15,7 +15,7 @@
     margin: 0px 10px 10px 10px;
     padding: 30px 50px;
     font-family: "Open Sans";
-    border: 1px solid #9c9c9c;
+    border: 1px solid #353535;
 }
 
 .post-wrapper p {
@@ -36,7 +36,7 @@
 }
 
 .rating {
-    font-size: 22px;
+    font-size: 26px;
 }
 
 article p {
@@ -51,4 +51,20 @@ article p {
     border-radius: 5px;
     margin: 20px auto;
     transform: scale(0.8);
+}
+
+.focus-mode {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    position: absolute;
+    right: 100px;
+    top: 20px;
+}
+
+.focus {
+    border-radius: 10px;
+    padding: 0px 20px;
+    font-weight: bold;
+    background-color: aqua;
 }

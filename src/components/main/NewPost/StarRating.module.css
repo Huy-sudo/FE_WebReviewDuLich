@@ -1,0 +1,12 @@
+.rating-wrapper {
+    margin-left: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color .5ms;
+}

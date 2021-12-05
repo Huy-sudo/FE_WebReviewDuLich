@@ -7,8 +7,8 @@ section.container {
 .post-chart-wrapper {
     display: flex;
     flex-direction: row;
-    background-color: #A05EFF;
-    margin: 22px auto;
+    background-color: #90C07C;
+    margin: 44px auto;
     margin-bottom: 0px;
     max-width: 1000px;
     border-radius: 15px;
@@ -44,8 +44,10 @@ section.container {
 }
 
 .name {
-    margin: 0px;
+    margin: 15px;
     text-align: left;
+    font-weight: 700;
+    opacity: 98%;
 }
 
 .arrow {
@@ -57,13 +59,18 @@ section.container {
 }
 
 .name-post{
-    margin: 9px auto;
-    font-size: 45px;
-    font-weight: 700;
-    color: darkorchid;
+    margin: 13px auto;
+    font-size: 41px;
+    font-weight: 600;
+    color: black;
 }
 
 .name-place{
     font-size: 28px;
     font-weight: 700;
+    color: #90C07C;
+}
+
+.rightbutton{
+    color: coral;
 }

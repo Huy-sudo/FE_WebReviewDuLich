@@ -11,7 +11,7 @@ class index extends Component {
   componentDidMount() {
     let params = {};
     this.props.getList(params);
-    console.log(this.props.cities)
+    console.log(this.props)
   }
   render() {
     const cities = this.props;

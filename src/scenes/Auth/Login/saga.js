@@ -14,8 +14,7 @@ function* getListSaga(action) {
     if (response.status) {
       yield all([put({ type: TYPE.LOGIN.SUCCESS, ...response })]);
       Cookies.set("web_token", response.access_token);
-      //yield put(push("/home"));
-      //   yield put({type: TYPE.VERIFY.REQUEST,})
+      yield put(push("/home"));
     } else {
       yield put({ type: TYPE.LOGIN.ERROR, error: response });
     }
@@ -46,7 +45,11 @@ function* getListUserSaga(action) {
       const response = yield call(apiuser.getList, params);
       if (response.status) {
         yield all([put({ type: TYPE.USER.SUCCESS, ...response })]);
+<<<<<<< HEAD
               yield put(push("/home"));
+=======
+        
+>>>>>>> e4d57b25f909d0a1129ea111d82e415ec55a9e2a
       } else {
         yield put({ type: TYPE.USER.ERROR, error: response });
       }

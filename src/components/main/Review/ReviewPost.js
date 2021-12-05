@@ -11,8 +11,22 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 
+
 function Review(props) {
   document.getElementById("root").className = classes.background;
+  function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+    return time;
+  }
+
   return (
     <List
       className={classes.container}
@@ -28,14 +42,14 @@ function Review(props) {
       renderItem={(item) => (
         <List.Item
           className={classes["content-wrapper"]}
-          key={item.id}
+          key={item?.id}
           extra={
             <div className={classes["image-wrapper"]}>
               <img
                 className={classes.image}
                 width={272}
-                alt={`${item.placename}`}
-                src={`${item.src}`}
+                alt={`${item?.place?.name}`}
+                src={`${item?.picture}`}
               />{" "}
               <Button>Xem thêm</Button>
             </div>
@@ -44,14 +58,14 @@ function Review(props) {
           <List.Item.Meta
             title={
               <Link className={classes["post-name"]} to="/home">
-                {item.postname}
+                {item.name}
               </Link>
             }
             description={
               <div>
                 <p className={classes.placename}>
                   Địa điểm:{" "}
-                  <span style={{ fontWeight: "bold" }}>{item.placename}</span>
+                  <span style={{ fontWeight: "bold" }}>{item?.place?.name}</span>
                 </p>
                 <p className={classes.rating}>
                   Rating:{" "}
@@ -62,7 +76,7 @@ function Review(props) {
                       fontSize: "24px",
                     }}
                   >
-                    {item.rating}
+                    {item.rate}
                   </span>
                 </p>
               </div>
@@ -70,14 +84,14 @@ function Review(props) {
           />
           <div className={classes["info-wrapper"]}>
             <p className={classes["post-info"]}>
-              Tác giả: <span style={{fontStyle: "italic"}}>{item.author}</span>{" "}
+              Tác giả: <span style={{fontStyle: "italic"}}>{item?.user?.name}</span>{" "}
             </p>
             <p className={classes["post-info"]}>
-              Ngày đăng: <span>{item.date}</span>{" "}
+              Ngày đăng: <span>{timeConverter(item?.created_at)}</span>{" "}
             </p>
             <p className={classes["post-info"]}>
               {" "}
-              Lượt xem: <span>{item.view}</span>
+              Lượt xem: <span>{item?.views}</span>
             </p>
           </div>
         </List.Item>

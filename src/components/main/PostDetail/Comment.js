@@ -1,8 +1,6 @@
-import { classExpression } from "@babel/types";
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Comment.module.css";
 import { Link } from "react-router-dom";
-import Button from "../../helpers/Button";
 
 function Comment() {
   const data = [
@@ -67,15 +65,24 @@ function Comment() {
       date: "01/12/2021",
     },
   ];
+  
+  const [comment, setComment] = useState('');
+  function commentChangeHandler(event) {
+    setComment(event.target.value);
+  }
+  function submitHandler() {
+    if (comment.trim().length > 0) {
 
+    }
+  }
   return (
     <section className={classes["comment-container"]}>
       <h2>Bình luận</h2>
-      <form className={classes.comment}>
+      <form className={classes.comment} onSubmit={submitHandler}>
         <div className={classes["user-avatar"]}>Đức</div>
         <div className={classes["input-wrapper"]}>
           <label htmlFor="comment">Nội dung: </label>
-          <input id="comment" type="text"></input>
+          <input id="comment" type="text" onChange={commentChangeHandler}></input>
           <p>
             <span style={{ fontWeight: "bold", color: "red" }}>Lưu ý</span>: Hãy
             bình luận mang tính xây dựng, góp ý. Mọi nội dung không phù hợp với{" "}

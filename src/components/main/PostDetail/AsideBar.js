@@ -1,6 +1,6 @@
-import { classExpression } from "@babel/types";
 import React from "react";
 import classes from "./AsideBar.module.css";
+import { Link } from "react-router-dom";
 
 function AsideBar() {
   const dummy_data = [
@@ -72,25 +72,25 @@ function AsideBar() {
   return (
     <aside className={classes["asidebar-container"]}>
       <h2>Xem thêm</h2>
-        {dummy_data.map((post) => {
-          return (
-            <div className={classes["item-wrapper"]} key={post.id}>
-              <div>
-                <h3>{post.postname}</h3>
+      {dummy_data.map((post) => {
+        return (
+          <div className={classes["item-wrapper"]} key={post.id}>
+            <div>
+              <h3><Link to="./">{post.postname}</Link></h3>
+              <p className={classes.author}><em>Tác giả: {post.author}</em></p>
+              <div className={classes.info}>
                 <p>{post.placename}</p>
-                <div>
-                  <p>Tác giả: {post.author}</p>
-                  <p>
-                    Đánh giá:
-                    <span style={{ color: "#FFBE0D", fontWeight: "bold" }}>
-                      {post.rating}
-                    </span>
-                  </p>
-                </div>
+                <p >
+                  Đánh giá:{" "}
+                  <span style={{ color: "#c28e00", fontWeight: "bold", fontSize: "22px" }}>
+                    {post.rating}
+                  </span>
+                </p>
               </div>
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
     </aside>
   );
 }
