@@ -17,6 +17,7 @@ class index extends Component {
         this.state = {
             showForm: false,
             initial_filter_values: query_params,
+            idCity: 0
         }
     }
 
@@ -30,7 +31,6 @@ class index extends Component {
         }
         this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
         this.props.getList(params)
-        console.log(this.props);
     }
 
     handleShowForm = (value) => {
@@ -42,19 +42,18 @@ class index extends Component {
     }
 
     handleUpdateCity = (value) => {
-        this.props.updateCity(value)
+        let id = this.state.idCity;
         this.setState({ showForm: false })
+        this.props.updateCity(id, value)
     }
 
     openModal = (values) => {
         this.handleShowForm(true);
-
-        // this.idCity = values.id;
+        this.state.idCity = values;
     }
 
     render() {
-        const { cities } = this.props
-        const { initialValue, showForm, values, idCity } = this.state
+        const { initialValue, showForm, values, idCity } = this.state;
 
         return (
             <div>
@@ -66,8 +65,8 @@ class index extends Component {
                         onSubmit={this.handleSubmitFilter}
                     />
                     <DataTable
-                        dataSource={cities.data || []}
-                        loading={cities.loading}
+                        dataSource={this.props.city.data || []}
+                        loading={this.props.city.loading}
                         updateCity={this.openModal}
                     />
                     <Modal
@@ -77,15 +76,15 @@ class index extends Component {
                         onCancel={this.handleCloseModal}
                         footer={null}
                     >
-                        {/* <FormUpdateCity
+                        <FormUpdateCity
                             destroyOnClose={true}
                             keyboard={true}
                             maskClosable={true}
                             onCancel={() => this.handleShowForm(false)}
-                            city={cities.data}
-                            // onSubmit={this.handleUpdateCity(this.idCity)}
+                            city={this.props.city.data}
+                            onSubmit={this.handleUpdateCity}
                             handleShowForm={this.handleShowForm}
-                        /> */}
+                        />
                     </Modal>
                 </Layout>
             </div>
@@ -94,7 +93,7 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    cities: state.city
+    city: state.city
 })
 
 const mapDispatchToProps = dispatch => ({

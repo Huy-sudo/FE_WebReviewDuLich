@@ -15,7 +15,7 @@ import {
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-class SiderDemo extends React.Component {
+class index extends React.Component {
   state = {
     collapsed: false,
   };
@@ -46,16 +46,18 @@ class SiderDemo extends React.Component {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>    
-          </Content>
-        </Layout>
+        <Content style={{
+                        width: '100%',
+                        minHeight: '100vh'
+                    }}>
+                        {this.props.children}
+                    </Content>
+
       </Layout>
     );
   }
 }
 
-export default SiderDemo;
+export default index;
 
 

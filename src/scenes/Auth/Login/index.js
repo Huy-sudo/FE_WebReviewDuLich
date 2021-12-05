@@ -5,7 +5,7 @@ import LoginForm from "../../../components/main/Authentication/Login/LoginForm";
 import { login, getListUser } from "./action";
 
 class index extends Component {
-  componentDidMount = () => {};
+  componentDidMount = () => { };
 
   getLoginData = (email, password) => {
     let userlogin = { email: email, password: password };
@@ -13,7 +13,8 @@ class index extends Component {
     let params = {
       email: email.toString()
     }
-    setTimeout(() => {  this.props.getListUser(params) }, 5000);  };
+    setTimeout(() => { this.props.getListUser(params) }, 5000);
+  };
   render() {
     return (
       <Layout>

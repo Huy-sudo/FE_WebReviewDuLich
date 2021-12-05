@@ -9,11 +9,18 @@ import Cookies from "js-cookie";
 import router from "./routes";
 
 class App extends Component {
+<<<<<<< HEAD
+  componentDidMount=()=>{
+    const token = Cookies.get('web_token')
+      if(!token) this.props.history.push('/login')
+  }
+=======
   componentDidMount = () => {
 
     const token = Cookies.get("web_token");
     if (!token) this.props.history.push("/login");
   };
+>>>>>>> e4d57b25f909d0a1129ea111d82e415ec55a9e2a
   render() {
     let key = 1;
     return (
