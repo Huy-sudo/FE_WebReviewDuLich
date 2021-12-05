@@ -67,7 +67,7 @@ const DataTable = ({ dataSource, loading, updateCity }) => {
       key: 'action',
       render: (text, record) => (
         <Space >
-          <button onClick={() => onSubmit(record?.id)} className="btn btn-sm btn-primary">
+          <button onClick={() => onSubmit(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Update City">
               <span className="px-2">
                 <FontAwesomeIcon icon={faEdit} />

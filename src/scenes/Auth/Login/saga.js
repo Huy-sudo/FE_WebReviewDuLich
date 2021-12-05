@@ -46,6 +46,7 @@ function* getListUserSaga(action) {
       const response = yield call(apiuser.getList, params);
       if (response.status) {
         yield all([put({ type: TYPE.USER.SUCCESS, ...response })]);
+              yield put(push("/home"));
       } else {
         yield put({ type: TYPE.USER.ERROR, error: response });
       }

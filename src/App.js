@@ -10,10 +10,8 @@ import router from './routes'
 
 class App extends Component {
   componentDidMount=()=>{
-    const url = window.location.pathname;
     const token = Cookies.get('web_token')
       if(!token) this.props.history.push('/login')
-      else this.props.verify()
   }
   render() {
     let key = 1
