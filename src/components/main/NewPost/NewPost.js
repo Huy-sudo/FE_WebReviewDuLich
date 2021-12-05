@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import classes from "./NewPost.module.css";
 import Input from "../../helpers/Input";
-import FilterCity from "../Review/FilterCity";
-import { style } from "dom-helpers";
 import CityPicker from "./CityPicker";
 import StarRating from "./StarRating";
 
