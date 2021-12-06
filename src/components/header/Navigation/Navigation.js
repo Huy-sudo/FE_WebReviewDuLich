@@ -5,8 +5,14 @@ import { Menu, Dropdown, Avatar } from "antd";
 import Button from "../../helpers/Button";
 import AuthenContext from "../../context/AuthenContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faUser, faSignOutAlt, faSortDown } from "@fortawesome/free-solid-svg-icons";
-import { Link, NavLink } from 'react-router-dom';
+import {
+  faSearch,
+  faUser,
+  faSignOutAlt,
+  faSortDown,
+  faCogs
+} from "@fortawesome/free-solid-svg-icons";
+import { Link, NavLink } from "react-router-dom";
 
 function NavigationContent(props) {
   const [userInput, setUserInput] = useState("");
@@ -23,7 +29,7 @@ function NavigationContent(props) {
   function signoutHandler() {
     context.isLoggedIn = false;
   }
-  
+
   return (
     <div className={classes["navbar-wrapper"]}>
       <nav className={classes.navbar}>
@@ -75,26 +81,47 @@ function NavigationContent(props) {
             overlay={
               <Menu className={classes["menu-wrapper"]}>
                 <Menu.Item key="0">
+                  <a href={"/profile"} className={classes.menu}>
+                    <FontAwesomeIcon
+                      style={{ width: 20 }}
+                      icon={faUser}
+                    />{" "}
+                    Trang cá nhân
+                  </a>
+                </Menu.Item>
+                <Menu.Item key="1">
                   <Link to={"/admin"} className={classes.menu}>
-                    <FontAwesomeIcon style={{ width: 20 }} icon={faUser} /> Quản
+                    <FontAwesomeIcon style={{ width: 20 }} icon={faCogs} /> Quản
                     lý
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="1">
-                  <a href={"/auth/logout"} className={classes.menu} onClick={signoutHandler}>
+                <Menu.Item key="2">
+                  <a
+                    href={"/auth/logout"}
+                    className={classes.menu}
+                    onClick={signoutHandler}
+                  >
                     <FontAwesomeIcon
                       style={{ width: 20 }}
                       icon={faSignOutAlt}
                     />{" "}
-                    Sign Out
+                    Đăng xuất
                   </a>
                 </Menu.Item>
               </Menu>
             }
           >
             <div>
-              <Avatar className={classes.dropdown} style={{backgroundColor: "#FFFFFFBE"}}>USER</Avatar>
-              <FontAwesomeIcon style={{ fontSize: 25, marginLeft: "5px" }} icon={faSortDown} />
+              <Avatar
+                className={classes.dropdown}
+                style={{ backgroundColor: "#FFFFFFBE" }}
+              >
+                USER
+              </Avatar>
+              <FontAwesomeIcon
+                style={{ fontSize: 25, marginLeft: "5px" }}
+                icon={faSortDown}
+              />
             </div>
           </Dropdown>
         </div>

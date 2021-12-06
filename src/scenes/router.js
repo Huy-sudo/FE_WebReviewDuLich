@@ -8,6 +8,8 @@ import ReviewPage from "../scenes/Review";
 import Chart from "../scenes/Chart/index";
 import PostDetail from "../scenes/PostDetail";
 import NewPost from "../scenes/NewPost";
+import Profile from "../scenes/Profile";
+
 export default [
     {
         path: '/admin',
@@ -48,6 +50,10 @@ export default [
     {
         path: "/newpost",
         component: NewPost
+    },
+    {
+        path: "/profile",
+        component: Profile
     }
 
 ]

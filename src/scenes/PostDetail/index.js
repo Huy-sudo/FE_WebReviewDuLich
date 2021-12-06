@@ -6,6 +6,7 @@ import classes from "./PostDetail.module.css";
 import { connect } from "react-redux";
 import { getDetail, getListComment, postComment } from "./action"
 import Comment from "../../components/main/PostDetail/Comment"
+import AuthenContext from "../../components/context/AuthenContext";
 class index extends Component {
 
   componentWillMount() {
@@ -16,7 +17,10 @@ class index extends Component {
 
   render() {
     return (
-      <Layout>
+      <AuthenContext.Consumer>
+      {ctx => {
+        ctx.isLoggedIn = true;
+        return (<Layout>
         <section className={classes.container}>
           <PostDetail data={this.props.review}/>
           <AsideBar className={classes.asidebar}/>
@@ -24,7 +28,10 @@ class index extends Component {
         <section className={classes.comment}>
         <Comment data={this.props.review.comment}/>
         </section>
-      </Layout>
+      </Layout>)
+      }}
+      
+      </AuthenContext.Consumer>
     );
   }
 }

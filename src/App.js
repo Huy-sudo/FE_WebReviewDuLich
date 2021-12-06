@@ -21,14 +21,14 @@ class App extends Component {
   };
   render() {
     let key = 1;
-    if (window.location.pathname.includes("/admin")) {
-      this.setState({styles: "admin-footer"});
-    } else {
-      this.setState({styles: "App"});
-    }
+    // if (window.location.pathname.includes("/admin")) {
+    //   this.setState({styles: "admin-footer"});
+    // } else {
+    //   this.setState({styles: "App"});
+    // }
      
     return (
-      <div className={this.state.styles}>
+      <div className="App">
         <ConnectedRouter history={this.props.history}>
           {/* <Layout {...this.props}> */}
           <Switch>

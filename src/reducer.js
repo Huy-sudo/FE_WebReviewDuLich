@@ -21,7 +21,7 @@ const Reducer = (history) => combineReducers({
     user,
     reviewPage,
     home,
-    postdetail
+    postdetail,
   })
   
 export default Reducer
