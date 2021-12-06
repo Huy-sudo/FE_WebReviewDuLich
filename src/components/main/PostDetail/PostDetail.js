@@ -8,7 +8,6 @@ function PostDetail(props) {
   // }
 
   // let post = props.data;
-  console.log(props.data);
   document.getElementById("root").className = classes.postbackground;
   return (
     <div className={classes["post-wrapper"]}>
@@ -35,7 +34,7 @@ function PostDetail(props) {
         <p>Địa điểm: {props.data?.place?.name}</p>
       </div>
       <article>
-        <p>{props.data?.content}/</p>
+        <p>{props.data?.content}</p>
         <img
           className={classes.image}
           src={props.data?.picture}

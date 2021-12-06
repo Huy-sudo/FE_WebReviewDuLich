@@ -14,7 +14,7 @@ import saga from "./saga";
 import AuthenContext from "./components/context/AuthenContext";
 import UserDetail from "./components/context/UserDetail";
 import ReviewContext from "./components/context/ReviewContext";
-
+import SearchQuery from "./components/context/SearchQuery";
 const history = createBrowserHistory({ basename: "/" });
 const sagaMiddleware = createSagaMiddleware();
 const composeSetup =
@@ -34,11 +34,13 @@ ReactDOM.render(
   <AuthenContext.Provider value={{ isLoggedIn: false }}>
     <UserDetail.Provider value={{ id: "", email: "", name: "" }}>
       <ReviewContext.Provider value={{ id: "" }}>
-        <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <App history={history} />
-          </ConnectedRouter>
-        </Provider>
+        <SearchQuery.Provider value={{ value: "" }}>
+          <Provider store={store}>
+            <ConnectedRouter history={history}>
+              <App history={history} />
+            </ConnectedRouter>
+          </Provider>
+        </SearchQuery.Provider>
       </ReviewContext.Provider>
     </UserDetail.Provider>
   </AuthenContext.Provider>,

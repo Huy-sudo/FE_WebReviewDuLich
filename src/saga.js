@@ -8,6 +8,8 @@ import placeSaga from "./scenes/Admin/Place/saga";
 import reviewPageSaga from "./scenes/Review/saga"
 import homeSaga from "./scenes/Home/saga";
 import postdetailSaga from "./scenes/PostDetail/saga"
+import searchSaga from "./scenes/SearchResult/saga";
+
 const Saga = function* (){
     yield all([
       loginSaga(),
@@ -18,7 +20,8 @@ const Saga = function* (){
       placeSaga(),
       reviewPageSaga(),
       homeSaga(),
-      postdetailSaga()
+      postdetailSaga(),
+      searchSaga()
 
     ])
   }

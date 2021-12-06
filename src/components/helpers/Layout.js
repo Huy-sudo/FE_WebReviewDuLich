@@ -1,14 +1,11 @@
 import Footer from "../footer/Footer";
 import Navigation from "../header/Navigation/Navigation";
+
 function Layout(props) {
-  
-  function getUserInput(value) {
-      props.getUserInputHandler(value);
-  }
 
   return (
     <>
-      <Navigation onGetUserInput={getUserInput}/>
+      <Navigation />
       <main>{props.children}</main>
       <Footer />
     </>

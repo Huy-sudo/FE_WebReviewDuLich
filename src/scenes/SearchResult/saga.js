@@ -16,21 +16,21 @@ function* getListSaga(action) {
           const response = yield call(api.getList, params)
           if(response.status){
                   yield all([
-                      put({type: TYPE.REVIEW.SUCCESS, ...response}),
+                      put({type: TYPE.SEARCH.SUCCESS, ...response}),
                   ])
           }else{
-            yield put({type: TYPE.REVIEW.ERROR, error: response})
+            yield put({type: TYPE.SEARCH.ERROR, error: response})
           }
       } catch (error) {
           yield all([
-              put({type: TYPE.REVIEW.ERROR, error})
+              put({type: TYPE.SEARCH.ERROR, error})
           ])
       }
   }
   
   function* watcher() {
       yield all([
-          takeLatest(TYPE.REVIEW.REQUEST, getListSaga)
+          takeLatest(TYPE.SEARCH.REQUEST, getListSaga)
           
       ])
   }

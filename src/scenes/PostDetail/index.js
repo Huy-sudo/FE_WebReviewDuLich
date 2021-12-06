@@ -8,6 +8,7 @@ import { getDetail, getListComment, postComment, getListPost } from "./action";
 import Comment from "../../components/main/PostDetail/Comment";
 import AuthenContext from "../../components/context/AuthenContext";
 import Cookies from "js-cookie";
+import { thisTypeAnnotation } from "@babel/types";
 class index extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +44,18 @@ class index extends Component {
     let result = new Date(t);
     return result;
   };
+
+  saveCommentHandler = (content) => {
+    let params = {
+      ID_review: this.props.match.params?.id,
+      ID_user: this.props.user[0].id,
+      content: content
+    }
+    console.log(this.props);
+    this.props.postComment(params);
+    this.props.getListComment({ID_review: this.props.match.params?.id})
+  }
+
   render() {
  
     
@@ -59,7 +72,7 @@ class index extends Component {
                 <AsideBar className={classes.asidebar} data={listpost} />
               </section>
               <section className={classes.comment}>
-                <Comment data={comment} />
+                <Comment data={comment} onSaveData={this.saveCommentHandler}/>
               </section>
             </Layout>
           );
@@ -71,6 +84,7 @@ class index extends Component {
 
 const mapStateToProps = (state) => ({
   review: state.postdetail,
+  user: state.login.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

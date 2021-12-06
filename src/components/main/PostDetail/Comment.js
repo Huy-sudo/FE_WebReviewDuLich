@@ -65,15 +65,28 @@ function Comment(props) {
   //     date: "01/12/2021",
   //   },
   // ];
-  let data = props.data;
+  function timestampConverter(timestamp) {
+    let t = timestamp.slice(0, 16);
+    let result = new Date(t);
+    return result;
+  }
+  let data = props.data.map(x => {
+    return {
+      ...x,
+      created_at: timestampConverter(x.created_at)
+    }
+  })
+  
   const [comment, setComment] = useState('');
   function commentChangeHandler(event) {
     setComment(event.target.value);
   }
-  function submitHandler() {
+  function submitHandler(event) {
+    event.preventDefault();
     if (comment.trim().length > 0) {
-
+      props.onSaveData(comment);
     }
+    setComment("");
   }
   return (
     <section className={classes["comment-container"]}>
@@ -82,7 +95,7 @@ function Comment(props) {
         <div className={classes["user-avatar"]}>Đức</div>
         <div className={classes["input-wrapper"]}>
           <label htmlFor="comment">Nội dung: </label>
-          <input id="comment" type="text" onChange={commentChangeHandler}></input>
+          <input id="comment" type="text" onChange={commentChangeHandler} value={comment}></input>
           <p>
             <span style={{ fontWeight: "bold", color: "red" }}>Lưu ý</span>: Hãy
             bình luận mang tính xây dựng, góp ý. Mọi nội dung không phù hợp với{" "}
@@ -100,7 +113,7 @@ function Comment(props) {
             <div className={classes["user-wrapper"]}>
               <p className={classes.username}>{comment.user.name}</p>
               <p>
-                <em>{comment.created_at}</em>
+                <em>{comment?.created_at.toLocaleDateString() + " " + comment?.created_at.toLocaleTimeString()}</em>
               </p>
             </div>
             <div className={classes["content-wrapper"]}>

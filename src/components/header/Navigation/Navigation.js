@@ -4,6 +4,7 @@ import classes from "./Navigation.module.css";
 import { Menu, Dropdown, Avatar } from "antd";
 import Button from "../../helpers/Button";
 import AuthenContext from "../../context/AuthenContext";
+import SearchQuery from "../../context/SearchQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -13,19 +14,19 @@ import {
   faCogs,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
-import axios from "axios";
 import Cookies from "js-cookie";
+import Logo from "../../../photo/logo.png"
 
 function NavigationContent(props) {
   const [userInput, setUserInput] = useState("");
   let context = useContext(AuthenContext);
-
+  let searchContext = useContext(SearchQuery);
   function searchChangeHandler(event) {
     setUserInput(event.target.value);
   }
 
   function searchHandler() {
-    props.onGetUserInput(userInput);
+    searchContext.value = userInput;
   }
 
   async function signoutHandler() {
@@ -37,8 +38,8 @@ function NavigationContent(props) {
 
   return (
     <div className={classes["navbar-wrapper"]}>
-      <nav className={classes.navbar}>
-        {/*<img source="" alt="Logo Revigo" /> {/*ảnh logo*/}
+      <nav className={classes.navbar} >
+        <img src={Logo} alt="Logo Revigo" className={classes.logo}/>
         <div className={classes["middle-bar"]}>
           <NavLink activeClassName={classes.selected} to="/home">
             Trang chủ
@@ -65,7 +66,7 @@ function NavigationContent(props) {
             onClick={searchHandler}
             type="submit"
           >
-            <Link to="/results">
+            <Link to="/search">
               <FontAwesomeIcon icon={faSearch}>search</FontAwesomeIcon>
             </Link>
           </Button>

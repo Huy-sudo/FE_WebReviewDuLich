@@ -7,17 +7,18 @@ const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case type.REVIEW.REQUEST:
+        case type.SEARCH.REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case type.REVIEW.SUCCESS:
+        case type.SEARCH.SUCCESS:
             return {
                 ...state,
+                data: action.data,
                 loading: false,
             }
-        case type.REVIEW.ERROR:
+        case type.SEARCH.ERROR:
             return {
                 ...state,
                 loading: false,
