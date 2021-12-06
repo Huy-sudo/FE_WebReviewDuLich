@@ -9,7 +9,7 @@ import place from "./scenes/Admin/Place/reducer";
 import user from "./scenes/Admin/User/reducer";
 import reviewPage from "./scenes/Review/reducer"
 import home from "./scenes/Home/reducer";
-
+import postdetail from './scenes/PostDetail/reducer';
 const Reducer = (history) => combineReducers({    
     form: formReducer,
     router: connectRouter(history),
@@ -20,7 +20,8 @@ const Reducer = (history) => combineReducers({
     place,
     user,
     reviewPage,
-    home
+    home,
+    postdetail
   })
   
 export default Reducer

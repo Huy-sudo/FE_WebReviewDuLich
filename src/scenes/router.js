@@ -4,10 +4,10 @@ import Review from "../scenes/Admin/Review";
 import Place from "../scenes/Admin/Place";
 import User from "../scenes/Admin/User";
 import Home from "./Home";
-import ReviewPage from "../scenes/Review/index";
+import ReviewPage from "../scenes/Review";
 import Chart from "../scenes/Chart/index";
-import PostDetail from "../scenes/PostDetail/index";
-import NewPost from "../scenes/NewPost/index";
+import PostDetail from "../scenes/PostDetail";
+import NewPost from "../scenes/NewPost";
 export default [
     {
         path: '/admin',
@@ -42,7 +42,7 @@ export default [
         component: Chart
     },
     {
-        path: "/postdetail",
+        path: "/postdetail/:id",
         component: PostDetail
     },
     {

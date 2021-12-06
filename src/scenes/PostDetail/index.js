@@ -4,19 +4,25 @@ import AsideBar from "../../components/main/PostDetail/AsideBar";
 import PostDetail from "../../components/main/PostDetail/PostDetail";
 import classes from "./PostDetail.module.css";
 import { connect } from "react-redux";
-import {getList } from "./action"
+import { getDetail, getListComment, postComment } from "./action"
 import Comment from "../../components/main/PostDetail/Comment"
 class index extends Component {
+
+  componentWillMount() {
+    this.props.getDetail(this.props.match.params?.id);
+    let params = { ID_review: this.props.match.params?.id}
+    this.props.getListComment(params);
+  }
 
   render() {
     return (
       <Layout>
         <section className={classes.container}>
-          <PostDetail />
+          <PostDetail data={this.props.review}/>
           <AsideBar className={classes.asidebar}/>
         </section>
         <section className={classes.comment}>
-        <Comment />
+        <Comment data={this.props.review.comment}/>
         </section>
       </Layout>
     );
@@ -25,13 +31,20 @@ class index extends Component {
 
 
 const mapStateToProps = (state) => ({
-  reviews: state.Reviews,
+  review: state.postdetail,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getList: (params) => {
-    dispatch(getList(params));
+  getDetail: (params) => {
+    dispatch(getDetail(params));
   },
+  getListComment: (params) => {
+    dispatch(getListComment(params));
+  },
+  postComment: (params) => {
+    dispatch(postComment(params));
+
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(index)

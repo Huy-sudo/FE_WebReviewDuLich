@@ -20,6 +20,10 @@ function NavigationContent(props) {
     props.onGetUserInput(userInput);
   }
 
+  function signoutHandler() {
+    context.isLoggedIn = false;
+  }
+  
   return (
     <div className={classes["navbar-wrapper"]}>
       <nav className={classes.navbar}>
@@ -34,7 +38,7 @@ function NavigationContent(props) {
           <NavLink activeClassName={classes.selected} to="/chart">
             Bảng xếp hạng
           </NavLink>
-          <NavLink activeClassName={classes.selected} to="/">
+          <NavLink activeClassName={classes.selected} to="/a">
             Liên hệ
           </NavLink>
           <input
@@ -77,7 +81,7 @@ function NavigationContent(props) {
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="1">
-                  <a href={"/auth/logout"} className={classes.menu}>
+                  <a href={"/auth/logout"} className={classes.menu} onClick={signoutHandler}>
                     <FontAwesomeIcon
                       style={{ width: 20 }}
                       icon={faSignOutAlt}

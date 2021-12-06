@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Select } from "antd";
-import axios from "axios";
+import React, { useState } from "react";
 import classes from "./FilterCity.module.css";
 
-const { Option } = Select;
 
 function FilterCity(props) {
   let [cities, setCities] = useState([]);
@@ -15,7 +12,7 @@ function FilterCity(props) {
   }
 
   return (
-      <Select
+      <select
         className={classes["filter-city"]}
         allowClear
         placeholder="Thành phố"
@@ -24,17 +21,17 @@ function FilterCity(props) {
         size="large"
         value={selectedCity}
       >
-        <Option className={classes.option} value="Tất cả" selected>
+        <option className={classes.option} value="Tất cả" selected>
           Tất cả
-        </Option>
+        </option>
         {cities.map((city) => {
           return (
-            <Option className={classes.option} key={city.id} value={city.name}>
+            <option className={classes.option} key={city.id} value={city.name}>
               {city.name}
-            </Option>
+            </option>
           );
         })}
-      </Select>
+      </select>
   );
 }
 

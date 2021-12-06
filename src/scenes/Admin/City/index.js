@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import queryString from 'query-string'
 import { createCity, getList, updateCity } from './action';
+import classes from "./index.module.css";
 class index extends Component {
     constructor(props) {
         super(props);
@@ -54,7 +55,6 @@ class index extends Component {
 
     render() {
         const { initialValue, showForm, values, idCity } = this.state;
-
         return (
             <div>
                 <Layout>

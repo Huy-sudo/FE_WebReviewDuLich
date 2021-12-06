@@ -7,17 +7,18 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case type.GETCITYHOME.REQUEST:
+    case type.GETPLACE.REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case type.GETCITYHOME.SUCCESS:
+    case type.GETPLACE.SUCCESS:
       return {
         ...state,
+        data: action.data,
         loading: false,
       };
-    case type.GETCITYHOME.ERROR:
+    case type.GETPLACE.ERROR:
       return {
         ...state,
         loading: false,

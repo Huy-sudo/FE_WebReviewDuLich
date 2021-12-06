@@ -13,6 +13,7 @@ import { createBrowserHistory } from "history";
 import saga from "./saga";
 import AuthenContext from "./components/context/AuthenContext";
 import UserDetail from "./components/context/UserDetail";
+import ReviewContext from "./components/context/ReviewContext";
 
 const history = createBrowserHistory({ basename: "/" });
 const sagaMiddleware = createSagaMiddleware();
@@ -32,11 +33,13 @@ sagaMiddleware.run(saga);
 ReactDOM.render(
   <AuthenContext.Provider value={{ isLoggedIn: false }}>
     <UserDetail.Provider value={{ id: "", email: "", name: "" }}>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <App history={history} />
-        </ConnectedRouter>
-      </Provider>
+      <ReviewContext.Provider value={{ id: "" }}>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <App history={history} />
+          </ConnectedRouter>
+        </Provider>
+      </ReviewContext.Provider>
     </UserDetail.Provider>
   </AuthenContext.Provider>,
   document.getElementById("root")

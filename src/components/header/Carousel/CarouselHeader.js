@@ -20,7 +20,7 @@ function CarouselHeader() {
         </p>
         <Button className={classes["welcome-more"]}>Khám phá ngay</Button>
       </div>
-      <Carousel>
+      <Carousel autoplay>
         <div>
           <img className={classes["carousel-img"]} src={GiaLai} alt="Gia Lai" />
         </div>
