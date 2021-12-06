@@ -1,20 +1,16 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import RenderInputText from '../../../share/components/RenderInputText'
-import RenderNumberAnt from '../../../share/components/RenderNumberAnt'
-import RenderSelect from '../../../share/components/RenderSelect'
-import RenderTextareaAnt from '../../../share/components/RenderTextareaAnt'
-import RenderDateTimePicker from '../../../share/components/RenderDateTimePicker'
+import RenderInputText from '../../../../share/components/RenderInputText'
+import RenderNumberAnt from '../../../../share/components/RenderNumberAnt'
+import RenderSelect from '../../../../share/components/RenderSelect'
+import RenderTextareaAnt from '../../../../share/components/RenderTextareaAnt'
+import RenderDateTimePicker from '../../../../share/components/RenderDateTimePicker'
 import { Switch } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons'
-import RenderNumberAnt from '../../../share/components/RenderNumberAnt'
-let ModalUpdateUser = props => {
-    const { handleSubmit, handleShowForm, onChangeAdmin } = props
 
-    const onChangeAdmin = (value) => {
-        onChangeAdmin(value)
-    }
+let ModalUpdateUser = props => {
+    const { handleSubmit, handleShowForm } = props
 
     return (
         <form onSubmit={handleSubmit}>
@@ -42,10 +38,6 @@ let ModalUpdateUser = props => {
                             component={RenderDateTimePicker}
                             placeholder='Ngày sinh'
                         />
-                    </div>
-                    <div className='col-12 mb-3 text-left' >
-                    <label className="font-weight-bold text-muted">Thiết lập quyền Admin: </label>
-                        <Switch defaultChecked onChangeAdmin={onChangeAdmin} />
                     </div>
                     <div className='col-12 text-center'>
                     <button className='btn btn-primary mr-3' type="submit"> <FontAwesomeIcon icon={faSave} /> Save</button>

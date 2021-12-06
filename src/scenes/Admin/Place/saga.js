@@ -32,7 +32,6 @@ function* getListCitySaga(action) {
 }
 
 function* getListSaga(action) {
-    console.log(123);
       try {
           const { params } = action
           const response = yield call(api.getList, params)
@@ -96,7 +95,7 @@ function* DeleteSaga(action) {
         if(response.status){
                 yield all([
                     put({type: TYPE.DELETE.SUCCESS, ...response}),
-                    put({type: TYPE.PLACE.REQUEST, params:{isReal:1}}),
+                    put({type: TYPE.PLACE.REQUEST, params:{isReal:0}}),
                 ])
         }else{
           yield put({type: TYPE.DELETE.ERROR, error: response})

@@ -2,7 +2,6 @@ import React from 'react';
 import { Table, Spin, Space, Tooltip } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faExclamation } from '@fortawesome/free-solid-svg-icons'
-import { deleteUser } from '../action';
 const DataTable = ({ dataSource, loading, updateUser, deleteUser }) => {
 
   const onSubmit = (values) => {
@@ -30,6 +29,14 @@ const DataTable = ({ dataSource, loading, updateUser, deleteUser }) => {
         </div>
     },
     {
+      title: 'Hình',
+      dataIndex: 'avatar',
+      key: 'avatar',
+      className: 'text-left',
+      render: (value, record) =>
+        <img src={value} height={50} width={50}></img>
+    },
+    {
       title: 'Email',
       dataIndex: 'email',
       key: 'email',
@@ -40,9 +47,19 @@ const DataTable = ({ dataSource, loading, updateUser, deleteUser }) => {
         </div>
     },
     {
-      title: 'Password',
-      dataIndex: 'password',
-      key: 'password',
+      title: 'Số điện thoại',
+      dataIndex: 'phone_number',
+      key: 'phone_number',
+      className: 'text-left',
+      render: (value, record) =>
+        <div>
+          <span> {value || ''} </span>
+        </div>
+    },
+    {
+      title: 'Ngày sinh',
+      dataIndex: 'date_of_birth',
+      key: 'date_of_birth',
       className: 'text-left',
       render: (value, record) =>
         <div>

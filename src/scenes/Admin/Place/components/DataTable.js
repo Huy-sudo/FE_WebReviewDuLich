@@ -34,7 +34,7 @@ const DataTable = ({ dataSource, loading, updatePlace, deletePlace }) => {
       key: 'picture',
       className: 'text-left',
       render: (value, record) =>
-        <img src={value}></img>
+        <img src={value} height={50} width={50}></img>
     },
     {
       title: 'Thành phố',
@@ -63,7 +63,7 @@ const DataTable = ({ dataSource, loading, updatePlace, deletePlace }) => {
       className: 'text-left',
       render: (value, record) =>
         <div>
-          <span> {value || ''} </span>
+           <span >{value == 1 ? 'Xác thực' : 'Chưa xác thực'}</span>
         </div>
     },
     {
@@ -71,14 +71,14 @@ const DataTable = ({ dataSource, loading, updatePlace, deletePlace }) => {
       key: 'action',
       render: (text, record) => (
         <Space >
-          <button onClick={() => onSubmit(record?.id)} className="btn btn-sm btn-primary">
+          <button onClick={() => onSubmit(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Cập nhật">
               <span className="px-2">
                 <FontAwesomeIcon icon={faEdit} />
               </span>
             </Tooltip>
           </button>
-          <button onClick={() => onDelete(record?.id)} className="btn btn-sm btn-primary">
+          <button onClick={() => onDelete(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Xóa">
               <span className="px-2">
                 <FontAwesomeIcon icon={faExclamation} />

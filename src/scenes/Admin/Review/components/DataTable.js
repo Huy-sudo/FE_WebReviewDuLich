@@ -73,14 +73,14 @@ const DataTable = ({ dataSource, loading, updateReview, deleteReview }) => {
       key: 'action',
       render: (text, record) => (
         <Space >
-          <button onClick={() => onUpdate(record?.id)} className="btn btn-sm btn-primary">
+          <button onClick={() => onUpdate(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Publish Review">
               <span className="px-2">
                 <FontAwesomeIcon icon={faCheckSquare} />
               </span>
             </Tooltip>
           </button>
-          <button onClick={() => onDelete(record?.id)} className="btn btn-sm btn-primary">
+          <button onClick={() => onDelete(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Delete Review">
               <span className="px-2">
                 <FontAwesomeIcon icon={faExclamation} />

@@ -81,7 +81,6 @@ class index extends Component {
                             keyboard={true}
                             maskClosable={true}
                             onCancel={() => this.handleShowForm(false)}
-                            city={this.props.city.data}
                             onSubmit={this.handleUpdateCity}
                             handleShowForm={this.handleShowForm}
                         />
