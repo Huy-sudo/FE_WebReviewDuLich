@@ -2,26 +2,19 @@ import React from "react";
 import classes from "./CityPicker.module.css";
 
 function CityPicker(props) {
-  let fakeCity = [
-    {
-      name: "Nha Trang",
-    },
-    {
-      name: "Đồng Nai",
-    },
-    {
-      name: "Hồ Chí Minh",
-    },
-    {
-      name: "Nha Trang",
-    },
-  ];
+
+  let city = props.data;
+  function cityChangeHandler(event) {
+    console.log(event.target.value);
+    props.onSaveData(event.target.value);
+  }
+
   return (
     <div className={classes.wrapper}>
       <label htmlFor="city" className={classes["label-city"]}>Chọn tỉnh/thành phố <span style={{color: "red"}}>*</span></label>
-      <select id="city" defaultValue="Tất cả" required className={classes.select}>
-        {fakeCity.map((city) => {
-          return <option value={city.name}>{city.name}</option>;
+      <select id="city" required className={classes.select} onChange={cityChangeHandler}>
+        {city.map((city) => {
+          return <option value={city.id}>{city.name}</option>;
         })}
       </select>
     </div>

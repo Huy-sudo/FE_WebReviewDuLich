@@ -4,38 +4,70 @@ import AsideBar from "../../components/main/PostDetail/AsideBar";
 import PostDetail from "../../components/main/PostDetail/PostDetail";
 import classes from "./PostDetail.module.css";
 import { connect } from "react-redux";
-import { getDetail, getListComment, postComment } from "./action"
-import Comment from "../../components/main/PostDetail/Comment"
+import { getDetail, getListComment, postComment, getListPost } from "./action";
+import Comment from "../../components/main/PostDetail/Comment";
 import AuthenContext from "../../components/context/AuthenContext";
+import Cookies from "js-cookie";
 class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state =  {
+      data: {},
+    }
+  };
 
   componentWillMount() {
+    const token = Cookies.get("web_token");
+    if (!token) this.props.history.push("/login");
     this.props.getDetail(this.props.match.params?.id);
-    let params = { ID_review: this.props.match.params?.id}
+    let params = { ID_review: this.props.match.params?.id };
     this.props.getListComment(params);
+    this.props.getListPost({});
+    setTimeout(() => {
+      let city = {
+        ...this.props.review.data,
+          created:
+          this.timestampConverter(
+            this.props.review.data.created_at
+          ).toLocaleDateString() +
+          " " +
+          this.timestampConverter(
+            this.props.review.data.created_at
+          ).toLocaleTimeString(),
+      };
+      this.setState({data: city});
+    }, 1500) 
   }
-
+  timestampConverter = (timestamp) => {
+    let t = timestamp.slice(0, 16);
+    let result = new Date(t);
+    return result;
+  };
   render() {
+ 
+    
+    let comment = this.props.review.comment;
+    let listpost = this.props.review.listpost;
     return (
       <AuthenContext.Consumer>
-      {ctx => {
-        ctx.isLoggedIn = true;
-        return (<Layout>
-        <section className={classes.container}>
-          <PostDetail data={this.props.review}/>
-          <AsideBar className={classes.asidebar}/>
-        </section>
-        <section className={classes.comment}>
-        <Comment data={this.props.review.comment}/>
-        </section>
-      </Layout>)
-      }}
-      
+        {(ctx) => {
+          ctx.isLoggedIn = true;
+          return (
+            <Layout>
+              <section className={classes.container}>
+                <PostDetail data={this.state.data} />
+                <AsideBar className={classes.asidebar} data={listpost} />
+              </section>
+              <section className={classes.comment}>
+                <Comment data={comment} />
+              </section>
+            </Layout>
+          );
+        }}
       </AuthenContext.Consumer>
     );
   }
 }
-
 
 const mapStateToProps = (state) => ({
   review: state.postdetail,
@@ -50,8 +82,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   postComment: (params) => {
     dispatch(postComment(params));
-
-  }
+  },
+  getListPost: (params) => {
+    dispatch(getListPost(params));
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(index)
+export default connect(mapStateToProps, mapDispatchToProps)(index);

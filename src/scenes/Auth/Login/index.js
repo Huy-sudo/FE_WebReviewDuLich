@@ -11,7 +11,6 @@ class index extends Component {
     super(props);
     this.state = {email: ''};
   }
-  componentDidMount = () => {};
 
   getLoginData = (email, password) => {
     let userlogin = { email: email, password: password };
@@ -20,7 +19,6 @@ class index extends Component {
   };
 
   render() {
-    
     return (
       <AuthenContext.Consumer>
         {(ctx) => {

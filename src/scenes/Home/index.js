@@ -6,15 +6,20 @@ import CarouselHeader from "../../components/header/Carousel/CarouselHeader";
 import AuthenContext from "../../components/context/AuthenContext";
 import { getList } from "./action";
 import { connect } from "react-redux";
+import Cookies from "js-cookie";
 class index extends Component {
-  
   componentDidMount() {
-    let params = { };
+    let params = {};
     this.props.getList(params);
+  }
+
+  componentWillMount = () => {
+    const token = Cookies.get("web_token");
+    if (!token) this.props.history.push("/login");
   }
   render() {
     const data = this.props.places.data;
-    console.log(data);
+
     // const dummyMovies = [
     //   {
     //     ID: 1,
@@ -113,6 +118,7 @@ class index extends Component {
 
 const mapStateToProps = (state) => ({
   places: state.home,
+  user: state.login.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

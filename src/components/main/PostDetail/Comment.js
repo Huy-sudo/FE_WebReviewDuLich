@@ -2,70 +2,70 @@ import React, { useState } from "react";
 import classes from "./Comment.module.css";
 import { Link } from "react-router-dom";
 
-function Comment() {
-  const data = [
-    {
-      id: "1",
-      user: "Đức Nguyễn",
-      comment: "Bài viết hay, chất lượng!",
-      date: "28/11/2021",
-    },
-    {
-      id: "2",
-      user: "Đức Nguyễn",
-      comment: "Bài viết hay, chất lượng!",
-      date: "29/11/2021",
-    },
-    {
-      id: "3",
-      user: "Đức Nguyễn",
-      comment: "Bài viết hay, chất lượng!",
-      date: "30/11/2021",
-    },
-    {
-      id: "4",
-      user: "Huy Hà",
-      comment:
-        "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
-      date: "01/12/2021",
-    },
-    {
-      id: "5",
-      user: "Huy Hà",
-      comment:
-        "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
-      date: "01/12/2021",
-    },
-    {
-      id: "6",
-      user: "Huy Hà",
-      comment:
-        "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
-      date: "01/12/2021",
-    },
-    {
-      id: "7",
-      user: "Huy Hà",
-      comment:
-        "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
-      date: "01/12/2021",
-    },
-    {
-      id: "8",
-      user: "Huy Hà",
-      comment:
-        "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
-      date: "01/12/2021",
-    },
-    {
-      id: "9",
-      user: "Huy Hà",
-      comment:
-        "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
-      date: "01/12/2021",
-    },
-  ];
-  
+function Comment(props) {
+  // const data = [
+  //   {
+  //     id: "1",
+  //     user: "Đức Nguyễn",
+  //     comment: "Bài viết hay, chất lượng!",
+  //     date: "28/11/2021",
+  //   },
+  //   {
+  //     id: "2",
+  //     user: "Đức Nguyễn",
+  //     comment: "Bài viết hay, chất lượng!",
+  //     date: "29/11/2021",
+  //   },
+  //   {
+  //     id: "3",
+  //     user: "Đức Nguyễn",
+  //     comment: "Bài viết hay, chất lượng!",
+  //     date: "30/11/2021",
+  //   },
+  //   {
+  //     id: "4",
+  //     user: "Huy Hà",
+  //     comment:
+  //       "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
+  //     date: "01/12/2021",
+  //   },
+  //   {
+  //     id: "5",
+  //     user: "Huy Hà",
+  //     comment:
+  //       "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
+  //     date: "01/12/2021",
+  //   },
+  //   {
+  //     id: "6",
+  //     user: "Huy Hà",
+  //     comment:
+  //       "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
+  //     date: "01/12/2021",
+  //   },
+  //   {
+  //     id: "7",
+  //     user: "Huy Hà",
+  //     comment:
+  //       "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
+  //     date: "01/12/2021",
+  //   },
+  //   {
+  //     id: "8",
+  //     user: "Huy Hà",
+  //     comment:
+  //       "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
+  //     date: "01/12/2021",
+  //   },
+  //   {
+  //     id: "9",
+  //     user: "Huy Hà",
+  //     comment:
+  //       "Bài viết hay, chất lượng, không biết là có cách nào để mình có thể liên hệ với chủ tus không nhỉ?",
+  //     date: "01/12/2021",
+  //   },
+  // ];
+  let data = props.data;
   const [comment, setComment] = useState('');
   function commentChangeHandler(event) {
     setComment(event.target.value);
@@ -93,18 +93,18 @@ function Comment() {
       </form>
       {data.map((comment) => {
         return (
-          <div className={classes["item-wrapper"]} key={comment.id}>
+          <div className={classes["item-wrapper"]} key={comment.ID}>
             <div className={classes["user-avatar"]}>
-              {comment.user.substring(0, 3).toUpperCase()}
+              {comment.user.name.substring(0, 3).toUpperCase()}
             </div>
             <div className={classes["user-wrapper"]}>
-              <p className={classes.username}>{comment.user}</p>
+              <p className={classes.username}>{comment.user.name}</p>
               <p>
-                <em>{comment.date}</em>
+                <em>{comment.created_at}</em>
               </p>
             </div>
             <div className={classes["content-wrapper"]}>
-              <p className={classes.content}>{comment.comment}</p>
+              <p className={classes.content}>{comment.content}</p>
             </div>
           </div>
         );

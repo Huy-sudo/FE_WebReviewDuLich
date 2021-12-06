@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount = () => {
     const token = Cookies.get("web_token");
     if (!token) this.props.history.push("/login");
-    //else this.props.verify();
+    else this.props.verify();
   };
   render() {
     let key = 1;

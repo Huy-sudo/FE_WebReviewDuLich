@@ -19,7 +19,7 @@ function MostReviewedPlacesChart(props) {
       <h1>Top 5 địa điểm được review nhiều nhất</h1>
       {places.map((place) => {
         return (
-          <div key={place.id} className={classes["place-content"]}>
+          <div key={place.ID} className={classes["place-content"]}>
             <p className={classes.rank}>{rank++}</p>
             <img
               className={classes.image}

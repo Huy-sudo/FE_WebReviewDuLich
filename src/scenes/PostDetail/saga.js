@@ -31,6 +31,21 @@ function* getListCommentSaga(action) {
   }
 }
 
+function* getListPostSaga(action) {
+  try {
+    const { params } = action;
+    const response = yield call(api.getList, params);
+    if (response.status) {
+      yield all([put({ type: TYPE.GETPOST.SUCCESS, ...response })]);
+    } else {
+      yield put({ type: TYPE.GETPOST.ERROR, error: response });
+    }
+  } catch (error) {
+    yield all([put({ type: TYPE.GETPOST.ERROR, error })]);
+  }
+}
+
+
 function* postCommentSaga(action) {
   try {
     const { params } = action;
@@ -49,6 +64,7 @@ function* watcher() {
     takeLatest(TYPE.POSTDETAIL.REQUEST, getDetailSaga),
     takeLatest(TYPE.GETCOMMENT.REQUEST, getListCommentSaga),
     takeLatest(TYPE.POSTCOMMENT.REQUEST, postCommentSaga),
+    takeLatest(TYPE.GETPOST.REQUEST, getListPostSaga),
   ]);
 }
 

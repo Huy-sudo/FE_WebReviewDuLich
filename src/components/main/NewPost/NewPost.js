@@ -10,6 +10,7 @@ function NewPost(props) {
   const [content, setContent] = useState("");
   const [imgsrc, setImgsrc] = useState("");
   const [rating, setRating] = useState(null);
+  const [city, setCity] = useState("");
 
   function postnameChangeHandler(event) {
     setPostname(event.target.value);
@@ -31,12 +32,17 @@ function NewPost(props) {
   }
 
   function submitHandler() {
-    props.onSaveData(postname, placename, content, rating, imgsrc);
+    // let params = {
+    //   name: postname,
+
+    // }
+    // props.postPost(params)
     setPostname("");
     setContent("");
     setPlacename("");
     setRating("");
     setImgsrc("");
+    setCity("");
   }
 
   document.getElementById("root").className = classes.background;
@@ -70,7 +76,7 @@ function NewPost(props) {
             onChange={imgsrcChangeHandler}
           />
         </div>
-        <CityPicker />
+        <CityPicker data={props.cityData} onSaveData={setCity} />
         <div>
           <label htmlFor="content">
             Nội dung <span style={{ color: "red" }}>*</span>

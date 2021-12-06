@@ -84,9 +84,10 @@ function Profile() {
         {unpublishedPost.map((post) => {
           return (
             <div>
-              <p>
+              <h3>
                 <strong>{post.postname}</strong>
-              </p>
+              </h3>
+              
             </div>
           );
         })}

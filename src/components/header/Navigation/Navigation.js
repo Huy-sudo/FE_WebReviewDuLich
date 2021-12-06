@@ -10,9 +10,11 @@ import {
   faUser,
   faSignOutAlt,
   faSortDown,
-  faCogs
+  faCogs,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function NavigationContent(props) {
   const [userInput, setUserInput] = useState("");
@@ -26,8 +28,11 @@ function NavigationContent(props) {
     props.onGetUserInput(userInput);
   }
 
-  function signoutHandler() {
+  async function signoutHandler() {
     context.isLoggedIn = false;
+    Cookies.set("web_token", "");
+    console.log(Cookies.get("web_token"));
+    window.location.pathname = "/login";
   }
 
   return (
@@ -82,10 +87,7 @@ function NavigationContent(props) {
               <Menu className={classes["menu-wrapper"]}>
                 <Menu.Item key="0">
                   <a href={"/profile"} className={classes.menu}>
-                    <FontAwesomeIcon
-                      style={{ width: 20 }}
-                      icon={faUser}
-                    />{" "}
+                    <FontAwesomeIcon style={{ width: 20 }} icon={faUser} />{" "}
                     Trang cá nhân
                   </a>
                 </Menu.Item>
@@ -96,11 +98,7 @@ function NavigationContent(props) {
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="2">
-                  <a
-                    href={"/auth/logout"}
-                    className={classes.menu}
-                    onClick={signoutHandler}
-                  >
+                  <a className={classes.menu} onClick={signoutHandler}>
                     <FontAwesomeIcon
                       style={{ width: 20 }}
                       icon={faSignOutAlt}

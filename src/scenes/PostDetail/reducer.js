@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   data: [],
   comment: [],
+  listpost: [],
 };
 
 function reducer(state = initialState, action) {
@@ -40,21 +41,37 @@ function reducer(state = initialState, action) {
         ...state,
         loading: false,
       };
-      case type.POSTCOMMENT.REQUEST:
-        return {
-            ...state,
-            loading: true
-        }
+    case type.POSTCOMMENT.REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
     case type.POSTCOMMENT.SUCCESS:
-        return {
-            ...state,
-            loading: false,
-        }
+      return {
+        ...state,
+        loading: false,
+      };
     case type.POSTCOMMENT.ERROR:
-        return {
-            ...state,
-            loading: false,
-        }
+      return {
+        ...state,
+        loading: false,
+      };
+    case type.GETPOST.REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case type.GETPOST.SUCCESS:
+      return {
+        ...state,
+        listpost: action.data,
+        loading: false,
+      };
+    case type.GETPOST.ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./FilterCity.module.css";
 
 
 function FilterCity(props) {
-  let [cities, setCities] = useState([]);
-  let [selectedCity, setSelectedCity] = useState("");
 
-  function selectedCityHandler(value) {
-    setSelectedCity(value);
-    props.onGetCity(selectedCity);
+  function selectedCityHandler(event) {
+    props.onGetCity(event.target.value);
   }
 
+  let cities = props.data;
   return (
       <select
         className={classes["filter-city"]}
-        allowClear
         placeholder="Thành phố"
-        defaultValue="Tất cả"
         onChange={selectedCityHandler}
         size="large"
-        value={selectedCity}
+        defaultValue=""
       >
-        <option className={classes.option} value="Tất cả" selected>
+        <option className={classes.option} value={""}>
           Tất cả
         </option>
         {cities.map((city) => {
           return (
-            <option className={classes.option} key={city.id} value={city.name}>
+            <option className={classes.option} key={city.ID} value={city.ID}>
               {city.name}
             </option>
           );

@@ -10,6 +10,7 @@ import classes from "./Review.module.css";
 import FilterTime from "../../components/main/Review/FilterTime";
 import { Link } from "react-router-dom";
 import AuthenContext from "../../components/context/AuthenContext";
+import Cookies from "js-cookie";
 class index extends Component {
   constructor(props) {
     super(props);
@@ -20,21 +21,20 @@ class index extends Component {
   }
 
   componentWillMount() {
+    const token = Cookies.get("web_token");
+    if (!token) this.props.history.push("/login");
     let params = {}
     this.props.getList(params);
     this.props.getListCity(params);
   }
 
   getCity = (selectedCity) => {
-    let params = {}
+    let params = {ID_city: selectedCity}
     this.props.getList(params);
-    console.log(this.props)
-
-    this.props.getList(selectedCity);
     this.props.history.replace(
       window.location.pathname +
         "?" +
-        this.state.initial_filter.stringify(selectedCity)
+        queryString.stringify(selectedCity)
     );
   };
 
@@ -44,13 +44,14 @@ class index extends Component {
 
   render() {
     const data = this.props.reviews.data;
+    const city = this.props.reviews.city;
     return (
       <AuthenContext.Consumer>
       {ctx => {
         ctx.isLoggedIn = true;
         return (<Layout>
         <div className={classes["filter-wrapper"]}>
-        <FilterCity onGetCity={this.getCity} />
+        <FilterCity onGetCity={this.getCity} data={city}/>
         <Link to="/newpost" className={classes.newpost}>Đăng bài</Link>
         <FilterTime onGetTime={this.getTime}/>
         </div>
@@ -64,7 +65,7 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  reviews: state.review
+  reviews: state.reviewPage
 });
 
 const mapDispatchToProps = (dispatch) => ({

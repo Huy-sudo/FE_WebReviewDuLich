@@ -16,6 +16,7 @@ function reducer(state = initialState, action) {
         case type.REVIEW.SUCCESS:
             return {
                 ...state,
+                data: action.data,
                 loading: false,
             }
         case type.REVIEW.ERROR:
