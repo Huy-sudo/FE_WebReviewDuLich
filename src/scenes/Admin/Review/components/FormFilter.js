@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import RenderInputText from '../../../share/components/RenderInputText'
+import RenderInputText from '../../../../share/components/RenderInputText'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 let ContactForm = props => {

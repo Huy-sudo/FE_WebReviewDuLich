@@ -21,17 +21,23 @@ class index extends Component {
     }
     
     componentDidMount=()=>{
-        this.handleSubmitFilter(this.state.initial_filter_values)
+        this.handleSubmitFilter(this.state.initial_filter_values);
+        let params = {}
+        this.props.getListCity(params);
     }
 
     handleSubmitFilter = ({  ...values }) => {
         let params = {
             ...values,
+            isReal: 1
+        }
+        let params2 = {
+            ...values,
             isReal: 0
         }
         this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
-        this.props.getList(params)
-        console.log(this.props.places.data);
+        this.props.getList(params);
+        this.props.getList(params2);
     }
 
     handleShowForm = (value) => {
@@ -59,11 +65,9 @@ class index extends Component {
     }
 
     updatePlace = (value) => {
-        value = {
-            ...value,
-            isReal: 1
-        }
-        this.props.updatePlace(value)
+        let id = value;
+        let params = {isReal: 1}
+        this.props.updatePlace(id, params)
     }
 
     render() {
@@ -82,8 +86,8 @@ class index extends Component {
                         <DataTable
                             dataSource={places.data || []}
                             loading={places.loading}
-                            onSubmit={this.updatePlace}
-                            onDelete={this.deletePlace}
+                            updatePlace={this.updatePlace}
+                            deletePlace={this.deletePlace}
                         />
                         <Modal
                             title="Tạo địa điểm"
@@ -95,6 +99,7 @@ class index extends Component {
                             <FormCreatePlace
                                 destroyOnClose={true}
                                 keyboard={true}
+                                city={places.city}
                                 maskClosable={true}
                                 onCancel={() => this.handleShowForm(false)}
                                 onSubmit={this.handleCreatePlace}

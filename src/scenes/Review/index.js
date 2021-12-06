@@ -1,7 +1,7 @@
 import Layout from "../../components/helpers/Layout";
 import React from "react";
 import { connect } from "react-redux";
-import { getList } from "./action";
+import { getList, getListCity } from "./action";
 import FilterCity from "../../components/main/Review/FilterCity";
 import ReviewPost from "../../components/main/Review/ReviewPost";
 import { Component } from "react";
@@ -21,6 +21,7 @@ class index extends Component {
   componentWillMount() {
     let params = {}
     this.props.getList(params);
+    this.props.getListCity(params);
   }
 
   getCity = (selectedCity) => {
@@ -56,13 +57,16 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  reviews: state.review,
+  reviews: state.review
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getList: (params) => {
     dispatch(getList(params));
   },
+  getListCity: (params) => {
+    dispatch(getListCity(params));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(index)

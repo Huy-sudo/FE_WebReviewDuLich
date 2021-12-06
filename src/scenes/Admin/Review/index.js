@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Spin, Alert, Modal } from 'antd';
+import { Button, Spin, Alert, Modal, Switch } from 'antd';
 import { connect } from 'react-redux'
 import Layout from '../../../scenes/Admin/Layout/layout'
 import DataTable from './components/DataTable'
 import { getList, updateReview, deleteReview } from './action'
 import moment from 'moment'
+import FormFilter from './components/FormFilter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import queryString from 'query-string'
@@ -22,14 +23,14 @@ class index extends Component {
         this.handleSubmitFilter(this.state.initial_filter_values)
     }
 
-    // handleSubmitFilter = ({  ...values }) => {
-    //     let params = {
-    //         ...values,
-    //         status:1
-    //     }
-    //     this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
-    //     this.props.getList(params)
-    // }
+    handleSubmitFilter = ({  ...values }) => {
+        let params = {
+            ...values,
+            status: 2
+        }
+        this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
+        this.props.getList(params)
+    }
   
     updateReview = (values) => {
         let params = {
@@ -43,6 +44,22 @@ class index extends Component {
         this.props.deleteReview(value)
     }
 
+     onChange = (checked) => {
+         let params = {}
+         if (checked)
+         {
+            params = {
+                status: 2
+            }
+         }
+        else {
+            params = {
+             status: 1
+         }
+        }
+        this.props.getList(params)
+      }
+
     render() {
         const { reviews } = this.props
         return (
@@ -51,9 +68,10 @@ class index extends Component {
                     <div className='container-fluid mb-3 text-left py-2'>
                         <span className='h5 font-weight-bold '>Reviews</span>
                     </div>
-                        {/* <FormFilter
+                    <Switch defaultChecked onChange={this.onChange}  />
+                        <FormFilter
                             onSubmit={this.handleSubmitFilter}
-                        /> */}
+                        />
                         <DataTable
                             dataSource={reviews.data || []}
                             loading={reviews.loading}
@@ -67,7 +85,7 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    reviews: state.Reviews
+    reviews: state.review
 })
 
 const mapDispatchToProps = dispatch => ({

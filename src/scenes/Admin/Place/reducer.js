@@ -3,7 +3,7 @@ import { action_type as type } from './action'
 const initialState = {
     loading: false,
     data: [],
-
+    city: []
 }
 
 function reducer(state = initialState, action) {
@@ -78,7 +78,7 @@ function reducer(state = initialState, action) {
         case type.GETCITY.SUCCESS:
             return {
                 ...state,
-                data: action.data,
+                city: action.data,
                 loading: false,
             }
         case type.GETCITY.ERROR:
