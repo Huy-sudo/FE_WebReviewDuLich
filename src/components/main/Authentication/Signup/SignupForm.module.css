@@ -10,7 +10,7 @@
     background-color: rgba(7, 13, 42, 0.794);
     margin: 120px 100px 30px 100px;
     border-radius: 20px;
-    min-height: 1000px;
+    min-height: 1050px;
 }
 
 .signup-wrapper h1 {
@@ -80,8 +80,22 @@ input[type="checkbox"] {
     cursor: pointer;
     position: relative;
     left: 90px;
+    font-weight: 500;
 }
 
+.invalid-submit {
+    max-width: 300px;
+    cursor: pointer;
+    position: relative;
+    left: 90px;
+    font-weight: 500;
+}
+
+.submit:hover {
+    background-color: rgb(18, 18, 255);
+    color: #FFFFFF;
+    border: none;
+}
 .policies-wrapper {
     background-color: #FFFFFF;
     position: absolute;
@@ -117,15 +131,25 @@ h2 {
     position: relative;
     transform: scale(3.0);
     top: 300px;
+    margin: 0px auto;
     z-index: 999;
+    overflow: hidden;
 }
 
-.spinner span {
-    z-index: 999;
-}
 .agreebox{
     transform: scale(1.6);
     position: relative;
     margin-left: 41px;
     bottom: 26px;
+}
+
+.errorChecked {
+    color: red;
+    font-size: 17px;
+    padding: 0;
+    font-weight: 500;
+    position: relative;
+    margin-top: 0px;
+    top: -10px;
+    left: 18px;
 }

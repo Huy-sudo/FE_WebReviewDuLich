@@ -14,6 +14,11 @@ export const action_type = {
         SUCCESS: "POSTCOMMENT.SUCCESS",
         ERROR: "POSTCOMMENT.ERROR"
     },
+    GETPOST: {
+        REQUEST: "GETPOST.REQUEST",
+        SUCCESS: "GETPOST.SUCCESS",
+        ERROR: "GETPOST.ERROR"
+    }
 }
 
 export function getDetail (id)
@@ -28,6 +33,14 @@ export function getListComment (params)
 {
     return {
         type: action_type.GETCOMMENT.REQUEST,
+        params
+    }
+}
+
+export function getListPost (params)
+{
+    return {
+        type: action_type.GETPOST.REQUEST,
         params
     }
 }

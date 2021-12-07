@@ -18,7 +18,7 @@ function Review(props) {
     }
   })
 
-  console.log(data);
+  // console.log(data);
   return (
     <List
       className={classes.container}

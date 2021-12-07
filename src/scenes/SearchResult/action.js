@@ -1,8 +1,8 @@
 export const action_type = {
-    REVIEW: {
-        REQUEST: "REVIEW.REQUEST",
-        SUCCESS: "REVIEW.SUCCESS",
-        ERROR: "REVIEW.ERROR"
+    SEARCH: {
+        REQUEST: "SEARCH.REQUEST",
+        SUCCESS: "SEARCH.SUCCESS",
+        ERROR: "SEARCH.ERROR"
     },
 
 }
@@ -10,7 +10,7 @@ export const action_type = {
 export function getList (params)
 {
     return {
-        type: action_type.REVIEW.REQUEST,
+        type: action_type.SEARCH.REQUEST,
         params
     }
 }

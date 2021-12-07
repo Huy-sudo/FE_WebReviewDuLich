@@ -9,6 +9,9 @@ function Button(props) {
       id={props.id}
       type={props.type}
       onClick={props.onClick}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
+
     >
       {props.children}
     </button>

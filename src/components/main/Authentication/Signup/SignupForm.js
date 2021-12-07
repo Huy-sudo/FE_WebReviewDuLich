@@ -74,7 +74,14 @@ function confirmPasswordReducer(state, action) {
       isPasswordSimilar: state.isPasswordSimilar,
       isPasswordConfirmInputFocus: true,
     };
-  } else
+  } else if (action.type === "RE_ENTERED_PASSWORDINPUT_ONCHANGE") {
+    return {
+      value: state.value,
+      isPasswordSimilar: action.isPasswordSimilar,
+      isPasswordConfirmInputFocus: true,
+    };
+  }
+  else
     return {
       value: "",
       isPasswordSimilar: false,
@@ -110,7 +117,13 @@ function SignupForm(props) {
   function phoneNumberHandler(event) {
     setPhoneNumber(event.target.value);
   }
+  const [isChecked, setIsChecked] = useState(false);
 
+  function consentChangeHandler() {
+    setIsChecked((prev) => {
+      return !prev;
+    });
+  }
   const [userEmail, dispatchUserEmail] = useReducer(emailReducer, {
     value: "",
     isEmailValid: false,
@@ -151,7 +164,7 @@ function SignupForm(props) {
   function passwordChangeHandler(event) {
     let enteredPassword = event.target.value;
     function validatePassword(password) {
-      if (enteredPassword.length >= 8) {
+      if (password.length >= 8) {
         const result = /[1-9]/;
         return result.test(enteredPassword); //password contains at least a number
       }
@@ -162,6 +175,18 @@ function SignupForm(props) {
       value: enteredPassword,
       isPasswordValid: validatePassword(enteredPassword),
       isPasswordInputFocus: true,
+    });
+    function matchPassword(password, reEntered) {
+      if (reEntered === password) {
+        return true;
+      }
+      return false;
+    }
+    dispatchPasswordConfirm({
+      type: "RE_ENTERED_PASSWORDINPUT_ONCHANGE",
+      value: passwordConfirm.value,
+      isPasswordSimilar: matchPassword(enteredPassword, passwordConfirm.value),
+      isPasswordConfirmInputFocus: true,
     });
   }
 
@@ -192,6 +217,7 @@ function SignupForm(props) {
   }
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isNotFilled, setIsNotFilled] = useState(true);
 
   function signupSubmitHandler(event) {
     event.preventDefault();
@@ -212,9 +238,28 @@ function SignupForm(props) {
   }
 
   useEffect(() => {
-    setIsLoading(props.loading)
-  }, [props.loading])
+    setIsLoading(props.loading);
+  }, [props.loading]);
 
+  useEffect(() => {
+    if (
+      username &&
+      userEmail.value &&
+      userPassword.value &&
+      passwordConfirm.isPasswordSimilar &&
+      isChecked
+    )
+      setIsNotFilled(false);
+    else {
+      setIsNotFilled(true);
+    }
+  }, [
+    username,
+    userEmail.value,
+    userPassword.value,
+    passwordConfirm.isPasswordSimilar,
+    isChecked,
+  ]);
   let errorName = !username.isNameValid && username.isInputFocus;
   let errorClassNameForName = errorName ? "invalid-name" : "valid-name";
 
@@ -233,163 +278,182 @@ function SignupForm(props) {
     : "valid-name";
 
   document.getElementById("root").className = classes.signupbackground;
-  
+
   return (
     <>
-    {isLoading ? <Spin spinning={isLoading} className={classes.spinner}></Spin> :
-    <div className={classes["signup-wrapper"]}>
-      <h1>ĐĂNG KÝ</h1>
-      <form className={classes["signup-form"]} onSubmit={signupSubmitHandler}>
-        <p className={classes.login}>
-          Đã có tài khoản? <a href="/">Đăng nhập ngay</a>
-        </p>
-        <label htmlFor="name">
-          Họ và tên <span style={{ color: "red" }}>*</span>
-        </label>
-        <Input
-          id="name"
-          type="text"
-          value={username.value}
-          onChange={nameChangeHandler}
-          onBlur={nameValidation}
-        />
-        <p className={classes[`${errorClassNameForName}`]}>
-          Họ tên không được trống
-        </p>
-        <label htmlFor="date_of_birth">Ngày tháng năm sinh</label>
-        <Input
-          id="date_of_birth"
-          type="date"
-          value={dateOfBirth}
-          onChange={dateOfBirthHandler}
-        />
-        <label htmlFor="phone_number">Số điện thoại</label>
-        <Input
-          id="phone_number"
-          type="text"
-          value={phoneNumber}
-          onChange={phoneNumberHandler}
-        />
-        <label htmlFor="email">
-          Email <span style={{ color: "red" }}>*</span>
-        </label>
-        <Input
-          id="email"
-          type="email"
-          value={userEmail.value}
-          onChange={emailChangeHandler}
-          onBlur={emailValidation}
-        />
-        <p className={classes[`${errorClassNameForEmail}`]}>
-          Email không hợp lệ.
-        </p>
-        <label htmlFor="password">
-          Mật khẩu <span style={{ color: "red" }}>*</span>
-        </label>
-        <Input
-          id="password"
-          type="password"
-          value={userPassword.value}
-          onChange={passwordChangeHandler}
-          onBlur={passwordValidation}
-        />
-        <p className={classes[`${errorClassNameForPassword}`]}>
-          Mật khẩu phải chứa ít nhất 8 ký tự và 1 chữ số
-        </p>
-        <label htmlFor="confirm_password">
-          Xác nhận mật khẩu <span style={{ color: "red" }}>*</span>
-        </label>
-        <Input
-          id="confirm_password"
-          type="password"
-          onChange={passwordConfirmChangeHandler}
-          onBlur={confirmPasswordValidation}
-        />
-        <p className={classes[`${errorClassNameForConfirmPassword}`]}>
-          Mật khẩu không trùng khớp!
-        </p>
-        <label htmlFor="agreement">
-          Tôi đồng ý với điều khoản sử dụng và dịch vụ{" "}
-          <span style={{ color: "red" }}>*</span>
-        </label>
-        <Input className={classes.agreebox}  id="agreement" type="checkbox" />
-        <Input className={classes.submit} type="submit" value="Đăng ký" />
-      </form>
-      <div className={classes["policies-wrapper"]}>
-        <h2>Điều khoản sử dụng và dịch vụ</h2>
-        <div className={classes["policies-content"]}>
-          <p>
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-            1. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-            <br />
-          </p>
+      {isLoading ? (
+        <Spin spinning={isLoading} className={classes.spinner}></Spin>
+      ) : (
+        <div className={classes["signup-wrapper"]}>
+          <h1>ĐĂNG KÝ</h1>
+          <form
+            className={classes["signup-form"]}
+            onSubmit={signupSubmitHandler}
+          >
+            <p className={classes.login}>
+              Đã có tài khoản? <a href="/">Đăng nhập ngay</a>
+            </p>
+            <label htmlFor="name">
+              Họ và tên <span style={{ color: "red" }}>*</span>
+            </label>
+            <Input
+              id="name"
+              type="text"
+              value={username.value}
+              onChange={nameChangeHandler}
+              onBlur={nameValidation}
+            />
+            <p className={classes[`${errorClassNameForName}`]}>
+              Họ tên không được trống
+            </p>
+            <label htmlFor="date_of_birth">Ngày tháng năm sinh</label>
+            <Input
+              id="date_of_birth"
+              type="date"
+              value={dateOfBirth}
+              onChange={dateOfBirthHandler}
+            />
+            <label htmlFor="phone_number">Số điện thoại</label>
+            <Input
+              id="phone_number"
+              type="text"
+              value={phoneNumber}
+              onChange={phoneNumberHandler}
+            />
+            <label htmlFor="email">
+              Email <span style={{ color: "red" }}>*</span>
+            </label>
+            <Input
+              id="email"
+              type="email"
+              value={userEmail.value}
+              onChange={emailChangeHandler}
+              onBlur={emailValidation}
+            />
+            <p className={classes[`${errorClassNameForEmail}`]}>
+              Email không hợp lệ.
+            </p>
+            <label htmlFor="password">
+              Mật khẩu <span style={{ color: "red" }}>*</span>
+            </label>
+            <Input
+              id="password"
+              type="password"
+              value={userPassword.value}
+              onChange={passwordChangeHandler}
+              onBlur={passwordValidation}
+            />
+            <p className={classes[`${errorClassNameForPassword}`]}>
+              Mật khẩu phải chứa ít nhất 8 ký tự và 1 chữ số
+            </p>
+            <label htmlFor="confirm_password">
+              Xác nhận mật khẩu <span style={{ color: "red" }}>*</span>
+            </label>
+            <Input
+              id="confirm_password"
+              type="password"
+              onChange={passwordConfirmChangeHandler}
+              onBlur={confirmPasswordValidation}
+            />
+            <p className={classes[`${errorClassNameForConfirmPassword}`]}>
+              Mật khẩu không trùng khớp!
+            </p>
+            <label htmlFor="agreement">
+              Tôi đồng ý với điều khoản sử dụng và dịch vụ{" "}
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <Input
+              className={classes.agreebox}
+              id="agreement"
+              type="checkbox"
+              onChange={consentChangeHandler}
+            />
+            {!isChecked && (
+              <p className={classes.errorChecked}>
+                Đồng ý với điều khoản của chúng tôi để tiếp tục
+              </p>
+            )}
+            <Input
+              className={isNotFilled ? classes["invalid-submit"] : classes.submit}
+              type="submit"
+              value="Đăng ký"
+              disabled={isNotFilled}
+            />
+          </form>
+          <div className={classes["policies-wrapper"]}>
+            <h2>Điều khoản sử dụng và dịch vụ</h2>
+            <div className={classes["policies-content"]}>
+              <p>
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book. <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+                1. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+                <br />
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    }
+      )}
     </>
   );
 }
 
 export default SignupForm;
-

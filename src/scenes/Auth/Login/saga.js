@@ -31,7 +31,7 @@ function* verifySaga(action) {
     if (response.status && response.data[0]?.id > 0) {
       yield all([put({ type: TYPE.VERIFY.SUCCESS, ...response })]);
     } else {
-      Cookies.set("web_token", "");
+      Cookies.set("web_token", null);
       yield put(push("/login"));
     }
   } catch (error) {
