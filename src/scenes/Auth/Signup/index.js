@@ -29,6 +29,7 @@ class index extends Component {
       phone_number: phoneNumber,
       email: email,
       password: password,
+      isAdmin: 0
     };
     this.props.signup(value);
     console.log(value);

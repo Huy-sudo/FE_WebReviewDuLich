@@ -11,6 +11,7 @@ import reviewPage from "./scenes/Review/reducer"
 import home from "./scenes/Home/reducer";
 import postdetail from './scenes/PostDetail/reducer';
 import search from "./scenes/SearchResult/reducer";
+import newpost from "./scenes/NewPost/reducer";
 const Reducer = (history) => combineReducers({    
     form: formReducer,
     router: connectRouter(history),
@@ -23,7 +24,8 @@ const Reducer = (history) => combineReducers({
     reviewPage,
     home,
     postdetail,
-    search
+    search,
+    newpost
   })
   
 export default Reducer

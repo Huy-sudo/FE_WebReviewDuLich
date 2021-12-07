@@ -1,0 +1,50 @@
+.background {
+    background: linear-gradient(0deg, rgba(235,228,240,1) 0%, rgba(230,209,238,1) 9%, rgba(218,198,231,1) 22%, rgba(200,200,235,1) 40%, rgba(211,212,228,1) 75%, rgba(192,211,231,1) 89%, rgba(174,233,229,1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.massive-container {
+    display: block;
+    position: relative;
+    top: 140px;
+    padding-bottom: 270px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.massive-container h3 {
+    margin-bottom: 0px;
+}
+
+.container {
+    border: 1px #6e6e6e solid;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 5px;
+    background-color: #ffffff7c;
+    margin-bottom: 10px;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.post-date {
+    
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+}

@@ -17,7 +17,7 @@ function MostReviewedPlacesChart(props) {
   }
   function seachHandler(event) {
     context.value = event.target.value;
-    console.log(context);
+    console.log(context.value);
   }
 
   return (
@@ -42,13 +42,12 @@ function MostReviewedPlacesChart(props) {
                 </p>
               </div>
               <label className={classes.arrow}>
-                <Link to={`/search?name=${context.value}}`}>
+                <Link to={`/search`}>
                   <input
                     className={classes.search}
-                    value={place.name}
+                    value={place.ID}
                     type="radio"
                     onClick={seachHandler}
-                    // style={{ display: "none" }}
                   />
                   <FontAwesomeIcon
                     className={classes.rightbutton}

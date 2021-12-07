@@ -32,7 +32,7 @@ sagaMiddleware.run(saga);
 
 ReactDOM.render(
   <AuthenContext.Provider value={{ isLoggedIn: false }}>
-    <UserDetail.Provider value={{ id: "", email: "", name: "" }}>
+    <UserDetail.Provider value={{ id: "", email: "", name: "", isAdmin: 0 }}>
       <ReviewContext.Provider value={{ id: "" }}>
         <SearchQuery.Provider value={{ value: "" }}>
           <Provider store={store}>

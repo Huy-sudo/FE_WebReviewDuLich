@@ -1,0 +1,20 @@
+.wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.select {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    min-width: 500px;
+}
+
+.label-place {
+    padding-right: 20px;
+    text-align: right;
+
+}

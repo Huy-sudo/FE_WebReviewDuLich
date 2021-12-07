@@ -3,10 +3,11 @@ import classes from "./NewPost.module.css";
 import Input from "../../helpers/Input";
 import CityPicker from "./CityPicker";
 import StarRating from "./StarRating";
-
+import { Link } from "react-router-dom";
+import PlacePicker from "./PlacePicker";
 function NewPost(props) {
   const [postname, setPostname] = useState("");
-  const [placename, setPlacename] = useState("");
+  const [place, setPlace] = useState("");
   const [content, setContent] = useState("");
   const [imgsrc, setImgsrc] = useState("");
   const [rating, setRating] = useState(null);
@@ -16,9 +17,6 @@ function NewPost(props) {
     setPostname(event.target.value);
   }
 
-  function placenameChangeHandler(event) {
-    setPlacename(event.target.value);
-  }
   function contentChangeHandler(event) {
     setContent(event.target.value);
   }
@@ -31,15 +29,21 @@ function NewPost(props) {
     setImgsrc(event.target.value);
   }
 
-  function submitHandler() {
-    // let params = {
-    //   name: postname,
-
-    // }
-    // props.postPost(params)
+  function submitHandler(event) {
+    event.preventDefault();
+    let params = {
+      ID_user: props.user.id,
+      name: postname,
+      ID_city: city,
+      ID_place: place,
+      content: content,
+      rate: rating,
+      status: 2,
+    }
+    props.onSaveData(params)
     setPostname("");
     setContent("");
-    setPlacename("");
+    setPlace("");
     setRating("");
     setImgsrc("");
     setCity("");
@@ -59,15 +63,6 @@ function NewPost(props) {
             value={postname}
             onChange={postnameChangeHandler}
           />
-          <label htmlFor="placename">
-            Tên địa điểm <span style={{ color: "red" }}>*</span>
-          </label>
-          <Input
-            type="text"
-            id="placename"
-            value={placename}
-            onChange={placenameChangeHandler}
-          />
           <label htmlFor="imgsrc">Chọn nguồn ảnh</label>
           <Input
             type="text"
@@ -76,6 +71,7 @@ function NewPost(props) {
             onChange={imgsrcChangeHandler}
           />
         </div>
+        <PlacePicker data={props.placeData} onSaveData={setPlace} />
         <CityPicker data={props.cityData} onSaveData={setCity} />
         <div>
           <label htmlFor="content">
@@ -93,7 +89,9 @@ function NewPost(props) {
           </label>
           <StarRating onSaveData={saveRatingValue} />
         </div>
-        <Input className={classes.submit} type="submit" value="Đăng" />
+        <Link to="/profile">
+          <Input className={classes.submit} type="submit" value="Đăng" />
+        </Link>
       </form>
     </>
   );

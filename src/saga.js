@@ -9,7 +9,7 @@ import reviewPageSaga from "./scenes/Review/saga"
 import homeSaga from "./scenes/Home/saga";
 import postdetailSaga from "./scenes/PostDetail/saga"
 import searchSaga from "./scenes/SearchResult/saga";
-
+import newpostSaga from "./scenes/NewPost/saga"
 const Saga = function* (){
     yield all([
       loginSaga(),
@@ -21,8 +21,8 @@ const Saga = function* (){
       reviewPageSaga(),
       homeSaga(),
       postdetailSaga(),
-      searchSaga()
-
+      searchSaga(),
+      newpostSaga()
     ])
   }
   

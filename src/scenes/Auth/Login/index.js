@@ -21,9 +21,6 @@ class index extends Component {
     let userlogin = { email: email, password: password };
     this.setState({email: email})
     this.props.login(userlogin);
-    setTimeout(() => {
-      console.log(this.props);
-    }, 2000);
   };
 
   render() {

@@ -1,10 +1,12 @@
-import { takeLatest, call, put, all, push } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
 import { action_type as TYPE } from "./action";
 import * as api from "../../apis/Review";
+import { push } from "react-router-redux";
 
 function* postPostSaga(action) {
   try {
     const { params } = action;
+    console.log(params);
     const response = yield call(api.create, params);
     if (response.status) {
       yield all([put({ type: TYPE.POSTPOST.SUCCESS, ...response })]);

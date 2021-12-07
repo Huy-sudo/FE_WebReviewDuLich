@@ -1,5 +1,7 @@
 import Footer from "../footer/Footer";
+import React, {useContext, useState, useEffect} from "react";
 import Navigation from "../header/Navigation/Navigation";
+import UserDetail from "../context/UserDetail";
 
 function Layout(props) {
 

@@ -5,10 +5,9 @@ import ReviewPost from "../Review/ReviewPost";
 function SearchPage(props) {
     
 
-
     return (
         <section>
-            {/* <ReviewPost data={props.data}/> */}
+            <ReviewPost data={props.data}/>
         </section>
     )
 }

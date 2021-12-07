@@ -10,6 +10,7 @@ import PostDetail from "../scenes/PostDetail";
 import NewPost from "../scenes/NewPost";
 import Profile from "../scenes/Profile";
 import Search from "../scenes/SearchResult"
+import Login from "../scenes/Auth/Login"
 export default [
     {
         path: '/admin',
@@ -58,6 +59,10 @@ export default [
     {
         path: "/search",
         component: Search
+    },
+    {
+        path: "/",
+        component: Login
     }
 
 

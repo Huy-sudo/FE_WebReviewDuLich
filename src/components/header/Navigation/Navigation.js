@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 import classes from "./Navigation.module.css";
 import { Menu, Dropdown, Avatar } from "antd";
 import Button from "../../helpers/Button";
 import AuthenContext from "../../context/AuthenContext";
+import UserDetail from "../../context/UserDetail";
 import SearchQuery from "../../context/SearchQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,6 +18,11 @@ import { Link, NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 import Logo from "../../../photo/logo.png"
 
+function useForceUpdate() {
+  const [value, setValue] = useState(0);
+  return () => {setValue(value => value + 1)};
+}
+
 function NavigationContent(props) {
   const [userInput, setUserInput] = useState("");
   let context = useContext(AuthenContext);
@@ -29,12 +35,19 @@ function NavigationContent(props) {
     searchContext.value = userInput;
   }
 
-  async function signoutHandler() {
+  function signoutHandler() {
     context.isLoggedIn = false;
     Cookies.set("web_token", "");
     console.log(Cookies.get("web_token"));
     window.location.pathname = "/login";
   }
+
+  const userContext = useContext(UserDetail);
+  const [isAdmin, setIsAdmin] = useState(0);
+
+  useEffect(() => {
+    setIsAdmin(userContext.isAdmin);
+  }, [userContext.isAdmin]);
 
   return (
     <div className={classes["navbar-wrapper"]}>
@@ -87,17 +100,17 @@ function NavigationContent(props) {
             overlay={
               <Menu className={classes["menu-wrapper"]}>
                 <Menu.Item key="0">
-                  <a href={"/profile"} className={classes.menu}>
+                  <Link to={"/profile"} className={classes.menu}>
                     <FontAwesomeIcon style={{ width: 20 }} icon={faUser} />{" "}
                     Trang cá nhân
-                  </a>
+                  </Link>
                 </Menu.Item>
-                <Menu.Item key="1">
+                {isAdmin ? <Menu.Item key="1">
                   <Link to={"/admin"} className={classes.menu}>
                     <FontAwesomeIcon style={{ width: 20 }} icon={faCogs} /> Quản
                     lý
                   </Link>
-                </Menu.Item>
+                </Menu.Item> : <></>}
                 <Menu.Item key="2">
                   <a className={classes.menu} onClick={signoutHandler}>
                     <FontAwesomeIcon

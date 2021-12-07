@@ -18,9 +18,8 @@ class index extends Component {
     const token = Cookies.get("web_token");
     if (!token) this.props.history.push("/login");
     this.props.history.replace(window.location.pathname + "?" + queryString.stringify(this.context.value));
-    this.props.getList({name: this.context.value});
-    console.log(this.props.review.search);
-    console.log(this.context);
+    this.props.getList({ID_place: this.context.value});
+    console.log(this.props.search);
   };
 
   static contextType = SearchQuery;
@@ -28,14 +27,14 @@ class index extends Component {
   render() {
     return (
         <Layout>
-          <SearchPage data={this.props.review.search} />
+          <SearchPage data={this.props.search.data} />
         </Layout>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  review: state,
+  search: state.search,
 });
 
 const mapDispatchToProps = (dispatch) => ({

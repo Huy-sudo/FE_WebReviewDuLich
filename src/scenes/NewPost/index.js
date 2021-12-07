@@ -12,19 +12,19 @@ class index extends Component {
     if (!token) this.props.history.push("/login");
   };
 
-  getNewPost = (postname, placename, content, rating, imgsrc) => {
-    //post is the data getting from NewPost
+  getNewPost = (post) => {
+    
+    this.props.postPost(post);
   };
 
   render() {
-    console.log(this.props.city);
     return (
       <AuthenContext.Consumer>
         {(ctx) => {
           ctx.isLoggedIn = true;
           return (
             <Layout>
-              <NewPost onSaveData={this.getNewPost} postPost={this.props.postPost} cityData={this.props.city}/>
+              <NewPost onSaveData={this.getNewPost} postPost={this.props.postPost} cityData={this.props.city} placeData={this.props.place.data} user={this.props.user[0]}/>
             </Layout>
           );
         }}
@@ -34,7 +34,9 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  city: state.reviewPage
+  city: state.reviewPage,
+  place: state.home,
+  user: state.login.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
