@@ -72,6 +72,7 @@ function* UpdateSaga(action) {
 function* DeleteSaga(action) {
     try {
         const { id } = action
+        console.log(id);
         const response = yield call(api.destroy, id)
         if(response.status){
                 yield all([

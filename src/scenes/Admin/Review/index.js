@@ -32,11 +32,11 @@ class index extends Component {
     }
   
     updateReview = (values) => {
+        let id = values
         let params = {
-            ...values,
             status:1
         }
-        this.props.updateReview(params)
+        this.props.updateReview(id,params)
     }
 
     deleteReview = (value) => {
@@ -74,8 +74,8 @@ const mapDispatchToProps = dispatch => ({
     getList: (params) => {
         dispatch(getList(params))
     },
-    updateReview: (id) => {
-        dispatch(updateReview(id))
+    updateReview: (id, params) => {
+        dispatch(updateReview(id, params))
     },
     deleteReview: (id) => {
         dispatch(deleteReview(id))

@@ -15,9 +15,9 @@ export const action_type = {
         ERROR: "USER.UPDATE.ERROR"
     },
     DELETE: {
-        REQUEST: "USER.DELETE.REQUEST",
-        SUCCESS: "USER.DELETE.SUCCESS",
-        ERROR: "USER.DELETE.ERROR"
+        REQUEST: "DELETE.REQUEST",
+        SUCCESS: "DELETE.SUCCESS",
+        ERROR: "DELETE.ERROR"
     },
 }
 

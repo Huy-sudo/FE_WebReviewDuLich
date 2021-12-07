@@ -10,9 +10,9 @@ export const action_type = {
         ERROR: "REVIEW.CREATE.ERROR"
     },
     UPDATE: {
-        REQUEST: "REVIEW.UPDATE.REQUEST",
-        SUCCESS: "REVIEW.UPDATE.SUCCESS",
-        ERROR: "REVIEW.UPDATE.ERROR"
+        REQUEST: "UPDATE.REQUEST",
+        SUCCESS: "UPDATE.SUCCESS",
+        ERROR: "UPDATE.ERROR"
     },
     DELETE: {
         REQUEST: "REVIEW.DELETE.REQUEST",
@@ -29,11 +29,12 @@ export function getList (params)
     }
 }
 
-export function updateReview (id)
+export function updateReview (id,params)
 {
     return {
         type: action_type.UPDATE.REQUEST,
-        id
+        id,
+        params
     }
 }
 

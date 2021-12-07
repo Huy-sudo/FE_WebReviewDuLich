@@ -8,9 +8,9 @@ const DataTable = ({ dataSource, loading, updatePlace, deletePlace }) => {
     updatePlace(values)
   }
 
-  const onDelete = (values) => {
-    deletePlace(values)
-  }
+  // const onDelete = (values) => {
+  //   deletePlace(values)
+  // }
 
   const columns = [
     {
@@ -78,13 +78,13 @@ const DataTable = ({ dataSource, loading, updatePlace, deletePlace }) => {
               </span>
             </Tooltip>
           </button>
-          <button onClick={() => onDelete(record?.ID)} className="btn btn-sm btn-primary">
+          {/* <button onClick={() => onDelete(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Xóa">
               <span className="px-2">
                 <FontAwesomeIcon icon={faExclamation} />
               </span>
             </Tooltip>
-          </button>
+          </button> */}
         </Space>
       ),
     },]

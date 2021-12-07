@@ -32,7 +32,6 @@ function reducer(state = initialState, action) {
         case type.UPDATE.SUCCESS:
             return {
                 ...state,
-                data: action.data,
                 loading: false,
             }
         case type.UPDATE.ERROR:

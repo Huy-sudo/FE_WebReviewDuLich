@@ -8,15 +8,25 @@ const DataTable = ({ dataSource, loading, updateReview, deleteReview }) => {
     updateReview(values)
   }
 
-  const onDelete = (values) => {
-    deleteReview(values)
-  }
+  // const onDelete = (values) => {
+  //   deleteReview(values)
+  // }
 
   const columns = [
     {
       title: '#',
       width: 100,
       render: (value, record, i) => <a>{i + 1}</a>,
+    },
+    {
+      title: 'Tên bài viết',
+      dataIndex: 'name',
+      key: 'name',
+      className: 'text-left',
+      render: (value, record) =>
+        <div>
+          <span> {value || ''} </span>
+        </div>
     },
     {
       title: 'Thành phố',
@@ -55,7 +65,7 @@ const DataTable = ({ dataSource, loading, updateReview, deleteReview }) => {
       className: 'text-left',
       render: (value, record) =>
         <div>
-          <span> {value || '0' + '/5'} </span>
+          <span> {value || '0' }/5 </span>
         </div>
     },
     {
@@ -66,6 +76,16 @@ const DataTable = ({ dataSource, loading, updateReview, deleteReview }) => {
       render: (value, record) =>
         <div>
           <span> {value || ''} </span>
+        </div>
+    },
+    {
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      key: 'status',
+      className: 'text-left',
+      render: (value, record) =>
+        <div>
+           <span >{value == 1 ? 'Công khai' : 'Chưa công khai'}</span>
         </div>
     },
     {
@@ -80,13 +100,13 @@ const DataTable = ({ dataSource, loading, updateReview, deleteReview }) => {
               </span>
             </Tooltip>
           </button>
-          <button onClick={() => onDelete(record?.ID)} className="btn btn-sm btn-primary">
+          {/* <button onClick={() => onDelete(record?.ID)} className="btn btn-sm btn-primary">
             <Tooltip placement="top" title="Delete Review">
               <span className="px-2">
                 <FontAwesomeIcon icon={faExclamation} />
               </span>
             </Tooltip>
-          </button>
+          </button> */}
         </Space>
       ),
     },]

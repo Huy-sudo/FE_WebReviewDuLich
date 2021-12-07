@@ -6,9 +6,6 @@ import Layout from '../Layout/layout'
 import DataTable from './components/DataTable'
 import FormCreatePlace from './components/FormCreatePlace'
 import { getList, createPlace, updatePlace, deletePlace, getListCity } from './action'
-import moment from 'moment'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import queryString from 'query-string'
 class index extends Component {
     constructor(props) {
@@ -87,7 +84,7 @@ class index extends Component {
                             dataSource={places.data || []}
                             loading={places.loading}
                             updatePlace={this.updatePlace}
-                            deletePlace={this.deletePlace}
+                            // deletePlace={this.deletePlace}
                         />
                         <Modal
                             title="Tạo địa điểm"

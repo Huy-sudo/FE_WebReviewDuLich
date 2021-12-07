@@ -46,7 +46,6 @@ class index extends Component {
     handleUpdateCity = (value) => {
         let id = this.state.idCity;
         this.setState({ showForm: false })
-        console.log(value);
         let params = value;
         this.props.updateCity(id, params)
     }

@@ -16,7 +16,7 @@ class index extends Component {
         const query_params = queryString.parse(window.location.search);
         this.state = {
             initial_filter_values: query_params,
-            showForm: false,
+            // showForm: false,
             idUser: 0
         }
     }
@@ -38,24 +38,25 @@ class index extends Component {
         this.props.deleteUser(value)
     }
 
-    handleShowForm = (value) => {
-        this.setState({ showForm: value || false })
-    }
+    // handleShowForm = (value) => {
+    //     this.setState({ showForm: value || false })
+    // }
 
-    handleCloseModal = (value) => {
-        this.setState({ showForm: false })
-    }
+    // handleCloseModal = (value) => {
+    //     this.setState({ showForm: false })
+    // }
 
-    handleUpdateUser = (value) => {
-        let id = this.state.idUser;
-        this.setState({ showForm: false })
-        this.props.updateCity(id, value)
-    }
+    // handleUpdateUser = (value) => {
+    //     let id = this.state.idUser;
+    //     this.setState({ showForm: false })
+    //     let params = value;
+    //     this.props.updateCity(id, params)
+    // }
 
-    openModal = (values) => {
-        this.handleShowForm(true);
-        this.state.idUser = values;
-    }
+    // openModal = (values) => {
+    //     this.handleShowForm(true);
+    //     this.state.idUser = values;
+    // }
 
     render() {
         const { users, showForm } = this.props
@@ -71,10 +72,10 @@ class index extends Component {
                     <DataTable
                         dataSource={users.data || []}
                         loading={users.loading}
-                        updateUser={this.openModal}
+                        // updateUser={this.openModal}
                         deleteUser={this.deleteUser}
                     />
-                    <Modal
+                    {/* <Modal
                         title="Cập nhật người dùng"
                         visible={showForm}
                         closable={false}
@@ -89,7 +90,7 @@ class index extends Component {
                             onSubmit={this.handleUpdateUser}
                             handleShowForm={this.handleShowForm}
                         />
-                    </Modal>
+                    </Modal> */}
                 </Layout>
             </div>
         );
