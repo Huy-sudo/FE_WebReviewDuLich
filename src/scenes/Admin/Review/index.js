@@ -26,7 +26,6 @@ class index extends Component {
     handleSubmitFilter = ({  ...values }) => {
         let params = {
             ...values,
-            status: 2
         }
         this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
         this.props.getList(params)
@@ -44,22 +43,6 @@ class index extends Component {
         this.props.deleteReview(value)
     }
 
-     onChange = (checked) => {
-         let params = {}
-         if (checked)
-         {
-            params = {
-                status: 2
-            }
-         }
-        else {
-            params = {
-             status: 1
-         }
-        }
-        this.props.getList(params)
-      }
-
     render() {
         const { reviews } = this.props
         return (
@@ -68,7 +51,6 @@ class index extends Component {
                     <div className='container-fluid mb-3 text-left py-2'>
                         <span className='h5 font-weight-bold '>Reviews</span>
                     </div>
-                    <Switch defaultChecked onChange={this.onChange}  />
                         <FormFilter
                             onSubmit={this.handleSubmitFilter}
                         />

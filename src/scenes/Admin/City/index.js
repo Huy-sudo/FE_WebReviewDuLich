@@ -29,6 +29,7 @@ class index extends Component {
     handleSubmitFilter = ({ ...values }) => {
         let params = {
             ...values,
+            status:1
         }
         this.props.history.replace(window.location.pathname + '?' + queryString.stringify(params));
         this.props.getList(params)
@@ -45,7 +46,9 @@ class index extends Component {
     handleUpdateCity = (value) => {
         let id = this.state.idCity;
         this.setState({ showForm: false })
-        this.props.updateCity(id, value)
+        console.log(value);
+        let params = value;
+        this.props.updateCity(id, params)
     }
 
     openModal = (values) => {
